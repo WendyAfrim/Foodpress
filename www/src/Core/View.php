@@ -33,8 +33,7 @@ class View
 
     public function setTemplate($template)
     {
-
-        if (file_exists("../Views/Templates/" . $template . ".php")) {
+        if (file_exists("src/Views/Templates/" . $template . ".php")) {
 
             $this->template = "src/Views/Templates/" . $template . ".php";
             // $this->template = "../Views/Templates/" . $template . ".php";
@@ -45,10 +44,8 @@ class View
 
     public function setView($view)
     {   
-
-        if (file_exists("../Views/Security/" . $view . ".view.php")) {
-
-            $this->view = "src/Views/Security/" . $view . ".view.php";
+        if (file_exists("src/Views/" . $view . ".php")) {
+            $this->view = "src/Views/" . $view . ".php";
         } else {
             die();
         }
@@ -66,4 +63,8 @@ class View
         extract($this->data);
         require $this->template;
     }
+
+    public function renderHtml() {
+		return $this->html;
+	}
 }
