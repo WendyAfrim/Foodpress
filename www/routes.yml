@@ -1,3 +1,7 @@
 /login:
   controller: "Security"
   action: "login"
+
+/register:
+  controller: "Security"
+  action: "register"
