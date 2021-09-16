@@ -8,10 +8,10 @@ class Database
 {
     protected static $instance = null;
 
-    protected $host = 'localhost';
+    protected $host = 'database';
     protected $user = 'root';
-    protected $password = 'root';
-    protected $dbname = 'foodpress';
+    protected $pwd = 'password';
+    protected $dbname = 'mvcdocker2';
     protected $port = '3306';
 
     public function __construct()
@@ -29,6 +29,11 @@ class Database
         }
     }
 
+    /**
+     * Instanciation de la class Database de manière unique
+     * @static
+     * @return object 
+     */
     public static function getInstance() 
     {
         if(is_null(self::$instance)) {
@@ -39,9 +44,52 @@ class Database
         return self::$instance;
     }
 
+    /**
+     * Retourne un objet PDO
+     *
+     * @return object
+     */
     public function getConnection() 
     {
         return $this->conn;
+    }
+
+    /**
+     * Enregistrement dynamique d'un objet en base de données
+     *
+     * @return void
+     */
+    public function save() {
+
+        $classExploded = explode("\\", get_called_class());
+		$table = end($classExploded) ;
+		
+        $columns = get_object_vars($this);
+		$toDelete = get_class_vars(get_class());
+        $data = array_diff_key($columns, $toDelete);
+        unset($data['conn']);
+
+        
+        if (is_null($this->getId())) {
+            
+            
+            $sql = " INSERT INTO $table 
+			(". implode(",", array_keys($data)) .") 
+			VALUES 
+			(:". implode(",:", array_keys($data)) .")";
+            
+			$queryPrepared = $this->conn->prepare($sql);
+            // echo "<pre>";
+            // print_r($queryPrepared);
+            // die;
+
+			$queryPrepared->execute( $data );
+			
+		}else {
+			//UPDATE
+		}
+
+
     }
 
 }
