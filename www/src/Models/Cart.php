@@ -11,7 +11,7 @@ class Cart extends Database {
     protected $status;
     protected $amount; 
     protected $payment_method;
-    protected $date;
+    protected $created_at;
     protected $address;
     protected $zipcode;
     protected $city;
@@ -137,13 +137,14 @@ class Cart extends Database {
     }
 
     /**
-     * Récupération de la date
+     * Récupération de la date d'enregistrement
+     *
      * @return string
      */
-    public function getDate() :string
+    public function getCreatedAt() :date
     {
-        
-        return $this->date;
+
+        return $this->$created_at;
     }
 
     /**
@@ -151,10 +152,10 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setDate($date) :void 
+    public function setDate($created_at) :void
     {
 
-        $this->date = $date;
+        $this->created_at = $created_at;
     }
 
     /**
@@ -267,4 +268,5 @@ class Cart extends Database {
 
         $this->user_id = $user_id;
     }
+
 }
