@@ -79,9 +79,6 @@ class Database
 			(:". implode(",:", array_keys($data)) .")";
             
 			$queryPrepared = $this->conn->prepare($sql);
-            // echo "<pre>";
-            // print_r($queryPrepared);
-            // die;
 
 			$queryPrepared->execute( $data );
 			
