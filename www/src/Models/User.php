@@ -11,12 +11,13 @@ class User extends Database {
     protected $lastname;
     protected $email; 
     protected $password = null;
-    protected $role;
+    protected $roles;
     protected $address;
     protected $zipcode;
     protected $city;
     protected $phone;
     protected $payment;
+    // protected $createdAt;
 
 
     /**
@@ -151,10 +152,10 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setRoles($role) :void 
+    public function setRoles($roles) :void 
     {
 
-        $this->role = $role;
+        $this->roles = $roles;
     }
 
     /**
@@ -266,5 +267,27 @@ class User extends Database {
 
         $this->payment = $payment;
     }
+
+    /**
+     * Récupération de la date d'enregistrement
+     *
+     * @return string
+     */
+    // public function getCreatedAt() :date
+    // {
+
+    //     return $this->$createdAt;
+    // }
+
+    /**
+     * Setting de la date
+     *
+     * @param mixed 
+     */
+    // public function setCreatedAt($createdAt) :void
+    // {
+
+    //     $this->createdAt = $createdAt;
+    // }
 
 }

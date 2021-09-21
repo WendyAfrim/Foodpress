@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Database;
 use App\Core\View;
 use App\Models\User;
+use App\Form\RegisterForm;
 
 class Security
 {
@@ -20,29 +21,37 @@ class Security
      * Page d'inscription des clients qui utiliseront le site généré par le restaurateur
      * A partir de notre CMS
      * 
-     * @return void 
      */
     public function register()
     {
 
         $user = new User();
+        $form = new RegisterForm();
+
+        $view = new View('Security/registration', 'front-template');
+        $view->form = $form->renderHtml();
+
+        if(!empty($_POST))
+        {
+            $user->setFirstname(htmlentities($_POST['firstname']));
+            $user->setLastname(htmlentities($_POST['lastname']));
+            $user->setEmail(htmlentities($_POST['email']));
+            $user->setPassword(htmlentities($_POST['password']));
+            $user->setRoles("['ROLE_USER']");
+            $user->setAdress(htmlentities($_POST['address']));
+            $user->setZipcode(htmlentities($_POST['zipcode']));
+            $user->setCity(htmlentities($_POST['city']));
+            $user->setPhone(htmlentities($_POST['phone']));
+            // $user->setCreatedAt(new \Datetime());
+
+            $user->save();
+        }
+
         
-        $user->setFirstname("Wendy");
-        $user->setLastname('AFRIM');
-        $user->setLastname('wendy.afrim2@gmail.com');
-        $user->setPassword('12344');
-        $user->setRoles("['ROLE_USER']");
-        $user->setAdress('3 Cours Sainte Marthe');
-        $user->setZipcode('94320');
-        $user->setCity('Thiais');
-        $user->setPhone('33650025841');
-        $user->setPayment('CB');
         // echo '<pre>';
         // var_dump($user);
         // echo '</pre>';
         // die;
-
-        $user->save();
         
     }
 }
