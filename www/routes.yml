@@ -5,3 +5,7 @@
 /register:
   controller: "Security"
   action: "register"
+
+/cart:
+    controller: "CartController"
+    action: "confirm_order"
