@@ -13,12 +13,12 @@ class RegisterForm extends FormAbstractClass
 
     public function __construct() 
     {   
-        $config = $this->formRegister();
+        $config = $this->registerFormType();
         parent::__construct($config);
         $this->renderHtml();
     }
 
-    public function formRegister()
+    public function registerFormType()
     {
         return [
             "action"=>"",

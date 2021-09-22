@@ -17,7 +17,7 @@ class User extends Database {
     protected $city;
     protected $phone;
     protected $payment;
-    // protected $createdAt;
+    protected $created_at;
 
 
     /**
@@ -133,7 +133,7 @@ class User extends Database {
     public function setPassword($password) :void
     {
 
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
     /**
@@ -273,21 +273,21 @@ class User extends Database {
      *
      * @return string
      */
-    // public function getCreatedAt() :date
-    // {
+    public function getCreatedAt() :date
+    {
 
-    //     return $this->$createdAt;
-    // }
+        return $this->$created_at;
+    }
 
     /**
      * Setting de la date
      *
      * @param mixed 
      */
-    // public function setCreatedAt($createdAt) :void
-    // {
+    public function setCreatedAt($created_at) :void
+    {
 
-    //     $this->createdAt = $createdAt;
-    // }
+        $this->created_at = $created_at;
+    }
 
 }
