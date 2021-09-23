@@ -6,27 +6,24 @@ use Exception;
 
 class Database
 {
-    protected static $instance = null;
+    private static $instance = null;
 
-    protected $host = 'database';
-    protected $user = 'root';
-    protected $pwd = 'password';
-    protected $dbname = 'mvcdocker2';
-    protected $port = '3306';
-
-    public function __construct()
+    protected function __construct()
     {
-        $this->conn = new \PDO("mysql:host=database;dbname=mvcdocker2;port=3306","root","password");
-
-        // $this->conn = new \PDO('mysql:host='.$this->host.';dbname='.$this->dbname.';port='.$this->port,$this->user, $this->password);
-
-        $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        $this->conn->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
         try {
+            
+            self::$instance = new \PDO("mysql:host=database;dbname=mvcdocker2;port=3306","root","password");
+            self::$instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            self::$instance->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+            self::$instance->query('SET NAMES utf8');
+            self::$instance->query('SET CHARACTER SET utf8');
 
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+
+        set_error_handler([$this, 'exception_handler']);
+        
     }
 
     /**
@@ -44,15 +41,6 @@ class Database
         return self::$instance;
     }
 
-    /**
-     * Retourne un objet PDO
-     *
-     * @return object
-     */
-    public function getConnection() 
-    {
-        return $this->conn;
-    }
 
     /**
      * Enregistrement dynamique d'un objet en base de données
@@ -76,11 +64,13 @@ class Database
             $sql = " INSERT INTO $table 
 			(". implode(",", array_keys($data)) .") 
 			VALUES 
-			(:". implode(",:", array_keys($data)) .")";
+            (:". implode(",:", array_keys($data)) .")";
             
-			$queryPrepared = $this->conn->prepare($sql);
+            $conn = self::getInstance();
 
-			$queryPrepared->execute( $data );
+			$queryPrepared = $conn->prepare($sql);
+
+			$queryPrepared->execute($data);
 			
 		}else {
 			//UPDATE

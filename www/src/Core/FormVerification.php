@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Core\Database;
+
 class FormVerification 
 {
 
@@ -123,7 +125,22 @@ class FormVerification
     } 
     public static function checkUnicity($email)
     {
+        $conn = Database::getInstance();
+
+
+        $query = $conn->prepare("SELECT `email` FROM user WHERE `email` = ? ");
+        $query->bindValue(1, $email);
+        $query->execute();
+
+        $result = $query->fetchColumn();
+
+        // Gérer l'exception Uncaught
+        // if ($result) {
+
+        //     throw new \Exception("L'adresse email ".$email." est déja existante");
+        // } 
         
-        return true; // or false
+        // return true;
+
     }
 }
