@@ -33,7 +33,6 @@ class Security
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
-        
         if(!empty($_POST))
         {
             $errors =  FormVerification::check($_POST, $config);
