@@ -11,7 +11,6 @@ class MySQLQueryBuilder implements QueryBuilder
 
     protected function reset(): void
     {
-
         $this->query = new \stdClass;
     }
 
@@ -30,6 +29,13 @@ class MySQLQueryBuilder implements QueryBuilder
     {
         $this->query->operation = "SELECT " . implode(",", $fields) . " FROM " . implode(",", $this->query->from);
         $this->query->type = 'select';
+        return $this;
+    }
+
+    public function insert(array $fields): QueryBuilder
+    {
+        $this->query->operation = "INSERT INTO " . implode(",", $this->query->from) . "(" . implode(",", $fields) . ") VALUES (:". implode(",:", $fields) . ")";
+        $this->query->type = 'insert';
         return $this;
     }
 
