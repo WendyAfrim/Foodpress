@@ -16,7 +16,6 @@ class User extends Database {
     protected $zipcode;
     protected $city;
     protected $phone;
-    protected $payment;
     protected $created_at;
 
 
@@ -246,28 +245,6 @@ class User extends Database {
     {
 
         $this->phone = $phone;
-    }
-
-    /**
-     * Récupération du moyen de paiement
-     *
-     * @return string
-     */
-    public function getPayment() :string
-    {
-
-        return $this->payment;
-    }
-
-    /**
-     * Setting du moyen de paiement
-     *
-     * @param mixed 
-     */
-    public function setPayment($payment) :void
-    {
-
-        $this->payment = $payment;
     }
 
     /**
