@@ -20,6 +20,8 @@ class FormVerification
             $inputRules = $config['inputs'][$inputKey];
     
             $error = $inputRules['error'];
+
+            $table = $config['table'];
     
     
             if (isset($inputRules['type'])) {
@@ -27,7 +29,6 @@ class FormVerification
                 if ($inputRules['type'] == 'email') {
 
                     FormVerification::checkEmail($inputValue, $error);
-                    FormVerification::checkUnicity($inputValue, $error);
 
                 } else if ($inputRules['type'] == 'select') {
                     $options = $inputRules['options'];
@@ -53,6 +54,10 @@ class FormVerification
     
             if (isset($inputRules['confirm'])) {
                 FormVerification::checkConfirmPassword($inputValue,$password, $error);
+            }
+
+            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+                FormVerification::checkUnicity($inputKey, $inputValue, $table);
             }
         }
         return self::$array_errors;
@@ -123,17 +128,19 @@ class FormVerification
     
         return true; 
     } 
-    public static function checkUnicity($email)
+    public static function checkUnicity($inputKey, $inputValue, $table)
     {
         $conn = Database::getInstance();
 
 
-        $query = $conn->prepare("SELECT `email` FROM user WHERE `email` = ? ");
-        $query->bindValue(1, $email);
+        $query = $conn->prepare("SELECT `$inputKey` FROM $table WHERE `$inputKey` = ? ");
+        $query->bindValue(1, $inputValue);
         $query->execute();
 
         $result = $query->fetchColumn();
-
+        if ($result) {
+            echo "Mail déjà existant";
+        }
         // Gérer l'exception Uncaught
         // if ($result) {
 
