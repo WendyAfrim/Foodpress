@@ -25,6 +25,10 @@ class FormVerification
                 if ($inputRules['type'] == 'email') {
 
                     FormVerification::checkEmail($inputValue, $error);
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb1edb2 (Correction de la méthode checkUnicity())
                 } else if ($inputRules['type'] == 'select') {
                     $options = $inputRules['options'];
                     FormVerification::checkOptions($inputValue, $options, $error);
@@ -50,6 +54,10 @@ class FormVerification
             if (isset($inputRules['confirm'])) {
                 $password = $data['password'];
                 FormVerification::checkConfirmPassword($inputValue, $password, $error);
+            }
+
+            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+                FormVerification::checkUnicity($inputKey, $inputValue, $table);
             }
 
             if (isset($inputRules['unicity']) && $inputRules['unicity']) {
@@ -130,12 +138,6 @@ class FormVerification
         if ($result) {
             self::$array_errors[] = "La valeur $inputValue associée au champ $inputKey existe déjà en base de données";
         }
-
-
-         /* if ($result) {
-             throw new \Exception("La valeur $inputValue associée au champ $inputKey existe déjà en base de données");
-         }  */
-        
         // return true;
 
     }
