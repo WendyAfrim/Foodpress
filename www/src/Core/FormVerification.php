@@ -17,16 +17,14 @@ class FormVerification
 
 
             $inputRules = $config['inputs'][$inputKey];
-
             $error = $inputRules['error'];
-
-
+            $table = $config['table'];
+    
             if (isset($inputRules['type'])) {
 
                 if ($inputRules['type'] == 'email') {
 
                     FormVerification::checkEmail($inputValue, $error);
-                    FormVerification::checkUnicity($inputValue, $error);
                 } else if ($inputRules['type'] == 'select') {
                     $options = $inputRules['options'];
                     FormVerification::checkOptions($inputValue, $options, $error);
@@ -52,6 +50,10 @@ class FormVerification
             if (isset($inputRules['confirm'])) {
                 $password = $data['password'];
                 FormVerification::checkConfirmPassword($inputValue, $password, $error);
+            }
+
+            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+                FormVerification::checkUnicity($inputKey, $inputValue, $table);
             }
         }
         return self::$array_errors;
@@ -118,19 +120,23 @@ class FormVerification
             self::$array_errors[] = $error;
             echo $error . '<br>';
         }
-
-        return true;
-    }
-    public static function checkUnicity($email)
+    
+        return true; 
+    } 
+    public static function checkUnicity($inputKey, $inputValue, $table)
     {
         $conn = Database::getPdo();
 
 
-        $query = $conn->prepare("SELECT `email` FROM user WHERE `email` = ? ");
-        $query->bindValue(1, $email);
+        $query = $conn->prepare("SELECT `$inputKey` FROM $table WHERE `$inputKey` = ? ");
+        $query->bindValue(1, $inputValue);
         $query->execute();
 
         $result = $query->fetchColumn();
+
+        if ($result) {
+            echo "La valeur $inputValue associée au champ $inputKey existe déjà en base de données";
+        }
 
         // Gérer l'exception Uncaught
         // if ($result) {
