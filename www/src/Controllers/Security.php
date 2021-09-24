@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
 use App\Core\Database;
 use App\Core\View;
 use App\Models\User;
@@ -13,7 +17,15 @@ class Security
 
     public function login()
     {
-
+        $form = new LoginForm();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
+            //LANCEMENT DE SESSION
+            if (empty($errors)) {
+                $user = new User();
+                $user->findByCriteria();
+            }
+        }
         $view = new View('Security/login', 'front-template');
     }
 
@@ -25,20 +37,13 @@ class Security
      */
     public function register()
     {
-
-        $user = new User();
         $form = new RegisterForm();
-        $config = $form->registerFormType();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
 
-        $date = new \Datetime;
-        $date = $date->format('Y-m-d H:i:s');
-
-        if(!empty($_POST))
-        {
-            $errors =  FormVerification::check($_POST, $config);
-            
             if (empty($errors)) {
-                
+                $user = new User();
+                $date =(new \DateTime)->format('Y-m-d H:i:s');
                 $user->setFirstname(htmlentities($_POST['firstname']));
                 $user->setLastname(htmlentities($_POST['lastname']));
                 $user->setEmail(htmlentities($_POST['email']));
@@ -49,15 +54,12 @@ class Security
                 $user->setCity(htmlentities($_POST['city']));
                 $user->setPhone(htmlentities($_POST['phone']));
                 $user->setCreatedAt($date);
-                
+
                 $user->save();
             }
-            
         }
-        
         $view = new View('Security/registration', 'front-template');
         $view->form = $form->renderHtml();
         $view->errors = $errors ?? [];
-        
     }
 }

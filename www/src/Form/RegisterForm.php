@@ -8,17 +8,13 @@ use App\AbstractClass\FormAbstractClass;
 class RegisterForm extends FormAbstractClass
 {
 
-    private $config;
-    private $html = "";
 
     public function __construct() 
     {   
-        $config = $this->registerFormType();
-        parent::__construct($config);
-        $this->renderHtml();
+        parent::__construct($this->getFormConfig());
     }
 
-    public function registerFormType()
+    public function getFormConfig()
     {
         return [
             "action"=>"",

@@ -79,4 +79,8 @@ class Database
 
     }
 
+    public function find() {
+
+    }
+
 }
