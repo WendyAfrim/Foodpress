@@ -24,6 +24,7 @@ class RegisterForm extends FormAbstractClass
             "action"=>"",
             "method"=>"POST",
             "submit"=>"S'inscrire",
+            "table"=>"user",
             "inputs"=> [
                             "firstname"=>[
                                             "type"=>"text", 
@@ -48,7 +49,7 @@ class RegisterForm extends FormAbstractClass
                             //             ],
                             "email"=>[
                                             "type"=>"email", 
-                                            "unicity"=>"email",
+                                            "unicity"=>true,
                                             "required"=>true,
                                             "placeholder"=>"Votre Email",
                                             "error"=>"Votre email n'est pas correct"
