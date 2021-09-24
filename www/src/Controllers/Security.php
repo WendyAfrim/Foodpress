@@ -12,7 +12,15 @@ class Security
 
     public function login()
     {
-
+        $form = new LoginForm();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
+            //LANCEMENT DE SESSION
+            if (empty($errors)) {
+                $user = new User();
+                $user->findByCriteria();
+            }
+        }
         $view = new View('Security/login', 'front-template');
     }
 
@@ -27,7 +35,8 @@ class Security
         $user = new User();
 
         $form = new RegisterForm();
-        $config = $form->registerFormType();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
 
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');

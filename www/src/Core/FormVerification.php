@@ -69,7 +69,6 @@ class FormVerification
             return true;
         } else {
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
     }
     public static function checkMinLength($string, $error, $lengthValue)
@@ -79,26 +78,22 @@ class FormVerification
             return true;
         } else {
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
     }
     public static function checkMaxLength($string, $error, $lengthValue)
     {
         if (strlen($string) >= $lengthValue) {
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         } else {
             return true;
         }
     }
-
-    public static function checkRequired($field, $string)
-    {
-        if (empty($string)) {
-
+    
+    public static function checkRequired($field,$string)
+    {	
+        if (empty($string )) {
+            $error = "Le champ ".$field." est requis";
             self::$array_errors[] = $error;
-            $error = "Le champ " . $field . " est requis";
-            echo $error . '<br>';
         }
         return true;
     }
@@ -108,7 +103,6 @@ class FormVerification
         if (!in_array($data, $array_options)) {
 
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
         return true;
     }
@@ -118,7 +112,6 @@ class FormVerification
         if ($confirm_password != $password) {
 
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
     
         return true; 
@@ -135,15 +128,14 @@ class FormVerification
         $result = $query->fetchColumn();
 
         if ($result) {
-            echo "La valeur $inputValue associée au champ $inputKey existe déjà en base de données";
+            self::$array_errors[] = "La valeur $inputValue associée au champ $inputKey existe déjà en base de données";
         }
 
-        // Gérer l'exception Uncaught
-        // if ($result) {
 
-        //     throw new \Exception("L'adresse email ".$email." est déja existante");
-        // } 
-            if ($result) self::$array_errors[] = "L'adresse email ".$email." est déja existante";
+         /* if ($result) {
+             throw new \Exception("La valeur $inputValue associée au champ $inputKey existe déjà en base de données");
+         }  */
+        
         // return true;
 
     }
