@@ -1,11 +1,11 @@
 /login:
-  controller: "Security"
+  controller: "SecurityController"
   action: "login"
 
 /register:
-  controller: "Security"
+  controller: "SecurityController"
   action: "register"
 
-/cart:
-    controller: "CartController"
-    action: "confirm_order"
+/product:
+  controller: "ProductController"
+  action: "register_product"
