@@ -55,7 +55,6 @@ class Security
             $errors =  FormVerification::check($_POST, $form->getFormConfig());
 
             if (empty($errors)) {
-
                 $user->setFirstname(htmlentities($_POST['firstname']));
                 $user->setLastname(htmlentities($_POST['lastname']));
                 $user->setEmail(htmlentities($_POST['email']));
@@ -70,7 +69,6 @@ class Security
                 $user->save();
             }
         }
-
         $view = new View('Security/registration', 'front-template');
         $view->errors = $errors ?? [];
         $view->form = $form->renderHtml();
