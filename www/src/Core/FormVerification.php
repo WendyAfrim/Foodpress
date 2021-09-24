@@ -55,6 +55,10 @@ class FormVerification
             if (isset($inputRules['unicity']) && $inputRules['unicity']) {
                 FormVerification::checkUnicity($inputKey, $inputValue, $table);
             }
+
+            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+                FormVerification::checkUnicity($inputKey, $inputValue, $table);
+            }
         }
         return self::$array_errors;
         // var_dump(self::$array_errors); 
