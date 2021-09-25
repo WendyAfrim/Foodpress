@@ -12,7 +12,7 @@ interface QueryBuilder {
 
     public function delete(): QueryBuilder;
  
-    public function where(string ...$conditions): QueryBuilder;
+    public function where(array $conditions): QueryBuilder;
 
     public function having(string ...$conditions): QueryBuilder;
  

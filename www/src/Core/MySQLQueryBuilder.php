@@ -52,7 +52,7 @@ class MySQLQueryBuilder implements QueryBuilder
         return $this;
     }
 
-    public function where(string ...$conditions): QueryBuilder
+    public function where(array $conditions): QueryBuilder
     {
         foreach ($conditions as $condition) {
             $this->query->where[] = $condition;
