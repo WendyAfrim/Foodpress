@@ -21,9 +21,6 @@ class Database
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
-        set_error_handler([$this, 'exception_handler']);
-        
     }
 
     /**
