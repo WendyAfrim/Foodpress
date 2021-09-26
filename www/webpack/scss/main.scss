@@ -1,9 +1,5 @@
-* {
-    box-sizing: border-box;
-} 
-
-$primary-color : #003456; 
-
-body {
-    color: $primary-color;
-}
+@import "variables";
+@import "grid";
+@import "fonts";
+@import "globals";
+@import "inputs";

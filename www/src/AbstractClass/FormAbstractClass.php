@@ -5,39 +5,69 @@ namespace App\AbstractClass;
 class FormAbstractClass 
 {
     private $config;
-    private $html = "";
+	private $html = "";
 
     public function __construct($config)
     {
 		$this->config = $config;
-        $this->initForm();
-        
+		$this->initForm();
+
+
 		foreach ($this->config["inputs"] as $name => $configInput) {
-			if($configInput["type"]=="select"){
+
+			if (isset($configInput['row']) && $configInput['row'] == 'start') {
+
+				$this->html .= "<div class='row'>";
+			}
+			
+			if (isset($configInput['row']) && $configInput['row'] == 'start_end') {
+				
+				$this->html .= "<div class='row'>";
+			}
+			
+			if($configInput["type"]=="select")
+			{
 				$this->generateSelect($name, $configInput);	
 			}
-			else if($configInput["type"]=="captcha"){
+			else if($configInput["type"]=="captcha")
+			{
 				$this->generateCaptcha($name, $configInput);	
-			}else {
+			}
+			else
+			{
 				$this->generateInput($name, $configInput);	
 			}
-        }
-        
+
+			if (isset($configInput['row']) && $configInput['row'] == 'end') {
+				$this->html .= "</div>";
+			}
+			if (isset($configInput['row']) && $configInput['row'] == 'start_end') {
+				
+				$this->html .= "</div>";
+			}
+		}
 		$this->closeForm();
     }
 
     public function initForm() {
-		$this->html = "<form action='".($this->config["action"]??"")."' method='".($this->config["method"]??"GET")."'>";
+		$this->html = "
+		<div class='container'>
+		<form id=".$this->config['form-id']." action='".($this->config["action"]??"")."' method='".($this->config["method"]??"GET")."'>
+		<h1>".$this->config['form-title']."</h1>
+		";
 	}
 
-
-
 	public function generateSelect($name, $configInput) {
-		$this->html .="<select name='".$name."'>";
+
+		$this->html .=
+		"
+		<div class='".implode(' ', $configInput['class'])."'>
+		<label>".$configInput['label']."</label>
+		<select class='inputs-design' name='".$name."'>";
 		foreach ($configInput["options"] as $option) {
 			$this->html .="<option>".$option."</option>";
 		}
-		$this->html .="</select>";
+		$this->html .="</select></div>";
 	}
 
 
@@ -47,8 +77,12 @@ class FormAbstractClass
 	}
 
 	public function generateInput($name, $configInput) {
-
-		$this->html .="<input name='".$name."' 
+		
+		$this->html .=
+		"
+		<div class='".implode(' ', $configInput['class'])."'>
+		<label>".$configInput['label']."</label>
+		<input class='inputs-design' name='".$name."' 
 
 			type='".($configInput["type"]??"text")."'
 
@@ -58,13 +92,14 @@ class FormAbstractClass
 
 			value='".htmlspecialchars($configInput["value"]??"", ENT_QUOTES)."'
 
-		  >";
+		></div>";
+
 	}
 
 
 	public function closeForm() {
 		$this->html .= "<input type='submit' value='".htmlspecialchars($this->config["submit"]??"Valider", ENT_QUOTES)."'>";
-		$this->html .= "</form>";
+		$this->html .= "</form></div>";
 	}
 
 	
