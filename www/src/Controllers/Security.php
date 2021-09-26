@@ -31,6 +31,10 @@ class Security
         $form = new RegisterForm();
         $config = $form->registerFormType();
 
+        // echo '<pre>';
+        // print_r($config);
+        // die;
+
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
@@ -58,7 +62,7 @@ class Security
         
         $view = new View('Security/registration', 'front-template');
         $view->form = $form->renderHtml();
-        $view->errors = $errors ?? [];
+        $view->title = "Nouvel inscription";
         
     }
 

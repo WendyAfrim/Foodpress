@@ -13,14 +13,14 @@ let mix = require('laravel-mix');
 
 mix.setPublicPath('../dist');
 
-mix.babel([
- '../src/js/jquery-3.6.0.min.js',
+// mix.babel([
+//  '../src/js/jquery-3.6.0.min.js',
 //  '../src/js/main.js'
-], '../dist/main.js');
+// ], '../dist/main.js');
 
 // mix.minify('../web/dist/main.js');
 
-mix.sass('scss/main.scss', '../public/');
+mix.sass('scss/main.scss', '../public/css');
 
 mix.options({
   processCssUrls: false, // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
