@@ -1,3 +1,13 @@
 <?php 
 
-// Controller dedié à la gestion du Dashboard de notre CMS
+namespace App\Controllers;
+
+use App\Core\View;
+
+class Dashboard {
+    
+    public function dashboard()
+    {
+        $view = new View('Dashboard/index','back-template');
+    }
+} 

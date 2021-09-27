@@ -1,11 +1,15 @@
 * 
 {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body 
 {
-    font-family: $font1;
+    min-height: 100vh;
+    width: 100%;
+    font-family: $font2;
 }
 
 .container 
@@ -16,7 +20,7 @@ body
 
 h1, h2 
 {
-    font-family: $font1;
+    font-family: $font2;
 }
 
 #register-form h1 

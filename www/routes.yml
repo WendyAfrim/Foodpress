@@ -9,3 +9,7 @@
 /cart:
     controller: "CartController"
     action: "confirm_order"
+
+/dashboard:
+    controller: "Dashboard"
+    action: "dashboard"

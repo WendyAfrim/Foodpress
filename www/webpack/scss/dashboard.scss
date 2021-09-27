@@ -1,0 +1,70 @@
+.sidebar 
+{
+    position: fixed;
+     height: 100%;
+     width: 240px;
+     background: $night-blue;
+}
+
+.sidebar .logo_details 
+{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .logo_details i 
+{
+    font-size: 28px;
+    font-weight: 500;
+    color: $white;
+    min-width: 60px;
+    text-align: center;
+}
+
+.sidebar .logo_details .logo_name 
+{
+    font-size: 24px;
+    font-weight: 500;
+    color: $white;
+    margin-left: 8px;
+    text-transform: uppercase;
+}
+
+.sidebar .nav_links 
+{
+    margin-top: 16px;
+}
+
+.sidebar .nav_links li 
+{
+    height: 50px;
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar .nav_links li a
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar .nav_links li a i 
+{
+    min-width: 60px;
+    text-align: center;
+    color: $white;
+    font-size: 18px;
+}
+
+.sidebar .nav_links li a .link_name 
+{
+    color: $white;
+    font-size: 15px;
+    font-weight: 400;
+
+}
