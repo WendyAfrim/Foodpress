@@ -15,13 +15,8 @@ class FormAbstractClass
 
 		foreach ($this->config["inputs"] as $name => $configInput) {
 
-			if (isset($configInput['row']) && $configInput['row'] == 'start') {
+			if ($configInput['row'] == 'start' || $configInput['row'] == 'start_end') {
 
-				$this->html .= "<div class='row'>";
-			}
-			
-			if (isset($configInput['row']) && $configInput['row'] == 'start_end') {
-				
 				$this->html .= "<div class='row'>";
 			}
 			
@@ -38,11 +33,7 @@ class FormAbstractClass
 				$this->generateInput($name, $configInput);	
 			}
 
-			if (isset($configInput['row']) && $configInput['row'] == 'end') {
-				$this->html .= "</div>";
-			}
-			if (isset($configInput['row']) && $configInput['row'] == 'start_end') {
-				
+			if ($configInput['row'] == 'end' || $configInput['row'] == 'start_end') {
 				$this->html .= "</div>";
 			}
 		}
