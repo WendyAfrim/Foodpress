@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Form\RegisterForm;
 use App\Core\FormVerification;
 
+
 class Security
 {
 
@@ -64,4 +65,5 @@ class Security
         $view->title = "Nouvel inscription";
         
     }
+
 }

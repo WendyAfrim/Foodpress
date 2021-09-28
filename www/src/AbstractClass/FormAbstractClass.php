@@ -15,13 +15,8 @@ class FormAbstractClass
 
 		foreach ($this->config["inputs"] as $name => $configInput) {
 
-			if (isset($configInput['row']) && $configInput['row'] == 'start') {
 
-				$this->html .= "<div class='row'>";
-			}
-			
-			if (isset($configInput['row']) && $configInput['row'] == 'start_end') {
-				
+			if ($configInput['row'] == 'start' || $configInput['row'] == 'start_end') {
 				$this->html .= "<div class='row'>";
 			}
 			
@@ -38,11 +33,8 @@ class FormAbstractClass
 				$this->generateInput($name, $configInput);	
 			}
 
-			if (isset($configInput['row']) && $configInput['row'] == 'end') {
-				$this->html .= "</div>";
-			}
-			if (isset($configInput['row']) && $configInput['row'] == 'start_end') {
-				
+
+			if ($configInput['row'] == 'end' || $configInput['row'] == 'start_end') {
 				$this->html .= "</div>";
 			}
 		}
@@ -98,6 +90,7 @@ class FormAbstractClass
 
 
 	public function closeForm() {
+
 		$this->html .= "<div class='submit_row'><input class='submit_button' type='submit' value='".htmlspecialchars($this->config["submit"]??"Valider", ENT_QUOTES)."'></div>";
 		$this->html .= "</form></div>";
 	}
