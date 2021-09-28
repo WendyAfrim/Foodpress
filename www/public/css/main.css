@@ -218,4 +218,29 @@ h1, h2 {
   border-radius: 7px;
   border: 1.5px solid #A9B4C2;
   width: 100%;
+  
+}
+
+.submit_row {
+  text-align: center;
+}
+
+.submit_button {
+  display: inline-block;
+  padding: 0.8em 4em;
+  border-radius: 5px;
+  border: 1px solid #AAA;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3sec;
+}
+.submit_button:hover {
+  background-color: #eaeaea;
+  border: 1px solid #FFF;
+}
+.submit_button--night_blue {
+  background-color: #011936;
+
 }
