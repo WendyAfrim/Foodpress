@@ -62,23 +62,22 @@ class FormVerification
     
     public static function checkEmail($email, $error)
     {
-        $check_email = filter_var('wendy.afrim@gmail.com', FILTER_VALIDATE_EMAIL);
+        $check_email = filter_var($email, FILTER_VALIDATE_EMAIL);
 
         if ($check_email) {
             return true; 
         } else {
             self::$array_errors[] = $error;
-            echo $error.'<br>';
+            throw new \Exception($error);
         }
     }
     public static function checkMinLength($string, $error, $lengthValue)
     {	
-        
         if ( strlen($string) >= $lengthValue ) {
             return true; 
         } else {
             self::$array_errors[] = $error;
-            echo $error.'<br>';
+            throw new \Exception($error);
         }
     
     }
@@ -86,7 +85,7 @@ class FormVerification
     {
         if ( strlen($string) >= $lengthValue ) {
             self::$array_errors[] = $error;
-            echo $error.'<br>';
+                 throw new \Exception($error);
         } else {
             return true;
         }
@@ -96,9 +95,9 @@ class FormVerification
     {	
         if (empty($string )) {
 
-            self::$array_errors[] = $error;
+            // self::$array_errors[] = $error;
             $error = "Le champ ".$field." est requis";
-            echo $error.'<br>';
+                 throw new \Exception($error);
         }
         return true; 
     }
@@ -108,7 +107,7 @@ class FormVerification
         if (!in_array($data, $array_options)) {
 
             self::$array_errors[] = $error;
-            echo $error.'<br>';
+                 throw new \Exception($error);
         }
         return true; 
     }
@@ -118,7 +117,7 @@ class FormVerification
         if ($confirm_password != $password) {
 
             self::$array_errors[] = $error;
-            echo $error.'<br>';
+                 throw new \Exception($error);
         }
     
         return true; 
@@ -135,12 +134,12 @@ class FormVerification
         $result = $query->fetchColumn();
 
         // Gérer l'exception Uncaught
-        // if ($result) {
+        if ($result) {
 
-        //     throw new \Exception("L'adresse email ".$email." est déja existante");
-        // } 
+            throw new \Exception("L'adresse email ".$email." est déja existante");
+        } 
         
-        // return true;
+        return true;
 
     }
 }
