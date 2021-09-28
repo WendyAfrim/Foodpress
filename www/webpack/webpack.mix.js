@@ -20,8 +20,7 @@ mix.setPublicPath('../dist');
 
 // mix.minify('../web/dist/main.js');
 
-mix.sass('scss/main.scss', '../public/css')
-    .sass('scss/icons.scss', '..public/css');
+mix.sass('scss/main.scss', '../public/css');
 
 mix.options({
   processCssUrls: false, // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
