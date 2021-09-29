@@ -1,15 +1,18 @@
-<?php 
+<?php
 
 namespace App\Models;
 
-use App\Core\Database;
+use App\AbstractClass\AbstractModel;
+use DateTime;
 
-class User extends Database {
+class User extends AbstractModel
+{
+    protected $table = 'user';
 
     protected $id = null;
     protected $firstname;
     protected $lastname;
-    protected $email; 
+    protected $email;
     protected $password = null;
     protected $roles;
     protected $address;
@@ -18,25 +21,13 @@ class User extends Database {
     protected $phone;
     protected $created_at;
 
-
-    /**
-     * Appel du constructeur du parent pour instanciation de l'objet PDO
-     * 
-     * @return void
-     */
-    public function __construct()
-    {
-
-        parent::__construct();
-
-    }
-
     /**
      * Récupération de l'id
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
 
         return $this->id;
     }
@@ -46,7 +37,7 @@ class User extends Database {
      *
      * @return void
      */
-    public function setId($id) : int
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -56,7 +47,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getFirstname() :string
+    public function getFirstname(): string
     {
 
         return $this->firstname;
@@ -67,7 +58,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setFirstname($firstname) : void
+    public function setFirstname($firstname): void
     {
 
         $this->firstname = $firstname;
@@ -78,7 +69,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getLastname() :string
+    public function getLastname(): string
     {
 
         return $this->lastname;
@@ -99,7 +90,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getEmail() :string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -109,7 +100,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setEmail($email) : void
+    public function setEmail($email): void
     {
 
         $this->email = $email;
@@ -120,7 +111,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getPassword() :string
+    public function getPassword(): string
     {
 
         return $this->password;
@@ -131,7 +122,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setPassword($password) :void
+    public function setPassword($password): void
     {
 
         $this->password = password_hash($password, PASSWORD_DEFAULT);
@@ -142,9 +133,9 @@ class User extends Database {
      *
      * @return string
      */
-    public function getRoles() :string
+    public function getRoles(): string
     {
-        
+
         return $this->role;
     }
 
@@ -153,7 +144,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setRoles($roles) :void 
+    public function setRoles($roles): void
     {
 
         $this->roles = $roles;
@@ -164,7 +155,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getAddress() :string
+    public function getAddress(): string
     {
 
         return $this->address;
@@ -175,11 +166,10 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setAdress($address) :void
+    public function setAdress($address): void
     {
 
         $this->address = $address;
-
     }
 
     /**
@@ -187,7 +177,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getZipcode() :string
+    public function getZipcode(): string
     {
 
         return $this->zipcode;
@@ -198,7 +188,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setZipcode($zipcode) :void
+    public function setZipcode($zipcode): void
     {
 
         $this->zipcode = $zipcode;
@@ -209,7 +199,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getCity() :string
+    public function getCity(): string
     {
 
         return $this->city;
@@ -220,7 +210,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setCity($city) :void
+    public function setCity($city): void
     {
         $this->city = $city;
     }
@@ -230,7 +220,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getPhone() :string
+    public function getPhone(): string
     {
 
         return $this->phone;
@@ -241,7 +231,7 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setPhone($phone) :void
+    public function setPhone($phone): void
     {
 
         $this->phone = $phone;
@@ -252,7 +242,7 @@ class User extends Database {
      *
      * @return string
      */
-    public function getCreatedAt() :date
+    public function getCreatedAt(): DateTime
     {
 
         return $this->$created_at;
@@ -263,10 +253,9 @@ class User extends Database {
      *
      * @param mixed 
      */
-    public function setCreatedAt($created_at) :void
+    public function setCreatedAt($created_at): void
     {
 
         $this->created_at = $created_at;
     }
-
 }

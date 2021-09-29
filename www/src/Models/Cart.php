@@ -1,15 +1,18 @@
-<?php 
+<?php
 
 namespace App\Models;
 
-use App\Core\Database;
+use App\AbstractClass\AbstractModel;
+use DateTime;
 
-class Cart extends Database {
+class Cart extends AbstractModel
+{
+    protected $table = 'cart';
 
     protected $id = null;
     protected $reference;
     protected $status;
-    protected $amount; 
+    protected $amount;
     protected $payment_method;
     protected $created_at;
     protected $address;
@@ -18,23 +21,13 @@ class Cart extends Database {
     protected $phone;
     protected $user_id;
 
-
-    /**
-     * Appel du constructeur du parent pour instanciation de l'objet PDO
-     * 
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Récupération de l'id
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
 
         return $this->id;
     }
@@ -44,7 +37,7 @@ class Cart extends Database {
      *
      * @return void
      */
-    public function setId($id) : int
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -54,7 +47,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getReference() :string
+    public function getReference(): string
     {
 
         return $this->reference;
@@ -65,7 +58,7 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setReference($reference) : void
+    public function setReference($reference): void
     {
 
         $this->reference = $reference;
@@ -76,7 +69,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getStatus() :string
+    public function getStatus(): string
     {
 
         return $this->status;
@@ -97,7 +90,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getAmount() :string
+    public function getAmount(): string
     {
         return $this->amount;
     }
@@ -107,19 +100,19 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setAmount($amount) : void
+    public function setAmount($amount): void
     {
 
         $this->amount = $amount;
     }
 
-    
+
     /**
      * Récupération de la méthode de paiement
      *
      * @return string
      */
-    public function getPaymentMethod() :string
+    public function getPaymentMethod(): string
     {
 
         return $this->payment_method;
@@ -130,7 +123,7 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setPaymentMethod($payment_method) :void
+    public function setPaymentMethod($payment_method): void
     {
 
         $this->payment_method = $payment_method;
@@ -141,7 +134,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getCreatedAt() :date
+    public function getCreatedAt(): DateTime
     {
 
         return $this->$created_at;
@@ -152,7 +145,7 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setDate($created_at) :void
+    public function setDate($created_at): void
     {
 
         $this->created_at = $created_at;
@@ -163,7 +156,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getAddress() :string
+    public function getAddress(): string
     {
 
         return $this->address;
@@ -174,11 +167,10 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setAddress($address) :void
+    public function setAddress($address): void
     {
 
         $this->address = $address;
-
     }
 
     /**
@@ -186,7 +178,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getZipcode() :string
+    public function getZipcode(): string
     {
 
         return $this->zipcode;
@@ -197,7 +189,7 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setZipcode($zipcode) :void
+    public function setZipcode($zipcode): void
     {
 
         $this->zipcode = $zipcode;
@@ -208,7 +200,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getCity() :string
+    public function getCity(): string
     {
 
         return $this->city;
@@ -219,7 +211,7 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setCity($city) :void
+    public function setCity($city): void
     {
         $this->city = $city;
     }
@@ -229,7 +221,7 @@ class Cart extends Database {
      *
      * @return string
      */
-    public function getPhone() :string
+    public function getPhone(): string
     {
 
         return $this->phone;
@@ -240,19 +232,19 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setPhone($phone) :void
+    public function setPhone($phone): void
     {
 
         $this->phone = $phone;
     }
 
 
-        /**
+    /**
      * Récupération de l'user_id
      *
      * @return string
      */
-    public function getUserId() :string
+    public function getUserId(): string
     {
 
         return $this->user_id;
@@ -263,10 +255,9 @@ class Cart extends Database {
      *
      * @param mixed 
      */
-    public function setUserId($user_id) :void
+    public function setUserId($user_id): void
     {
 
         $this->user_id = $user_id;
     }
-
 }
