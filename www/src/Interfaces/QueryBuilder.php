@@ -1,8 +1,9 @@
 <?php
 
-namespace App\AbstractClass;
+namespace App\Interfaces;
 
-interface QueryBuilder {
+interface QueryBuilder
+{
 
     public function from(string $table, ?string $alias = null): QueryBuilder;
 
@@ -11,18 +12,16 @@ interface QueryBuilder {
     public function update(string ...$sets): QueryBuilder;
 
     public function delete(): QueryBuilder;
- 
+
     public function where(array $conditions): QueryBuilder;
 
     public function having(string ...$conditions): QueryBuilder;
- 
+
     public function limit(int $start, int $offset): QueryBuilder;
 
     public function orderBy($sort, $order = null): QueryBuilder;
 
     public function groupBy($column): QueryBuilder;
- 
+
     public function getSQL(): string;
 }
-
-?>

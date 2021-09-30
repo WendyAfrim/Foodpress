@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-use App\AbstractClass\QueryBuilder;
+use App\Interfaces\QueryBuilder;
 
 class MySQLQueryBuilder implements QueryBuilder
 {
@@ -25,7 +25,7 @@ class MySQLQueryBuilder implements QueryBuilder
         return $this;
     }
 
-    public function select(... $fields): QueryBuilder
+    public function select(...$fields): QueryBuilder
     {
         $this->query->operation = "SELECT " . implode(",", $fields) . " FROM " . implode(",", $this->query->from);
         $this->query->type = 'select';
@@ -34,7 +34,7 @@ class MySQLQueryBuilder implements QueryBuilder
 
     public function insert(array $fields): QueryBuilder
     {
-        $this->query->operation = "INSERT INTO " . implode(",", $this->query->from) . "(" . implode(",", $fields) . ") VALUES (:". implode(",:", $fields) . ")";
+        $this->query->operation = "INSERT INTO " . implode(",", $this->query->from) . "(" . implode(",", $fields) . ") VALUES (:" . implode(",:", $fields) . ")";
         $this->query->type = 'insert';
         return $this;
     }
@@ -46,7 +46,8 @@ class MySQLQueryBuilder implements QueryBuilder
         return $this;
     }
 
-    public function update(string ...$sets): QueryBuilder {
+    public function update(string ...$sets): QueryBuilder
+    {
         $this->query->operation = "UPDATE " . implode(",", $this->query->from) . " SET " . implode(",", $sets);
         $this->query->type = 'update';
         return $this;
@@ -77,16 +78,18 @@ class MySQLQueryBuilder implements QueryBuilder
         return $this;
     }
 
-    public function orderBy($column, $order = null): QueryBuilder {
+    public function orderBy($column, $order = null): QueryBuilder
+    {
         if (!in_array($this->query->type, ['select'])) {
             throw new \Exception("ORDER BY ne peut être ajouté qu'à une commande SELECT");
         }
         $this->query->orderBy = " ORDER BY $column";
-         if ($order === 'DESC')  $this->query->orderBy .= " $order";
+        if ($order === 'DESC')  $this->query->orderBy .= " $order";
         return $this;
     }
 
-    public function groupBy($column): QueryBuilder {
+    public function groupBy($column): QueryBuilder
+    {
         if (!in_array($this->query->type, ['select'])) {
             throw new \Exception("GROUP BY ne peut être ajouté qu'à une commande SELECT");
         }
