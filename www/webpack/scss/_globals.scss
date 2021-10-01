@@ -1,11 +1,17 @@
 * 
 {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
 }
 
 body 
 {
-    font-family: $font1;
+    min-height: 100vh;
+    width: 100%;
+    font-family: $font2;
 }
 
 .container 
@@ -16,7 +22,7 @@ body
 
 h1, h2 
 {
-    font-family: $font1;
+    font-family: $font2;
 }
 
 #register-form h1 
@@ -25,4 +31,14 @@ h1, h2
     text-align: center;
     margin: 1em;
     font-size: 50px;
+}
+
+i {
+    font-size: 1.3rem;
+    padding: 0 0.3rem;
+    cursor: pointer;
+}
+
+i:hover {
+    color: $excentric-violet;
 }

@@ -1,6 +1,12 @@
 @import "variables";
 @import "grid";
-@import "fonts";
+@import "components/fonts";
 @import "globals";
-@import "inputs";
+@import "components/inputs";
+@import "components/sidebar.scss";
+@import "components/buttons";
+@import "components/cards";
+@import "components/header";
+@import "components/table";
+@import "dashboard";
 

@@ -1,0 +1,115 @@
+#sidebar_toggle {
+    display: none;
+}
+
+.body_label {
+    position: fixed;
+    height: 100%;
+    width: calc(100% - 280px);
+    z-index: 30;
+    right: -100% ;
+    top: 0;
+}
+
+#sidebar_toggle:checked ~ .sidebar {
+    left: -100%;
+}
+
+#sidebar_toggle:checked ~ .body_label {
+    right: 0%;
+}
+
+#sidebar_toggle:checked ~ .main_content header {
+    left: 0;
+    width: 100%;
+    right: 0;
+}
+
+#sidebar_toggle:checked ~ .main_content {
+    margin-left: 0%;
+}
+
+.sidebar {
+    width: 280px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    padding: 1rem 1.5rem;
+    background: $night-blue;
+    color: $white;
+    z-index: 20;
+    transition: left 600ms;
+    overflow-y: auto;
+}
+
+.brand_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand_icons span {
+    font-size: 1.5rem;
+    margin-left: .5rem;
+}
+
+.sidebar_user {
+    margin: 1rem 0rem;
+    text-align: center;
+}
+
+.sidebar_user img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border-left: 2px solid transparent ;
+    border-right: 2px solid $light-grey;
+    border-bottom: 2px solid $light-grey;
+    border-bottom: 2px solid $light-grey;
+}
+
+.sidebar_user h3 {
+    font-size: 1rem;
+    margin: 1em 0 0.2em 0;
+}
+
+.sidebar_user span {
+    font-size: 0.8rem;
+}
+
+.sidebar_menu {
+    margin-top: 2rem;
+}
+
+.menu_head {
+    text-transform: uppercase;
+    color: $violet;
+    font-size: .8rem;
+    font-weight: 600;
+    margin: 0.6rem;
+}
+
+.sidebar ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar_menu li {
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar_menu li a {
+    margin-left: 1.5rem;
+    color: $light-grey;
+    font-size: 0.9rem;
+}
+
+.sidebar_menu li a span {
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
