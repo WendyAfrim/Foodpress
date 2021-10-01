@@ -378,6 +378,29 @@ i:hover {
   border: 1px solid #8da2fb;
 }
 
+.submit_row {
+  text-align: center;
+}
+
+.submit_button {
+  display: inline-block;
+  padding: 0.8em 4em;
+  border-radius: 5px;
+  border: 1px solid #AAA;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3sec;
+}
+.submit_button:hover {
+  background-color: #eaeaea;
+  border: 1px solid #FFF;
+}
+.submit_button--night_blue {
+  background-color: #011936;
+}
+
 .cards {
   display: grid;
   grid-gap: 3rem;

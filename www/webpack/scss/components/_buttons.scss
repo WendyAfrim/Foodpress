@@ -27,3 +27,28 @@
         border: 1px solid $violet ;
     }
 }
+
+.submit_row 
+{
+    text-align: center;
+}
+
+.submit_button 
+{
+    display: inline-block;
+    padding: 0.8em 4em;
+    border-radius: 5px;
+    border: 1px solid $grey;
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3sec;
+    &:hover {
+        background-color: lighten($dark-grey, 65%);
+        border: 1px solid $white;
+    }
+    &--night_blue {
+        background-color: $night-blue;
+    }
+}
