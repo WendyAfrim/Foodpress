@@ -21,39 +21,4 @@ class Database
 
         return self::$instance;
     }
-
-    /**
-     * Enregistrement dynamique d'un objet en base de données
-     *
-     * @return void
-     */
-    public function save()
-    {
-
-        $classExploded = explode("\\", get_called_class());
-        $table = end($classExploded);
-
-        $columns = get_object_vars($this);
-        $toDelete = get_class_vars(get_class());
-        $data = array_diff_key($columns, $toDelete);
-        unset($data['conn']);
-
-
-        if (is_null($this->getId())) {
-
-
-            $sql = " INSERT INTO $table 
-			(" . implode(",", array_keys($data)) . ") 
-			VALUES 
-            (:" . implode(",:", array_keys($data)) . ")";
-
-            $conn = self::getInstance();
-
-            $queryPrepared = $conn->prepare($sql);
-
-            $queryPrepared->execute($data);
-        } else {
-            //UPDATE
-        }
-    }
 }

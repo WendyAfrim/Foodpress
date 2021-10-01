@@ -18,37 +18,43 @@ class MySQLQueryBuilder implements QueryBuilder
     {
         $this->reset();
         if ($alias === null) {
-            $this->query->from[] = $table;
+            $this->query->from = $table;
         } else {
-            $this->query->from[] = "${table} AS ${alias}";
+            $this->query->from = "${table} AS ${alias}";
         }
         return $this;
     }
 
     public function select(...$fields): QueryBuilder
     {
-        $this->query->operation = "SELECT " . implode(",", $fields) . " FROM " . implode(",", $this->query->from);
+        $this->query->operation = "SELECT " . implode(",", $fields) . " FROM " . $this->query->from;
         $this->query->type = 'select';
         return $this;
     }
 
     public function insert(array $fields): QueryBuilder
     {
-        $this->query->operation = "INSERT INTO " . implode(",", $this->query->from) . "(" . implode(",", $fields) . ") VALUES (:" . implode(",:", $fields) . ")";
+        $columns = array_keys($fields);
+
+        $this->query->operation = "INSERT INTO " . $this->query->from . "(" . implode(",", $columns) . ") VALUES (:" . implode(",:", $columns) . ")";
         $this->query->type = 'insert';
         return $this;
     }
 
     public function delete(): QueryBuilder
     {
-        $this->query->operation = "DELETE FROM " . implode(",", $this->query->from);
+        $this->query->operation = "DELETE FROM " . $this->query->from;
         $this->query->type = 'delete';
         return $this;
     }
 
-    public function update(string ...$sets): QueryBuilder
+    public function update(array $fields): QueryBuilder
     {
-        $this->query->operation = "UPDATE " . implode(",", $this->query->from) . " SET " . implode(",", $sets);
+        $sets = [];
+        foreach ($fields as $column => $value) {
+            $sets[] = "$column = :$column";
+        }
+        $this->query->operation = "UPDATE " . $this->query->from . " SET " . implode(",", $sets);
         $this->query->type = 'update';
         return $this;
     }
