@@ -2,14 +2,18 @@
 
 namespace App\Interfaces;
 
+use App\Interfaces\QueryBuilder as InterfacesQueryBuilder;
+
 interface QueryBuilder
 {
 
     public function from(string $table, ?string $alias = null): QueryBuilder;
 
+    public function insert(array $fields): QueryBuilder;
+
     public function select(string ...$fields): QueryBuilder;
 
-    public function update(string ...$sets): QueryBuilder;
+    public function update(array $fields): QueryBuilder;
 
     public function delete(): QueryBuilder;
 

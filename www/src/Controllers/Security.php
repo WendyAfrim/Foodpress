@@ -24,7 +24,6 @@ class Security
      */
     public function register()
     {
-
         $user = new User();
 
         $form = new RegisterForm();
