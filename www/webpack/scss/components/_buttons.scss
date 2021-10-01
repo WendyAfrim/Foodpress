@@ -1,0 +1,29 @@
+.button {
+    display: block;
+    height: 45px;
+    border-radius: 3px ;
+
+    &--large {
+        padding: .6rem 1rem;
+        width: 70%;
+        place-items: center;
+        margin: 1rem auto;
+    }
+
+    &--small {
+        padding: 0.5rem;
+        border-radius: 3px;
+    }
+
+    &--violet {
+        background-color: $excentric-violet;
+        color: $white;
+        border: 1px solid $excentric-violet ;
+    }
+
+    &--lightviolet {
+        background: $violet;
+        color: $night-blue;
+        border: 1px solid $violet ;
+    }
+}

@@ -31,19 +31,14 @@ class Security
         $form = new RegisterForm();
         $config = $form->registerFormType();
 
-        // echo '<pre>';
-        // print_r($config);
-        // die;
-
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
-        if(!empty($_POST))
-        {
+        if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $config);
-            
+
             if (empty($errors)) {
-                
+
                 $user->setFirstname(htmlentities($_POST['firstname']));
                 $user->setLastname(htmlentities($_POST['lastname']));
                 $user->setEmail(htmlentities($_POST['email']));
@@ -54,16 +49,13 @@ class Security
                 $user->setCity(htmlentities($_POST['city']));
                 $user->setPhone(htmlentities($_POST['phone']));
                 $user->setCreatedAt($date);
-                
+
                 $user->save();
             }
-            
         }
-        
+
         $view = new View('Security/registration', 'front-template');
         $view->form = $form->renderHtml();
         $view->title = "Nouvel inscription";
-        
     }
-
 }

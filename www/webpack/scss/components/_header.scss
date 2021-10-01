@@ -1,0 +1,63 @@
+
+header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    position: fixed;
+    left: 280px;
+    width: calc(100% - 280px);
+    top: 0;
+    z-index: 20;
+    background-color: $white;
+    box-shadow: 4px 4px 6px rgba(0, 0,0,0.1);
+    transition: left 600ms;
+}
+
+
+.menu-toggle label {
+    height: 60px;
+    width: 60px;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    border-radius: 50%;
+}
+
+.menu-toggle label:hover {
+    background-color: $light-grey;    
+}
+
+.header_icons span {
+    display: inline-block;
+    margin-left: 0.7rem;
+    font-size: 1.4rem;
+}
+
+.main_content {
+    margin-left: 280px;
+    transition: margin-  left 600ms;
+}
+
+.page_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_actions button {
+    outline: none;
+    color: $white;
+    background: $excentric-violet;
+    border: none;
+    padding: .6rem 1rem;
+    margin-left: 0.3rem;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+.header_actions button span {
+    font-size: 1.2rem;
+}
+

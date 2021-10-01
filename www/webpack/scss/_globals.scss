@@ -32,3 +32,13 @@ h1, h2
     margin: 1em;
     font-size: 50px;
 }
+
+i {
+    font-size: 1.3rem;
+    padding: 0 0.3rem;
+    cursor: pointer;
+}
+
+i:hover {
+    color: $excentric-violet;
+}

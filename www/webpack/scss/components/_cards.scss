@@ -1,0 +1,117 @@
+.cards {
+    display: grid;
+    grid-gap: 3rem;
+    margin: 3rem 0;
+    &--3-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    &--4-columns {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card
+{
+    background: $white;
+    padding: 1rem;
+    box-shadow: 4px 4px 6px rgba(0, 0,0,0.1);
+    border-radius: 6px;
+
+    &--large {
+        min-height: 250px;
+        padding: 2.5rem 2rem;
+        margin: 2rem 0;
+    }
+
+    &--medium {
+        padding: 2.5rem 1rem;
+        min-height: 280px;
+        text-align: center;
+    }
+}
+
+
+.card_flex {
+    display: grid;
+    align-items: center;
+
+    &--85 {
+        grid-template-columns: 85% auto;
+    }
+
+    &--70 {
+        grid-template-columns: 70% auto;
+    }
+}
+
+.card_head span {
+    display: block;
+    text-transform: uppercase;
+    color: $dark-grey;
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+}
+
+.card_head small {
+    font-weight: 600;
+    color: $dark-grey;
+}
+
+.card_info h2 {
+    font-size: 2.2rem;
+    color: $dark-light-grey;
+}
+
+.card_chart  {
+
+    font-size: 2rem;
+
+    &--green {
+        color: $green;
+    }
+    &--orange {
+        color: $orange;
+    }
+    &--red {
+        color: $red;
+    }
+}
+
+.stats_grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: auto 67%;
+    grid-gap: 2rem;
+}
+
+.analytics_head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.analytics_head span {
+    font-size: 1.5rem;
+}
+
+.analytics_chart small {
+    font-weight: 600;
+    color: $grey;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.chart_circle {
+    height: 150px;
+    width: 150px;
+    border-left: 3px solid $transparent;
+    border-right: 3px solid $excentric-violet;
+    border-bottom: 3px solid $excentric-violet;
+    border-top: 3px solid $excentric-violet;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 3rem;
+}
