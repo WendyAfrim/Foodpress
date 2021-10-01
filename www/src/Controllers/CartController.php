@@ -15,16 +15,16 @@ class CartController {
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
-        $order->setReference("Chicken");
+        $order->setReference("Entrée");
         $order->setStatus('Ready');
-        $order->setamount(5.59);
+        $order->setamount(9.99);
         $order->setPaymentMethod('CB');
         $order->setDate($date);
         $order->setAddress('1 place Henri Barbusse');
         $order->setZipcode('92300');
         $order->setCity('Levallois');
         $order->setPhone('33618377546');
-        $order->setUserId('2');
+        $order->setUserId('1');
         
         // echo '<pre>';
         // var_dump($order);
