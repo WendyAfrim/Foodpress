@@ -2,12 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Core\Database;
 use App\Core\View;
 use App\Models\User;
 use App\Form\RegisterForm;
 use App\Core\FormVerification;
-
 
 class Security
 {
@@ -26,8 +24,8 @@ class Security
      */
     public function register()
     {
-
         $user = new User();
+
         $form = new RegisterForm();
         $config = $form->registerFormType();
 
