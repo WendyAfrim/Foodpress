@@ -11,6 +11,9 @@ class FormVerification
 
     public static function check($data, $config)
     {
+        if (isset($data['password'])) {
+            $password = $data['password'];
+        }
 
 
         foreach ($data as $inputKey => $inputValue) {
@@ -44,7 +47,7 @@ class FormVerification
                 FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
             }
 
-            if (isset($inputRules['required'])) {
+            if (isset($inputRules['required']) && $inputRules['required'] == true) {
 
                 FormVerification::checkRequired($inputKey, $inputValue);
             }
@@ -94,6 +97,8 @@ class FormVerification
     public static function checkRequired($field, $string)
     {
         if (empty($string)) {
+
+            // self::$array_errors[] = $error;
             $error = "Le champ " . $field . " est requis";
             self::$array_errors[] = $error;
         }
@@ -134,7 +139,7 @@ class FormVerification
 
         //     throw new \Exception("L'adresse email ".$email." est déja existante");
         // } 
-            if ($result) self::$array_errors[] = "L'adresse email ".$email." est déja existante";
+        if ($result) self::$array_errors[] = "L'adresse email " . $email . " est déja existante";
         // return true;
 
     }
