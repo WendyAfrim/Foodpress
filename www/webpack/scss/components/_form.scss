@@ -1,0 +1,21 @@
+form h1 {
+
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.form-container {
+    width: 1064px;
+    margin: auto;
+}
+
+form {
+    width: 93%;
+}
+
+@media only screen and (max-width:1310px) {
+
+    .container {
+        width: 100%;
+    }
+}

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Form\RegisterForm;
 use App\Form\LoginForm;
 use App\Core\FormVerification;
+use App\Core\Mailer;
 
 class Security
 {
@@ -48,7 +49,7 @@ class Security
         $user = new User();
 
         $form = new RegisterForm();
-        $config = $form->getFormConfig();
+        $config = $form->createForm();
 
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
@@ -70,6 +71,13 @@ class Security
                 $user->setCreatedAt($date);
 
                 $user->save();
+
+                $dirname = dirname(__DIR__, 1);
+                $path = $dirname . '/Views/Mails/registration_confirmation.php';
+
+                Mailer::sendEmail($path, $_POST['email'], 'Confirmation de votre inscription');
+
+                # Redirection vers une vue informant l'utilisateur qu'il va recevoir un email de confirmation
             }
         }
 

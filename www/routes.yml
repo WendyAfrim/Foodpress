@@ -17,3 +17,8 @@
 /dashboard:
     controller: "Dashboard"
     action: "dashboard"
+
+
+/form-create-email-template:
+    controller: 'EmailController'
+    action: 'setTemplate'

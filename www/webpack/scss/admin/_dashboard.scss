@@ -8,6 +8,11 @@ main {
     margin-top: 50px;
 }
 
+.main_content {
+    margin-left: 280px;
+    transition: margin-  left 600ms;
+    background-color: #f1f5f9;
+}
 
 .trainings_items ul {
     display: flex;

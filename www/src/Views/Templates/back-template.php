@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="../../../public/css/main.css">
+    <link rel="stylesheet" href="../../../public/css/admin.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <title><?= $this->data['title'] ?></title>
 </head>
@@ -155,9 +154,11 @@
                 <span class="las la-sms"></span>
             </div>
         </header>
-        <main>
-            <?= require $this->view; ?>
-        </main>
+        <div class="container">
+            <main>
+                <?= require $this->view; ?>
+            </main>
+        </div>
     </div>
 </body>
 
