@@ -19,7 +19,7 @@ services:
     ports :
       - "3307:3306"
     environment:
-      MYSQL_DATABASE: mvcdocker2
+      MYSQL_DATABASE: foodpress
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - ./db_data:/var/lib/mysql
