@@ -14,9 +14,11 @@ class View
     public function __toString()
     {
 
-        $msg = "Le template c'est : " . $this->template . "<br>";
-        $msg .= "La vue c'est : " . $this->view . "<br>";
-        $msg .= "Voici les données  : " . serialize($this->data) . "<br>";
+        // $msg = "Le template c'est : " . $this->template . "<br>";
+        // $msg .= "La vue c'est : " . $this->view . "<br>";
+        // $msg .= "Voici les données  : " . serialize($this->data) . "<br>";
+
+        // $msg = "Voici les données  : " . serialize($this->data) . "<br>";
 
         return $msg;
     }
@@ -28,7 +30,6 @@ class View
 
         $this->setTemplate($template);
         $this->setView($view);
-
     }
 
     public function setTemplate($template)
@@ -43,7 +44,7 @@ class View
     }
 
     public function setView($view)
-    {   
+    {
         if (file_exists("src/Views/" . $view . ".php")) {
             $this->view = "src/Views/" . $view . ".php";
         } else {
@@ -64,7 +65,8 @@ class View
         require $this->template;
     }
 
-    public function renderHtml() {
-		return $this->html;
-	}
+    public function renderHtml()
+    {
+        return $this->html;
+    }
 }

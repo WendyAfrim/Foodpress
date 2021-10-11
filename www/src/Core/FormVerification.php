@@ -11,6 +11,9 @@ class FormVerification
 
     public static function check($data, $config)
     {
+        if (isset($data['password'])) {
+            $password = $data['password'];
+        }
 
 
         foreach ($data as $inputKey => $inputValue) {
@@ -44,7 +47,7 @@ class FormVerification
                 FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
             }
 
-            if (isset($inputRules['required'])) {
+            if (isset($inputRules['required']) && $inputRules['required'] == true) {
 
                 FormVerification::checkRequired($inputKey, $inputValue);
             }
@@ -94,7 +97,7 @@ class FormVerification
     {
         if (empty($string)) {
 
-            self::$array_errors[] = $error;
+            // self::$array_errors[] = $error;
             $error = "Le champ " . $field . " est requis";
             echo $error . '<br>';
         }
