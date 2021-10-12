@@ -10,6 +10,10 @@
     controller: "CartController"
     action: "confirm_order"
 
+/product:
+  controller: "ProductController"
+  action: "register_product"
+
 /dashboard:
     controller: "Dashboard"
     action: "dashboard"
