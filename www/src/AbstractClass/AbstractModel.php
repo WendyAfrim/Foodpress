@@ -17,6 +17,13 @@ abstract class AbstractModel
         $this->builder = new MySQLQueryBuilder();
     }
 
+    protected function getData()
+    {
+        $columns = get_object_vars($this);
+        $toDelete = get_class_vars(get_class());
+        return array_diff_key($columns, $toDelete);
+    }
+
     /**
      * Enregistrement dynamique d'un objet en base de données
      *
@@ -24,36 +31,23 @@ abstract class AbstractModel
      */
     public function save(): void
     {
+        // On récupère les colonnes => valeurs à modifier
+        $data = $this->getData();
 
-        $columns = get_object_vars($this);
-        $toDelete = get_class_vars(get_class());
-        $data = array_diff_key($columns, $toDelete);
+        // On construit la requête en fonction de l'id de l'instance
+        $sql = $this->builder->from($this->table);
+        if (isset($this->id)) {
+            $sql->update($data)
+                ->where(["id = :id"]);
+        } else {
+            $sql->insert($data);
+        }
+        $sql = $sql->getSQL();
 
-        $sql = $this->builder->from($this->table)
-            ->insert($data)
-            ->getSQL();
-
+        // On execute la requête préparée
         $query_prepared = $this->pdo->prepare($sql);
         $query_prepared->execute($data);
     }
-
-    /**
-     * Mis à jour d'un objet existant en base de données
-     *
-     * @param integer $id
-     * @return void
-     */
-    // public function update(int $id): void
-    // {
-    //     $columns = get_object_vars($this);
-    //     $toDelete = get_class_vars(get_class());
-    //     $data = array_diff_key($columns, $toDelete);
-
-    //     $sql = $this->builder->from($this->table)
-    //         ->update($data)
-    //         ->where(["id" => $id])
-    //         ->getSQL();
-    // }
 
     /**
      * Efface un objet d'une table donnée
@@ -61,81 +55,84 @@ abstract class AbstractModel
      * @param integer $id
      * @return void
      */
-    public function delete(): void
+    public function delete(int $id): bool
     {
         $query = $this->builder->from($this->table)
             ->delete()
             ->where(["id = :id"])
             ->getSQL();
-
-        print_r($query);
-        die;
         $queryPrepared = $this->pdo->prepare($query);
-        $queryPrepared->execute(['id' => $this->id]);
-        $response = $queryPrepared->fetch();
+        $queryPrepared->execute(['id' => $id]);
+        return $queryPrepared->rowCount() == 1;
     }
 
     /**
-     * Retourne un objet sous forme d'array en fonction de l'id transmis
+     * Retourne un objet sous forme d'instance de la classe en fonction de l'id transmis
      *
      * @param integer $id
      * @return array
      */
-    public function find(int $id): array
+    public function find(int $id): AbstractModel
     {
+        // On construit la requête
         $query = $this->builder->from($this->table)
             ->select("*")
             ->where(["id = :id"])
             ->getSQL();
+
+        //
         $queryPrepared = $this->pdo->prepare($query);
+        $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_class($this));
         $queryPrepared->execute(['id' => $id]);
         $object = $queryPrepared->fetch();
-
+        
         return $object;
     }
 
     /**
-     *  Retourne tous les objets d'une table donnée 
+     *  Retourne tous les objets d'une table donnée
      *
      * @param string|null $order
-     * @return void
+     * @return array
      */
-    public function findAll(?string $order = "")
+    public function findAll(?string $order = ""): array
     {
+        // On construit la requête
         $query = $this->builder->from($this->table)
             ->select("*")
             ->getSQL();
-        $results = $this->pdo->query($query);
-        $object = $results->fetchAll();
 
-        return $object;
+        // On exécute la requête
+        $results = $this->pdo->query($query);
+        $objects = $results->fetchAll(\PDO::FETCH_CLASS, get_class($this));
+
+        return $objects;
     }
 
     /**
      * Function qui recherche en fonction des propriétés de l'objet
-     * Retourne un array
+     * Retourne un array d'objets
      *
      * @param array $fields
      * @return array
      */
     public function findBy(array $fields): array
     {
-        $conditions = [];
-        foreach ($fields as $column => $value) {
-            $conditions[] = $column . " = " . ":$column";
+        //On formate les critères reçus pour le querybuilder
+        foreach($fields as $column => $value) {
+            $conditions[] = "$column = :$column";
         }
-
-        $builder = new MySQLQueryBuilder;
-        $sql = $builder->from($this->table)
+        // On construit la requête
+        $sql = $this->builder->from($this->table)
             ->select("*")
             ->where($conditions)
             ->getSQL();
 
+        // On exécute la requête
         $query_prepared = $this->pdo->prepare($sql);
-
         $query_prepared->execute($fields);
-        $object = $query_prepared->fetchAll();
+        $objects = $query_prepared->fetchAll(\PDO::FETCH_CLASS, get_class($this));
 
-        return $object;
+        return $objects;
     }
 }
