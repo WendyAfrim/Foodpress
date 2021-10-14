@@ -72,7 +72,7 @@ abstract class AbstractModel
      * @param integer $id
      * @return array
      */
-    public function find(int $id): AbstractModel
+    public function find(int $id): ?AbstractModel
     {
         // On construit la requête
         $query = $this->builder->from($this->table)
@@ -85,8 +85,7 @@ abstract class AbstractModel
         $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_class($this));
         $queryPrepared->execute(['id' => $id]);
         $object = $queryPrepared->fetch();
-        
-        return $object;
+        return $object ? $object : null;
     }
 
     /**
@@ -134,5 +133,32 @@ abstract class AbstractModel
         $objects = $query_prepared->fetchAll(\PDO::FETCH_CLASS, get_class($this));
 
         return $objects;
+    }
+
+    /**
+     * Function qui recherche en fonction des propriétés de l'objet
+     * Retourne un array d'objets
+     *
+     * @param array $fields
+     * @return array
+     */
+    public function findByOne(array $fields): ?AbstractModel
+    {
+        //On formate les critères reçus pour le querybuilder
+        foreach($fields as $column => $value) {
+            $conditions[] = "$column = :$column";
+        }
+        // On construit la requête
+        $sql = $this->builder->from($this->table)
+            ->select("*")
+            ->where($conditions)
+            ->getSQL();
+
+        // On exécute la requête
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_class($this));
+        $queryPrepared->execute($fields);
+        $object = $queryPrepared->fetch();
+        return $object ? $object : null;
     }
 }
