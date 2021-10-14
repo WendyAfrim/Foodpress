@@ -34,4 +34,9 @@
         </section>
     </div>
 </body>-->
+<ul>
+<?php foreach ($errors as $error): ?>
+    <li><?= $error ?></li>
+<?php endforeach ?>
+</ul>
 <?= $form ?>

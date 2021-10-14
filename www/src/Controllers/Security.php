@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Core\View;
 use App\Models\User;
 use App\Form\RegisterForm;
+use App\Form\LoginForm;
 use App\Core\FormVerification;
 
 class Security
@@ -15,13 +17,25 @@ class Security
         $form = new LoginForm();
         if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $form->getFormConfig());
-            //LANCEMENT DE SESSION
             if (empty($errors)) {
-                $user = new User();
-                $user->findByCriteria();
+                $user = (new User())->findByOne(["email" => $_POST["email"]]);
+                if ($user) {
+                    if (password_verify($_POST["password"], $user->getPassword())) {
+                        session_start();
+                        $_SESSION['auth'] = $user->getId();
+                        header('Location: /dashboard?connected=1');
+                    } else {
+                        $errors[] = "Combinaison email/mot de passe incorrecte";
+                    }
+                } else {
+                    $errors[] = "Combinaison email/mot de passe incorrecte";
+                }
             }
         }
         $view = new View('Security/login', 'front-template');
+        $view->errors = $errors ?? [];
+        $view->form = $form->renderHtml();
+        $view->title = "Connexion";
     }
 
 
@@ -33,16 +47,12 @@ class Security
     public function register()
     {
         $user = new User();
-
         $form = new RegisterForm();
-        if (!empty($_POST)) {
-            $errors =  FormVerification::check($_POST, $form->getFormConfig());
-
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
         if (!empty($_POST)) {
-            $errors =  FormVerification::check($_POST, $config);
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
 
             if (empty($errors)) {
 
@@ -62,7 +72,8 @@ class Security
         }
 
         $view = new View('Security/registration', 'front-template');
+        $view->errors = $errors ?? [];
         $view->form = $form->renderHtml();
-        $view->title = "Nouvel inscription";
+        $view->title = "Nouvelle inscription";
     }
 }
