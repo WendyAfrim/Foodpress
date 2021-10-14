@@ -137,7 +137,7 @@ class FormVerification
 
         //     throw new \Exception("L'adresse email ".$email." est déja existante");
         // } 
-
+            if ($result) self::$array_errors[] = "L'adresse email ".$email." est déja existante";
         // return true;
 
     }
