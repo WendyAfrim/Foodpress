@@ -22,7 +22,7 @@ class ProductController
         $product = new Product();
 
         $form = new ProductForm();
-        $config = $form->productFormType();
+        $config = $form->getFormConfig();
 
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');

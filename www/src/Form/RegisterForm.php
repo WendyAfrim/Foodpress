@@ -17,6 +17,7 @@ class RegisterForm extends AbstractForm
     public function getFormConfig()
     {
         return [
+            "table" => "user",
             "action" => "",
             "method" => "POST",
             "form-id" => "register-form",

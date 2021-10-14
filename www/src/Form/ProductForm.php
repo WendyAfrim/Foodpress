@@ -7,21 +7,15 @@ use App\AbstractClass\AbstractForm;
 
 class ProductForm extends AbstractForm
 {
-
-    protected $config;
-    protected $html = "";
-
     public function __construct() 
     {   
-        $config = $this->ProductFormType();
-        parent::__construct($config);
-        
-        $this->renderHtml();
+        parent::__construct($this->getFormConfig());
     }
 
-    public function ProductFormType()
+    public function getFormConfig()
     {
         return [
+            "table" => "product",
             "action"=>"",
             "method"=>"POST",
             "form-id" => "product-form",
