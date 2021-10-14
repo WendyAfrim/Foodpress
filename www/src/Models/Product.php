@@ -9,6 +9,8 @@ use DateTime;
 
 class Product extends AbstractModel {
 
+    protected $table = 'product';
+
     protected $id = null;
     protected $name;
     protected $type;

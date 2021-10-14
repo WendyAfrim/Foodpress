@@ -12,7 +12,6 @@ class FormVerification
     public static function check($data, $config)
     {
 
-        $password = $data['password'];
 
         foreach ($data as $inputKey => $inputValue) {
 
@@ -51,6 +50,7 @@ class FormVerification
             }
 
             if (isset($inputRules['confirm'])) {
+                $password = $data['password'];
                 FormVerification::checkConfirmPassword($inputValue, $password, $error);
             }
         }
