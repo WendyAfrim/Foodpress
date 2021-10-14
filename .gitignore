@@ -1,5 +1,5 @@
 db_data
-www/.env.local
+www/.env
 www/webpack/node_modules
 vendor
 docker-compose.yml
