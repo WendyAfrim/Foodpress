@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\View;
 use App\Models\User;
 use App\Form\RegisterForm;
+use App\Form\LoginForm;
 use App\Core\FormVerification;
 
 class Security
@@ -12,8 +13,28 @@ class Security
 
     public function login()
     {
-
+        $form = new LoginForm();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
+            if (empty($errors)) {
+                $user = (new User())->findByOne(["email" => $_POST["email"]]);
+                if ($user) {
+                    if (password_verify($_POST["password"], $user->getPassword())) {
+                        session_start();
+                        $_SESSION['auth'] = $user->getId();
+                        header('Location: /dashboard?connected=1');
+                    } else {
+                        $errors[] = "Combinaison email/mot de passe incorrecte";
+                    }
+                } else {
+                    $errors[] = "Combinaison email/mot de passe incorrecte";
+                }
+            }
+        }
         $view = new View('Security/login', 'front-template');
+        $view->errors = $errors ?? [];
+        $view->form = $form->renderHtml();
+        $view->title = "Connexion";
     }
 
 
