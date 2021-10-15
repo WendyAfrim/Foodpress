@@ -27,7 +27,7 @@ class Security
         $user = new User();
 
         $form = new RegisterForm();
-        $config = $form->registerFormType();
+        $config = $form->getFormConfig();
 
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');

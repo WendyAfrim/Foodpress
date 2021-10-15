@@ -11,16 +11,15 @@ class RegisterForm extends AbstractForm
     protected $config;
     protected $html = "";
 
-    public function __construct()
-    {
-        $config = $this->registerFormType();
-        parent::__construct($config);
-        $this->renderHtml();
+    public function __construct() 
+    {   
+        parent::__construct($this->getFormConfig());
     }
 
-    public function registerFormType()
+    public function getFormConfig()
     {
         return [
+            "table" => "user",
             "action" => "",
             "method" => "POST",
             "form-id" => "register-form",

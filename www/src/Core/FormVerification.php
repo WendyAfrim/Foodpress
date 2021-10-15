@@ -20,13 +20,13 @@ class FormVerification
 
             $error = $inputRules['error'];
 
+            $table = $config['table'];
 
             if (isset($inputRules['type'])) {
 
                 if ($inputRules['type'] == 'email') {
 
                     FormVerification::checkEmail($inputValue, $error);
-                    FormVerification::checkUnicity($inputValue, $error);
                 } else if ($inputRules['type'] == 'select') {
                     $options = $inputRules['options'];
                     FormVerification::checkOptions($inputValue, $options, $error);
@@ -53,6 +53,10 @@ class FormVerification
                 $password = $data['password'];
                 FormVerification::checkConfirmPassword($inputValue, $password, $error);
             }
+
+            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+                FormVerification::checkUnicity($inputKey, $inputValue, $table);
+            }
         }
         return self::$array_errors;
         // var_dump(self::$array_errors); 
@@ -67,7 +71,6 @@ class FormVerification
             return true;
         } else {
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
     }
     public static function checkMinLength($string, $error, $lengthValue)
@@ -77,14 +80,12 @@ class FormVerification
             return true;
         } else {
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
     }
     public static function checkMaxLength($string, $error, $lengthValue)
     {
         if (strlen($string) >= $lengthValue) {
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         } else {
             return true;
         }
@@ -93,10 +94,8 @@ class FormVerification
     public static function checkRequired($field, $string)
     {
         if (empty($string)) {
-
-            self::$array_errors[] = $error;
             $error = "Le champ " . $field . " est requis";
-            echo $error . '<br>';
+            self::$array_errors[] = $error;
         }
         return true;
     }
@@ -106,7 +105,6 @@ class FormVerification
         if (!in_array($data, $array_options)) {
 
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
         return true;
     }
@@ -116,7 +114,6 @@ class FormVerification
         if ($confirm_password != $password) {
 
             self::$array_errors[] = $error;
-            echo $error . '<br>';
         }
 
         return true;
