@@ -148,7 +148,6 @@ abstract class AbstractModel
             ->where($conditions)
             ->getSQL();
 
-        return $object;
         // On exécute la requête
         $queryPrepared = $this->pdo->prepare($sql);
         $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_class($this));
