@@ -85,7 +85,7 @@ abstract class AbstractModel
         $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_class($this));
         $queryPrepared->execute(['id' => $id]);
         $object = $queryPrepared->fetch();
-        
+
         return $object;
     }
 
@@ -119,7 +119,7 @@ abstract class AbstractModel
     public function findBy(array $fields): array
     {
         //On formate les critères reçus pour le querybuilder
-        foreach($fields as $column => $value) {
+        foreach ($fields as $column => $value) {
             $conditions[] = "$column = :$column";
         }
         // On construit la requête
@@ -134,5 +134,26 @@ abstract class AbstractModel
         $objects = $query_prepared->fetchAll(\PDO::FETCH_CLASS, get_class($this));
 
         return $objects;
+    }
+
+    public function findByOne(array $fields): ?AbstractModel
+    {
+        //On formate les critères reçus pour le querybuilder
+        foreach ($fields as $column => $value) {
+            $conditions[] = "$column = :$column";
+        }
+        // On construit la requête
+        $sql = $this->builder->from($this->table)
+            ->select("*")
+            ->where($conditions)
+            ->getSQL();
+
+        return $object;
+        // On exécute la requête
+        $queryPrepared = $this->pdo->prepare($sql);
+        $queryPrepared->setFetchMode(\PDO::FETCH_CLASS, get_class($this));
+        $queryPrepared->execute($fields);
+        $object = $queryPrepared->fetch();
+        return $object ? $object : null;
     }
 }
