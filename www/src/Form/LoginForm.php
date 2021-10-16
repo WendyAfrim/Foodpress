@@ -9,8 +9,8 @@ class LoginForm extends AbstractForm
 {
 
 
-    public function __construct() 
-    {   
+    public function __construct()
+    {
         parent::__construct($this->getFormConfig());
     }
 
@@ -21,6 +21,7 @@ class LoginForm extends AbstractForm
             "action" => "",
             "method" => "POST",
             "form-id" => "login-form",
+            'class' => 'front-form',
             "form-title" => 'Formulaire de connexion',
             "submit" => "Se connecter",
             "inputs" => [
@@ -38,7 +39,7 @@ class LoginForm extends AbstractForm
                     "type" => "password",
                     "required" => true,
                     "placeholder" => "Votre mot de passe",
-                    'class' => ['large' => 'col-lg-6', 'medium' => 'col-md-6', 'small' => 'col-xs-12'],
+                    'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
                     'row' => 'start_end',
                     "error" => "Votre mot de passe doit faire entre 4 et 32 caractères"
                 ]

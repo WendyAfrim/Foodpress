@@ -40,7 +40,7 @@ abstract class AbstractForm
 	{
 		$this->html = "
 		<div class='container'>
-		<form id=" . $this->config['form-id'] . " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' accept-charset='utf-8'>
+		<form id=" . $this->config['form-id'] . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' accept-charset='utf-8'>
 		<h1>" . $this->config['form-title'] . "</h1>
 		";
 	}

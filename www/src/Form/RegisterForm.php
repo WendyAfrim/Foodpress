@@ -25,6 +25,7 @@ class RegisterForm extends AbstractForm
             "action" => "",
             "method" => "POST",
             "form-id" => "register-form",
+            'class' => 'front-form',
             "form-title" => 'Formulaire d\'inscription',
             "submit" => "S'inscrire",
             "inputs" => [
