@@ -34,11 +34,16 @@ abstract class AbstractModel
         // On récupère les colonnes => valeurs à modifier
         $data = $this->getData();
 
+        
         // On construit la requête en fonction de l'id de l'instance
         $sql = $this->builder->from($this->table);
+
+        print_r($data);
+        print_r($sql);
+        die;
         if (isset($this->id)) {
             $sql->update($data)
-                ->where(["id = :id"]);
+            ->where(["id = :id"]);
         } else {
             $sql->insert($data);
         }

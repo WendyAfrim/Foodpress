@@ -22,11 +22,12 @@ class ProductController
         $product = new Product();
 
         $form = new ProductForm();
-        $config = $form->getFormConfig();
+        $config = $form->createForm();
 
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
+        
         if(!empty($_POST))
         {
             $errors =  FormVerification::check($_POST, $config);
@@ -44,7 +45,7 @@ class ProductController
             }
         }   
 
-        $view = new View('Product/products', 'front-template');
+        $view = new View('Product/products', 'back-template');
         $view->form = $form->renderHtml();
         $view->title = "Nouveau produit";      
     }

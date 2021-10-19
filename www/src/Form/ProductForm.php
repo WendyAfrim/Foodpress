@@ -13,10 +13,12 @@ class ProductForm extends AbstractForm
 
     public function __construct()
     {
-        parent::__construct($this->getFormConfig());
+        $config = $this->createForm();
+        parent::__construct($config);
+        $this->renderHtml();
     }
 
-    public function getFormConfig()
+    public function createForm()
     {
         return [
             "table" => "product",

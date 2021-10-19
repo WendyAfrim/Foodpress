@@ -5,7 +5,6 @@
 namespace App\Models;
 
 use App\AbstractClass\AbstractModel;
-use DateTime;
 
 class Product extends AbstractModel {
 
