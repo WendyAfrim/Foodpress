@@ -35,8 +35,6 @@ class MySQLQueryBuilder implements QueryBuilder
     public function insert(array $fields): QueryBuilder
     {
         $columns = array_keys($fields);
-        print_r('hello');
-        die;
 
         $this->query->operation = "INSERT INTO " . $this->query->from . "(" . implode(",", $columns) . ") VALUES (:" . implode(",:", $columns) . ")";
         $this->query->type = 'insert';
