@@ -10,9 +10,9 @@
     controller: "CartController"
     action: "confirm_order"
 
-/product:
+/form-product:
   controller: "ProductController"
-  action: "register_product"
+  action: "add_product"
 
 /dashboard:
     controller: "Dashboard"

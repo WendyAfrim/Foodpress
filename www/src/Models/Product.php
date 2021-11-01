@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Controller destiné à la gestion des produits
 
@@ -6,14 +6,15 @@ namespace App\Models;
 
 use App\AbstractClass\AbstractModel;
 
-class Product extends AbstractModel {
+class Product extends AbstractModel
+{
 
     protected $table = 'product';
 
     protected $id = null;
     protected $name;
     protected $type;
-    protected $description; 
+    protected $description;
     protected $price;
     protected $ingredients;
     protected $image;
@@ -35,7 +36,8 @@ class Product extends AbstractModel {
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -44,7 +46,7 @@ class Product extends AbstractModel {
      *
      * @return void
      */
-    public function setId($id) : int
+    public function setId($id): int
     {
         $this->id = $id;
     }
@@ -54,7 +56,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getName() :string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -64,7 +66,7 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setName($name) : void
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -75,7 +77,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getType() :string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -85,7 +87,7 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setType($type) : void
+    public function setType($type): void
     {
         $this->type = $type;
     }
@@ -95,7 +97,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getDescription() :string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -105,7 +107,7 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setDescription($description) :void
+    public function setDescription($description): void
     {
         $this->description = $description;
     }
@@ -115,7 +117,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getPrice() :string
+    public function getPrice(): float
     {
         return $this->price;
     }
@@ -125,7 +127,7 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setPrice($price) :void 
+    public function setPrice($price): void
     {
         $this->price = $price;
     }
@@ -135,7 +137,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getIngredients() :string
+    public function getIngredients(): string
     {
         return $this->ingredients;
     }
@@ -145,10 +147,9 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setIngredients($ingredients) :void
+    public function setIngredients($ingredients): void
     {
         $this->ingredients = $ingredients;
-
     }
 
     /**
@@ -156,7 +157,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getImage() :string
+    public function getImage(): string
     {
 
         return $this->image;
@@ -167,7 +168,7 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setImage($image) :void
+    public function setImage($image): void
     {
 
         $this->image = $image;
@@ -178,7 +179,7 @@ class Product extends AbstractModel {
      *
      * @return string
      */
-    public function getCreatedAt() :date
+    public function getCreatedAt(): date
     {
 
         return $this->$created_at;
@@ -189,10 +190,9 @@ class Product extends AbstractModel {
      *
      * @param mixed 
      */
-    public function setCreatedAt($created_at) :void
+    public function setCreatedAt($created_at): void
     {
 
         $this->created_at = $created_at;
     }
-
 }

@@ -86,7 +86,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="form-product">
                             <span class="las la-chart-pie"></span>
                             Ajouter
                         </a>

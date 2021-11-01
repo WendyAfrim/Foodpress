@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Controller destiné à la gestion des produits
 
@@ -16,7 +16,7 @@ class ProductController
      * Page du formulaire pour la création des produits par le restaurateur
      * 
      */
-    public function register_product()
+    public function add_product()
     {
 
         $product = new Product();
@@ -27,11 +27,10 @@ class ProductController
         $date = new \Datetime;
         $date = $date->format('Y-m-d H:i:s');
 
-        
-        if(!empty($_POST))
-        {
+
+        if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $config);
-            
+
             if (empty($errors)) {
                 $product->setName(htmlentities($_POST['name']));
                 $product->setType(htmlentities($_POST['type']));
@@ -40,13 +39,13 @@ class ProductController
                 $product->setIngredients(htmlentities($_POST['ingredients']));
                 $product->setImage(htmlentities($_POST['image']));
                 $product->setCreatedAt($date);
-                
+
                 $product->save();
             }
-        }   
+        }
 
-        $view = new View('Product/products', 'back-template');
+        $view = new View('Product/add-product', 'back-template');
         $view->form = $form->renderHtml();
-        $view->title = "Nouveau produit";      
+        $view->title = "Foodpress | Ajouter un produit";
     }
 }
