@@ -15,10 +15,17 @@
   action: "add_product"
 
 /dashboard:
-    controller: "Dashboard"
+    controller: "DashboardController"
     action: "dashboard"
-
 
 /form-create-email-template:
     controller: 'EmailController'
     action: 'setTemplate'
+  
+/all_users:
+    controller: 'UserController'
+    action: 'all_users'
+
+/all_accounts:
+    controller: 'AdminController'
+    action: 'all_accounts'
