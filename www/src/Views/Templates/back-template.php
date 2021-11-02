@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../public/css/admin.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!--  JQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Datatables CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <title><?= $this->data['title'] ?></title>
 </head>
 
@@ -120,7 +125,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/all_accounts">
                             <span class="las la-balance-scale"></span>
                             Tous les comptes
                         </a>
@@ -163,3 +168,8 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        $('#myDatatable').DataTable();
+    });
+</script>
