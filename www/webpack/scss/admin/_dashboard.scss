@@ -19,7 +19,7 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 }
 
 .training_item {
@@ -40,6 +40,7 @@ main {
 .training_item li {
     font-weight: 400;
     color: $dark-grey;
+    text-align: center;
 }
 
 .orders small {
@@ -78,13 +79,19 @@ main {
     }
 }
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:769px) {
     .cards {
         grid-template-columns: 100%;
+
+        &--3-columns {
+            display: flex!important;
+            flex-direction: column;
+        }
     }
+    
 
     .stats_grid {
-        grid-template-columns: 100%;
+        grid-template-columns: 100%!important;
     }
 
     .page_header {
@@ -98,6 +105,12 @@ main {
 
     .header_actions button:first-child { 
          margin-left: 0rem;
+    }
+
+    .trainings_items ul {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 
 }

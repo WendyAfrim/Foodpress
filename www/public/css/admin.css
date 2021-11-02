@@ -211,7 +211,6 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .training_item {
@@ -232,6 +231,7 @@ main {
 .training_item li {
   font-weight: 400;
   color: #444;
+  text-align: center;
 }
 
 .orders small {
@@ -269,13 +269,17 @@ main {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
   .cards {
     grid-template-columns: 100%;
   }
+  .cards--3-columns {
+    display: flex !important;
+    flex-direction: column;
+  }
 
   .stats_grid {
-    grid-template-columns: 100%;
+    grid-template-columns: 100% !important;
   }
 
   .page_header {
@@ -289,6 +293,12 @@ main {
 
   .header_actions button:first-child {
     margin-left: 0rem;
+  }
+
+  .trainings_items ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 .button {
@@ -361,6 +371,11 @@ body {
 
 h1, h2 {
   font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
 }
 
 i {
@@ -494,11 +509,6 @@ i:hover {
   font-size: 1.2rem;
   display: inline-block;
   margin-right: 0.5rem;
-}
-
-form h1 {
-  text-align: center;
-  margin: 2rem 0;
 }
 
 .front-form {
@@ -717,4 +727,8 @@ header {
 }
 .orders span.indicator--yellow {
   background: #fff4de;
+}
+
+#myDatatable {
+  text-align: center;
 }
