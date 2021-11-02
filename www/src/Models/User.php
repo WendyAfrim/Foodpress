@@ -7,19 +7,19 @@ use DateTime;
 
 class User extends AbstractModel
 {
-    protected $table = 'user';
+    public $table = 'user';
 
-    protected $id = null;
-    protected $firstname;
-    protected $lastname;
-    protected $email;
-    protected $password = null;
-    protected $roles;
-    protected $address;
-    protected $zipcode;
-    protected $city;
-    protected $phone;
-    protected $created_at;
+    public $id = null;
+    public $firstname;
+    public $lastname;
+    public $email;
+    public $password = null;
+    public $roles;
+    public $address;
+    public $zipcode;
+    public $city;
+    public $phone;
+    public $created_at;
 
     /**
      * Récupération de l'id

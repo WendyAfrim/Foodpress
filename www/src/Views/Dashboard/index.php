@@ -143,7 +143,7 @@
         </div>
         <div class="orders">
             <h3>Détails des commandes</h3>
-            <small>Visualisez le détail de vos dernières commandes <span class="las la-arrow-right"></span></small>
+            <a href=""><small>Visualisez le détail de vos dernières commandes <span class="las la-arrow-right"></span></small></a>
             <div class="table_responsive">
                 <table>
                     <thead>
