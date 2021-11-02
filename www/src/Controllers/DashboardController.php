@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Core\View;
 
-class Dashboard
+class DashboardController
 {
 
     public function dashboard()
