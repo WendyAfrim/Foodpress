@@ -26,6 +26,10 @@
     controller: 'UserController'
     action: 'all_users'
 
-/all_accounts:
+/admin/accounts:
     controller: 'AdminController'
-    action: 'all_accounts'
+    action: 'all_admin_accounts'
+
+/admin/account/create:
+    controller: 'AdminController'
+    action: 'add_admin_account'    
