@@ -9,6 +9,10 @@ use App\Form\LoginForm;
 use App\Core\FormVerification;
 use App\Core\Mailer;
 
+require 'vendor/autoload.php';
+
+use Symfony\Component\VarDumper\VarDumper;
+
 class Security
 {
 
@@ -23,7 +27,7 @@ class Security
                     if (password_verify($_POST["password"], $user->getPassword())) {
                         session_start();
                         $_SESSION['auth'] = $user->getId();
-                        header('Location: /dashboard?connected=1');
+                        header('Location: /dashboard');
                     } else {
                         $errors[] = "Combinaison email/mot de passe incorrecte";
                     }
@@ -74,14 +78,15 @@ class Security
 
                 $dirname = dirname(__DIR__, 1);
                 $path = $dirname . '/Views/Mails/registration_confirmation.php';
-
-                Mailer::sendEmail($path, $_POST['email'], 'Confirmation de votre inscription');
+                $body = file_get_contents($path);
+                Mailer::sendEmail($body, $_POST['email'], 'Confirmation de votre inscription');
 
                 # Redirection vers une vue informant l'utilisateur qu'il va recevoir un email de confirmation
             }
         }
 
         $view = new View('Security/registration', 'front-template');
+        $view->errors = $errors ?? [];
         $view->form = $form->renderHtml();
         $view->title = "Nouvel inscription";
     }

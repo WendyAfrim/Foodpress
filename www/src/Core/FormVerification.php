@@ -123,24 +123,14 @@ class FormVerification
 
         return true;
     }
-    public static function checkUnicity($email)
+    public static function checkUnicity($inputKey, $inputValue, $table)
     {
         $conn = Database::getPdo();
 
-
-        $query = $conn->prepare("SELECT `email` FROM user WHERE `email` = ? ");
-        $query->bindValue(1, $email);
+        $query = $conn->prepare("SELECT $inputKey FROM $table WHERE $inputKey = ?");
+        $query->bindValue(1, $inputValue);
         $query->execute();
-
         $result = $query->fetchColumn();
-
-        // Gérer l'exception Uncaught
-        // if ($result) {
-
-        //     throw new \Exception("L'adresse email ".$email." est déja existante");
-        // } 
-        if ($result) self::$array_errors[] = "L'adresse email " . $email . " est déja existante";
-        // return true;
-
+        if ($result) self::$array_errors[] = "La valeur du champ " . $inputKey . " est déja existante";
     }
 }

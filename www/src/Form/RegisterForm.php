@@ -52,7 +52,7 @@ class RegisterForm extends AbstractForm
                 "email" => [
                     "label" => 'Email',
                     "type" => "email",
-                    "unicity" => "email",
+                    "unicity" => true,
                     "required" => true,
                     "placeholder" => "",
                     'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
