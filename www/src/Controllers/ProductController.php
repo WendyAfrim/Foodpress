@@ -4,10 +4,12 @@
 
 namespace App\Controllers;
 
+use App\Core\DateGenerator;
 use App\Core\View;
 use App\Models\Product;
 use App\Form\ProductForm;
 use App\Core\FormVerification;
+use App\Helpers\Generator;
 
 class ProductController
 {
@@ -16,7 +18,7 @@ class ProductController
      * Page du formulaire pour la création des produits par le restaurateur
      * 
      */
-    public function add_product()
+    public function add_product(): void
     {
 
         $product = new Product();
@@ -24,8 +26,7 @@ class ProductController
         $form = new ProductForm();
         $config = $form->createForm();
 
-        $date = new \Datetime;
-        $date = $date->format('Y-m-d H:i:s');
+        $date = Generator::generateDate();
 
 
         if (!empty($_POST)) {

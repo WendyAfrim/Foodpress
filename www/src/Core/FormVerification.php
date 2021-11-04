@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Core\Database;
+use Exception;
 
 class FormVerification
 {
@@ -11,6 +12,7 @@ class FormVerification
 
     public static function check($data, $config)
     {
+
         if (isset($data['password'])) {
             $password = $data['password'];
         }
@@ -24,6 +26,8 @@ class FormVerification
             $error = $inputRules['error'];
 
             $table = $config['table'];
+
+            FormVerification::checkIfEmpy($inputValue, 'Le champ ' . $inputKey . ' est vide.');
 
             if (isset($inputRules['type'])) {
 
@@ -64,6 +68,13 @@ class FormVerification
         return self::$array_errors;
         // var_dump(self::$array_errors); 
         // die;
+    }
+
+    public static function checkIfEmpy($field, $error)
+    {
+        if (empty($field)) {
+            throw new Exception($error);
+        }
     }
 
     public static function checkEmail($email, $error)

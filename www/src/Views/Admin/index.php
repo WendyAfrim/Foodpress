@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <h1>Tous les compte</h1>
+    <h1>Tous les comptes</h1>
     <table id="myDatatable" class="display">
         <thead>
             <tr>
@@ -7,6 +7,7 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Inscrit le</th>
                 <th>Actions</th>
             </tr>
@@ -20,12 +21,12 @@
                         <td><?= $user->firstname; ?></td>
                         <td><?= $user->lastname; ?></td>
                         <td><?= $user->email; ?></td>
+                        <td><?= $user->roles; ?></td>
                         <td><?= $user->created_at; ?></td>
                         <td>
                             <div>
-                                <i class="las la-eye"></i>
-                                <i class="las la-envelope"></i>
-                                <i class="las la-pen"></i>
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
                             </div>
                         </td>
                     </tr>
