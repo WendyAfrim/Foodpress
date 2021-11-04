@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../public/css/admin.css">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <!-- Icons CDN -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!--  JQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Datatables CDN -->
@@ -35,13 +36,13 @@
                 <ul>
                     <li>
                         <a href="">
-                            <span class="las la-balance-scale"></span>
+                            <i class="far fa-plus-square"></i>
                             Ajouter
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <span class="las la-chart-pie"></span>
+                            <i class="fas fa-compact-disc"></i>
                             Tous les médias
                         </a>
                     </li>
@@ -52,13 +53,13 @@
                 <ul>
                     <li>
                         <a href="">
-                            <span class="las la-balance-scale"></span>
+                            <i class="far fa-file"></i>
                             Créer
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <span class="las la-chart-pie"></span>
+                            <i class="fas fa-grip-vertical"></i>
                             Tous les articles
                         </a>
                     </li>
@@ -69,13 +70,13 @@
                 <ul>
                     <li>
                         <a href="">
-                            <span class="las la-balance-scale"></span>
+                            <i class="far fa-file"></i>
                             Créer
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <span class="las la-chart-pie"></span>
+                            <i class="fas fa-grip-vertical"></i>
                             Toutes les pages
                         </a>
                     </li>
@@ -86,25 +87,25 @@
                 <ul>
                     <li>
                         <a href="">
-                            <span class="las la-balance-scale"></span>
+                            <i class="fas fa-pizza-slice"></i>
                             Tous les produits
                         </a>
                     </li>
                     <li>
                         <a href="form-product">
-                            <span class="las la-chart-pie"></span>
+                            <i class="far fa-plus-square"></i>
                             Ajouter
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <span class="las la-chart-pie"></span>
+                            <i class="fas fa-align-center"></i>
                             Types
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <span class="las la-chart-pie"></span>
+                            <i class="fas fa-cocktail"></i>
                             Menus
                         </a>
                     </li>
@@ -115,8 +116,19 @@
                 <ul>
                     <li>
                         <a href="">
-                            <span class="las la-balance-scale"></span>
+                            <i class="fas fa-bars"></i>
                             Menus
+                        </a>
+                    </li>
+                </ul>
+                <div class="menu_head">
+                    <span>Clients</span>
+                </div>
+                <ul>
+                    <li>
+                        <a href="">
+                            <i class="fal fa-users"></i>
+                            Tous les clients
                         </a>
                     </li>
                 </ul>
@@ -125,21 +137,26 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="/all_accounts">
-                            <span class="las la-balance-scale"></span>
+                        <a href="/admin/accounts">
+                            <i class="fas fa-users"></i>
                             Tous les comptes
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <span class="las la-chart-pie"></span>
+                        <a href="/admin/account/create">
+                            <i class="far fa-plus-square"></i>
                             Ajouter
                         </a>
                     </li>
+                </ul>
+                <div class="menu_head">
+                    <span>Paramètres</span>
+                </div>
+                <ul>
                     <li>
                         <a href="">
-                            <span class="las la-chart-pie"></span>
-                            Profil
+                            <i class="fas fa-cog"></i>
+                            Général
                         </a>
                     </li>
                 </ul>
@@ -150,13 +167,12 @@
         <header>
             <div class="menu-toggle">
                 <label for="sidebar_toggle">
-                    <span class="las la-bars"></span>
+                    <i class="fas fa-hamburger"></i>
                 </label>
             </div>
             <div class="header_icons">
-                <span class="las la-search"></span>
-                <span class="las la-bookmark"></span>
-                <span class="las la-sms"></span>
+                <a href=""><i class="far fa-user"></i></a>
+                <a href="/dashboard"><i class="fas fa-home"></i></a>
             </div>
         </header>
         <div class="container">
