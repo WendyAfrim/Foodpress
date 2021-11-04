@@ -42,6 +42,16 @@ class LoginForm extends AbstractForm
                     'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
                     'row' => 'start_end',
                     "error" => "Votre mot de passe doit faire entre 4 et 32 caractères"
+                ],
+                "captcha" => [
+                    "label" => 'Saisir le captcha',
+                    "type" => 'captcha',
+                    "required" => true,
+                    "src"=>"/captcha.php",
+                    "placeholder" => "",
+                    'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
+                    'row' => 'start_end',
+                    "error" => "Le captcha ne correspond pas"
                 ]
             ]
         ];

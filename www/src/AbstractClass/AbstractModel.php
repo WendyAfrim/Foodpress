@@ -38,9 +38,6 @@ abstract class AbstractModel
         // On construit la requête en fonction de l'id de l'instance
         $sql = $this->builder->from($this->table);
 
-        print_r($data);
-        print_r($sql);
-        die;
         if (isset($this->id)) {
             $sql->update($data)
             ->where(["id = :id"]);
