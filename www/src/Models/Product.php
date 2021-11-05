@@ -1,7 +1,5 @@
 <?php
 
-// Controller destiné à la gestion des produits
-
 namespace App\Models;
 
 use App\AbstractClass\AbstractModel;

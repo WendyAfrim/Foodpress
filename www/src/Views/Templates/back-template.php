@@ -92,13 +92,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="form-product">
+                        <a href="/admin/product/create">
                             <i class="far fa-plus-square"></i>
                             Ajouter
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/admin/type/create">
                             <i class="fas fa-align-center"></i>
                             Types
                         </a>
