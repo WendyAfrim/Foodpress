@@ -43,7 +43,6 @@ class AdminController
         $date = Generator::generateDate();
         $randomPassword = Generator::generatePassword(8);
 
-        $errors = "";
         if (!empty($_POST)) {
 
             $errors = FormVerification::check($_POST, $config);
@@ -61,9 +60,10 @@ class AdminController
             }
         }
 
+
         $view = new View('Admin/add_user', 'back-template');
+        $view->errors = $errors;
         $view->form = $form->renderHtml();
         $view->title = 'Formulaire | Ajout d\'un compte';
-        $view->$errors = $errors;
     }
 }

@@ -25,7 +25,7 @@ class FormVerification
 
             $error = $inputRules['error'];
 
-            $table = $config['table'];
+            $table = $config['table'] ?? "";
 
             FormVerification::checkIfEmpy($inputValue, 'Le champ ' . $inputKey . ' est vide.');
 
@@ -62,7 +62,17 @@ class FormVerification
             }
 
             if (isset($inputRules['unicity']) && $inputRules['unicity']) {
-                FormVerification::checkUnicity($inputKey, $inputValue, $table);
+
+                try {
+                    if (!empty($table)) {
+                        FormVerification::checkUnicity($inputKey, $inputValue, $table);
+                        // throw new Exception("Le paramètre table n'existe pas dans la configuration du formulaire");
+                    } else {
+                        self::$array_errors[] = "Le paramètre table n'existe pas dans la configuration du formulaire";
+                    }
+                } catch (\Exception $e) {
+                    echo $e->getMessage();
+                }
             }
         }
         return self::$array_errors;
