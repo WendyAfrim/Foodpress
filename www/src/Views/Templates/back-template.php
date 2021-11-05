@@ -126,7 +126,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/admin/clients">
                             <i class="fal fa-users"></i>
                             Tous les clients
                         </a>
