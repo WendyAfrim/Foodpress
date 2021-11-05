@@ -1,9 +1,9 @@
 /login:
-  controller: "Security"
+  controller: "SecurityController"
   action: "login"
 
 /register:
-  controller: "Security"
+  controller: "SecurityController"
   action: "register"
 
 /cart:
@@ -22,9 +22,9 @@
     controller: 'EmailController'
     action: 'setTemplate'
   
-/all_users:
-    controller: 'UserController'
-    action: 'all_users'
+/admin/clients:
+    controller: 'ClientController'
+    action: 'all_clients'
 
 /admin/accounts:
     controller: 'AdminController'

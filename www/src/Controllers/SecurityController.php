@@ -9,11 +9,7 @@ use App\Form\LoginForm;
 use App\Core\FormVerification;
 use App\Core\Mailer;
 
-require 'vendor/autoload.php';
-
-use Symfony\Component\VarDumper\VarDumper;
-
-class Security
+class SecurityController
 {
 
     public function login()
@@ -67,7 +63,7 @@ class Security
                 $user->setLastname(htmlentities($_POST['lastname']));
                 $user->setEmail(htmlentities($_POST['email']));
                 $user->setPassword(htmlentities($_POST['password']));
-                $user->setRoles("['ROLE_USER']");
+                $user->setRoles("['ROLE_CLIENT']");
                 $user->setAdress(htmlentities($_POST['address']));
                 $user->setZipcode(htmlentities($_POST['zipcode']));
                 $user->setCity(htmlentities($_POST['city']));

@@ -25,9 +25,9 @@
                         <td><?= $user->created_at; ?></td>
                         <td>
                             <div>
-                                <i class="las la-eye"></i>
-                                <i class="las la-envelope"></i>
-                                <i class="las la-pen"></i>
+                                <i class="far fa-envelope"></i>
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
                             </div>
                         </td>
                     </tr>
