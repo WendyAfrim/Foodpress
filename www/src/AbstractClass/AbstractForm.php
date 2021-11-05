@@ -24,6 +24,8 @@ abstract class AbstractForm
 				$this->generateSelect($name, $configInput);
 			} else if ($configInput["type"] == "captcha") {
 				$this->generateCaptcha($name, $configInput);
+			} else if ($configInput["type"] == "textarea") {
+				$this->generateTextarea($name, $configInput);
 			} else {
 				$this->generateInput($name, $configInput);
 			}
@@ -41,8 +43,12 @@ abstract class AbstractForm
 		$this->html = "
 		<div class='container'>
 		<form id=" . $this->config['form-id'] . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' accept-charset='utf-8'>
-		<h1>" . $this->config['form-title'] . "</h1>
 		";
+
+		if ($this->config['form-title']) {
+			$this->html = "<h1>" . $this->config['form-title'] . "</h1>
+			";
+		}
 	}
 
 	public function generateSelect($name, $configInput)
@@ -57,6 +63,15 @@ abstract class AbstractForm
 			$this->html .= "<option>" . $option . "</option>";
 		}
 		$this->html .= "</select></div>";
+	}
+
+	public function generateTextarea($name, $configInput)
+	{
+		$this->html .=
+			"
+		<div class='" . implode(' ', $configInput['class']) . "'>
+		<label>" . $configInput['label'] . "</label>
+		<textarea class='inputs-design 'name='" . $name . "' placeholder='" . $configInput['placeholder'] . "' rows='" . $configInput['rows'] . "' cols='" . $configInput['cols'] . "'  ></textarea></div>";
 	}
 
 

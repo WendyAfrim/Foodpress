@@ -20,70 +20,63 @@ class FormVerification
 
         foreach ($data as $inputKey => $inputValue) {
 
-
             $inputRules = $config['inputs'][$inputKey];
 
             $error = $inputRules['error'];
 
             $table = $config['table'] ?? "";
 
-            FormVerification::checkIfEmpy($inputValue, 'Le champ ' . $inputKey . ' est vide.');
+            if ($inputRules['required'] == true) {
+                FormVerification::checkIfRequired($inputValue, 'Le champ ' . $inputKey . ' est requis.');
 
-            if (isset($inputRules['type'])) {
+                if (isset($inputRules['type'])) {
 
-                if ($inputRules['type'] == 'email') {
+                    if ($inputRules['type'] == 'email') {
 
-                    FormVerification::checkEmail($inputValue, $error);
-                } else if ($inputRules['type'] == 'select') {
-                    $options = $inputRules['options'];
-                    FormVerification::checkOptions($inputValue, $options, $error);
-                }
-            }
-
-
-            if (isset($inputRules['minLength'])) {
-                $lengthValue = $inputRules['minLength'];
-                FormVerification::checkMinLength($inputValue, $error, $lengthValue);
-            }
-
-            if (isset($inputRules['maxLength'])) {
-                $lengthValue = $inputRules['maxLength'];
-                FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
-            }
-
-            if (isset($inputRules['required']) && $inputRules['required'] == true) {
-
-                FormVerification::checkRequired($inputKey, $inputValue);
-            }
-
-            if (isset($inputRules['confirm'])) {
-                $password = $data['password'];
-                FormVerification::checkConfirmPassword($inputValue, $password, $error);
-            }
-
-            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
-
-                try {
-                    if (!empty($table)) {
-                        FormVerification::checkUnicity($inputKey, $inputValue, $table);
-                        // throw new Exception("Le paramètre table n'existe pas dans la configuration du formulaire");
-                    } else {
-                        self::$array_errors[] = "Le paramètre table n'existe pas dans la configuration du formulaire";
+                        FormVerification::checkEmail($inputValue, $error);
+                    } else if ($inputRules['type'] == 'select') {
+                        $options = $inputRules['options'];
+                        FormVerification::checkOptions($inputValue, $options, $error);
                     }
-                } catch (\Exception $e) {
-                    echo $e->getMessage();
+                }
+
+
+                if (isset($inputRules['minLength'])) {
+                    $lengthValue = $inputRules['minLength'];
+                    FormVerification::checkMinLength($inputValue, $error, $lengthValue);
+                }
+
+                if (isset($inputRules['maxLength'])) {
+                    $lengthValue = $inputRules['maxLength'];
+                    FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
+                }
+                if (isset($inputRules['confirm'])) {
+                    $password = $data['password'];
+                    FormVerification::checkConfirmPassword($inputValue, $password, $error);
+                }
+
+                if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+
+                    try {
+                        if (!empty($table)) {
+                            FormVerification::checkUnicity($inputKey, $inputValue, $table);
+                            // throw new Exception("Le paramètre table n'existe pas dans la configuration du formulaire");
+                        } else {
+                            self::$array_errors[] = "Le paramètre table n'existe pas dans la configuration du formulaire";
+                        }
+                    } catch (\Exception $e) {
+                        echo $e->getMessage();
+                    }
                 }
             }
+            return self::$array_errors;
         }
-        return self::$array_errors;
-        // var_dump(self::$array_errors); 
-        // die;
     }
 
-    public static function checkIfEmpy($field, $error)
+    public static function checkIfRequired($field, $error)
     {
         if (empty($field)) {
-            throw new Exception($error);
+            self::$array_errors[] = $error;
         }
     }
 
@@ -113,17 +106,6 @@ class FormVerification
         } else {
             return true;
         }
-    }
-
-    public static function checkRequired($field, $string)
-    {
-        if (empty($string)) {
-
-            // self::$array_errors[] = $error;
-            $error = "Le champ " . $field . " est requis";
-            self::$array_errors[] = $error;
-        }
-        return true;
     }
 
     public static function checkOptions($data, $array_options, $error)
