@@ -27,6 +27,7 @@ class FormVerification
             $table = $config['table'] ?? "";
 
             if ($inputRules['required'] == true) {
+
                 FormVerification::checkIfRequired($inputValue, 'Le champ ' . $inputKey . ' est requis.');
 
                 if (isset($inputRules['type'])) {
@@ -35,8 +36,9 @@ class FormVerification
 
                         FormVerification::checkEmail($inputValue, $error);
                     } else if ($inputRules['type'] == 'select') {
+                        $select_type = $inputRules['select'];
                         $options = $inputRules['options'];
-                        FormVerification::checkOptions($inputValue, $options, $error);
+                        FormVerification::checkOptions($inputValue, $options, $select_type, $error);
                     }
                 }
 
@@ -108,12 +110,26 @@ class FormVerification
         }
     }
 
-    public static function checkOptions($data, $array_options, $error)
+    public static function checkOptions($data, $array_options, $select_type, $error)
     {
+
+        if ($select_type == 'object') {
+
+            $data_array = [];
+
+            foreach ($array_options as $key => $options) {
+
+                array_push($data_array, $options->name);
+            }
+
+            $array_options = $data_array;
+        }
+
         if (!in_array($data, $array_options)) {
 
             self::$array_errors[] = $error;
         }
+
         return true;
     }
 

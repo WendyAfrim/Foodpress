@@ -14,7 +14,6 @@
         <table id="myDatatable">
             <thead>
                 <th>Nom</th>
-                <th>Description</th>
                 <th>Actif</th>
                 <th>Total</th>
                 <th>Crée le</th>
@@ -26,7 +25,6 @@
                     ?>
                         <tr>
                             <td><?= $type->name ?></td>
-                            <td><?= $type->description ?? 'Indéfini'; ?></td>
                             <td><?= $type->is_enable == true ? "Oui" : "Non" ?></td>
                             <td></td>
                             <td><?= $type->created_at  ?></td>

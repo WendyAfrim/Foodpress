@@ -31,6 +31,7 @@ class ProductController
 
 
         if (!empty($_POST)) {
+            // dd($_POST);
             $errors =  FormVerification::check($_POST, $config);
 
             if (empty($errors)) {
