@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\AbstractClass\AbstractForm;
-
+use App\Models\Type;
 
 class ProductForm extends AbstractForm
 {
@@ -16,6 +16,14 @@ class ProductForm extends AbstractForm
         $config = $this->createForm();
         parent::__construct($config);
         $this->renderHtml();
+    }
+
+    public function getProductType()
+    {
+        $type = new Type();
+        $types = $type->findBy(['is_enable' => true]);
+
+        return $types;
     }
 
     public function createForm()
@@ -43,12 +51,13 @@ class ProductForm extends AbstractForm
                 "type" => [
                     "label" => 'Type',
                     "type" => "select",
+                    "select" => 'object',
                     "required" => true,
                     "placeholder" => "Sélectionner le type du produit",
                     // "minLength"=>2,
                     'class' => ['large' => 'col-lg-6', 'medium' => 'col-md-6', 'small' => 'col-xs-12'],
                     'row' => 'end',
-                    "options" => ["Entrée", "Plat", "Dessert", "Boisson"],
+                    "options" => $this->getProductType(),
                     "error" => "Le type ne correspond pas"
                 ],
                 "description" => [

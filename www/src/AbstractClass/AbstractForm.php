@@ -46,7 +46,7 @@ abstract class AbstractForm
 		";
 
 		if ($this->config['form-title']) {
-			$this->html = "<h1>" . $this->config['form-title'] . "</h1>
+			$this->html .= "<h1>" . $this->config['form-title'] . "</h1>
 			";
 		}
 	}
@@ -54,14 +54,27 @@ abstract class AbstractForm
 	public function generateSelect($name, $configInput)
 	{
 
-		$this->html .=
-			"
-		<div class='" . implode(' ', $configInput['class']) . "'>
-		<label>" . $configInput['label'] . "</label>
-		<select class='inputs-design' name='" . $name . "'>";
-		foreach ($configInput["options"] as $option) {
-			$this->html .= "<option>" . $option . "</option>";
+		if (isset($configInput['select']) && $configInput['select'] == 'object') {
+			$this->html .=
+				"
+			<div class='" . implode(' ', $configInput['class']) . "'>
+			<label>" . $configInput['label'] . "</label>
+			<select class='inputs-design' name='" . $name . "'>";
+			foreach ($configInput["options"] as $option) {
+				$this->html .= "<option>" . $option->name . "</option>";
+			}
+		} else {
+			$this->html .=
+				"
+			<div class='" . implode(' ', $configInput['class']) . "'>
+			<label>" . $configInput['label'] . "</label>
+			<select class='inputs-design' name='" . $name . "'>";
+			foreach ($configInput["options"] as $option) {
+				$this->html .= "<option>" . $option . "</option>";
+			}
 		}
+
+
 		$this->html .= "</select></div>";
 	}
 
