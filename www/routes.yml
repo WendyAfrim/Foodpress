@@ -32,4 +32,12 @@
 
 /admin/account/create:
     controller: 'AdminController'
-    action: 'add_admin_account'    
+    action: 'add_admin_account'
+
+/admin/page/add:
+  controller: 'PostController'
+  action: 'add_page'
+
+/admin/pages:
+  controller: 'PostController'
+  action: 'all_pages'
