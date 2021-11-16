@@ -45,10 +45,29 @@ $listOfRoutes = yaml_parse_file("routes.yml");
 
 //Si la route dans le ficheir YAML n'existe pas
 //alors on récupère les informations pour la route 404
-$route = $listOfRoutes[$uri] ?? $listOfRoutes["/404"];
+//$route = $listOfRoutes[$uri] ?? $listOfRoutes["/404"];
+$superRoute = $listOfRoutes['/404'];
 
-$controller = $route["controller"];
-$action = $route["action"];
+if (isset($listOfRoutes[$uri])) {
+
+    $superRoute = $listOfRoutes[$uri];
+    
+} else {
+
+    $dynamicRoutes = yaml_parse_file("dynamic-routes.yml");
+
+    foreach ($dynamicRoutes as $name => $route) {
+        $parsedRoute = preg_replace("/{.*?}/", "(.+)", $name,-1,$count);
+        $parsedRoute = str_replace('/', '\/', $parsedRoute);
+        if (preg_match("/^{$parsedRoute}$/", $uri, $matches)) {
+            unset($matches[0]);
+            $param = $matches[1];
+            $superRoute = $dynamicRoutes[$name];
+        }
+    }
+}
+$controller = $superRoute["controller"];
+$action = $superRoute["action"];
 
 
 //Est-ce que le fichier controller existe
@@ -62,7 +81,11 @@ if (file_exists("src/Controllers/" . $controller . ".php")) {
         $cObject = new $controllerWithNP();
         //Est-ce que la méthode existe 
         if (method_exists($cObject, $action)) {
-            $cObject->$action();
+            if (isset($param)) {
+                $cObject->$action($param);
+            } else {
+                $cObject->$action();
+            }
         } else {
             die("La methode " . $action . " n'existe pas");
         }

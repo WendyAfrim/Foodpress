@@ -1,0 +1,3 @@
+/admin/page/edit/{slug}:
+  controller: 'PostController'
+  action: 'edit_page'
