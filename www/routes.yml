@@ -41,3 +41,7 @@
 /404:
   controller: 'SecurityController'
   action: 'not_found'
+
+/admin/products:
+    controller: 'ProductController'
+    action: 'get_all_products'
