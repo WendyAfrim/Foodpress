@@ -84,4 +84,15 @@ class ProductController
         $view->errors = $errors ?? [];
         $view->title = "Foodpress | Ajouter un type";
     }
+
+    public function get_all_products()
+    {
+        $product = new Product();
+
+        $products = $product->findAll();
+
+        $view = new View('Product/index', 'back-template');
+        $view->title = 'Foodpress | Tous les produits';
+        $view->products = $products;
+    }
 }
