@@ -17,6 +17,7 @@ $pdo = new PDO("mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] 
 ]);
 $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
 $pdo->exec('TRUNCATE TABLE user');
+$pdo->exec('TRUNCATE TABLE posts');
 $pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
 
 $faker = \Faker\Factory::create('fr_FR');
@@ -49,6 +50,27 @@ try {
             "password" => $password
         ]);
         echo "L'utilisateur $firstname $lastname a bien été ajouté<br>";
+    }
+    echo "<br>";
+    for ($i = 0; $i < 50; $i++) {
+        $title = $faker->words(random_int(3,8),true);
+        $slug = $faker->slug;
+        $content = $faker->text;
+        $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
+        $updated_at = $faker->dateTimeThisCentury->format('Y-m-d');
+        $enabled = 1;
+        $type = 'page';
+
+        $request = $pdo->prepare("INSERT INTO posts (title,slug,content,created_at,updated_at,enabled,type) VALUES (:title,:slug,:content,:created_at,:updated_at,:enabled,:type)");
+        $request->execute([
+            "title" => $title,
+            "slug" => $slug,
+            "content" => $content,
+            "created_at" => $created_at,
+            "updated_at" => $updated_at,
+            "enabled" => $enabled,
+            "type" => $type
+        ]);
     }
     echo "<span style='font-weight: bold'>Base de données bien remplie !</span> &#x1F354";
 
