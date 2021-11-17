@@ -13,7 +13,7 @@ class PageForm extends AbstractForm
 
     public function __construct(array $values = null)
     {
-        $config = $this->createForm();
+        $config = self::getConfig();
         if ($values) {
             foreach($values as $field => $value) {
                 $config["inputs"][$field]["value"] = $value;
@@ -23,7 +23,7 @@ class PageForm extends AbstractForm
         $this->renderHtml();
     }
 
-    public function createForm()
+    public static function getConfig()
     {
         return [
             "table" => "posts",
@@ -63,6 +63,9 @@ class PageForm extends AbstractForm
                     "minLength" => 8,
                     "error" => "erreur",
                     'class' => ['col-lg-12', 'col-md-12', 'col-xs-12','my-10'],
+                ],
+                "id" => [
+                    "type" => "hidden"
                 ]
             ]
         ];

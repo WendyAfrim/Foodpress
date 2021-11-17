@@ -17,19 +17,20 @@ class FormVerification
             $password = $data['password'];
         }
 
-
         foreach ($data as $inputKey => $inputValue) {
 
 
             $inputRules = $config['inputs'][$inputKey];
 
-            $error = $inputRules['error'];
+            $error = $inputRules['error'] ?? "";
 
             $table = $config['table'] ?? "";
 
             FormVerification::checkIfEmpy($inputValue, 'Le champ ' . $inputKey . ' est vide.');
 
             if (isset($inputRules['type'])) {
+
+                if ($inputRules['type'] == 'hidden') continue;
 
                 if ($inputRules['type'] == 'email') {
 
@@ -65,8 +66,11 @@ class FormVerification
 
                 try {
                     if (!empty($table)) {
-                        FormVerification::checkUnicity($inputKey, $inputValue, $table);
-                        // throw new Exception("Le paramètre table n'existe pas dans la configuration du formulaire");
+                        if (isset($data['id'])) {
+                            FormVerification::checkUnicity($inputKey, $inputValue, $table, $data['id']);
+                        } else {
+                            FormVerification::checkUnicity($inputKey, $inputValue, $table);
+                        }
                     } else {
                         self::$array_errors[] = "Le paramètre table n'existe pas dans la configuration du formulaire";
                     }
@@ -144,14 +148,17 @@ class FormVerification
 
         return true;
     }
-    public static function checkUnicity($inputKey, $inputValue, $table)
+    public static function checkUnicity($inputKey, $inputValue, $table, $idToExclude = null)
     {
         $conn = Database::getPdo();
-
-        $query = $conn->prepare("SELECT $inputKey FROM $table WHERE $inputKey = ?");
-        $query->bindValue(1, $inputValue);
-        $query->execute();
-        $result = $query->fetchColumn();
+        $query = "SELECT COUNT(1) FROM $table WHERE $inputKey = ?";
+        if ($idToExclude) {
+            $query .= "AND id NOT IN ($idToExclude)";
+        }
+        $statement = $conn->prepare($query);
+        $statement->bindValue(1, $inputValue);
+        $statement->execute();
+        $result = $statement->fetchColumn();
         if ($result) self::$array_errors[] = "La valeur du champ " . $inputKey . " est déja existante";
     }
 }

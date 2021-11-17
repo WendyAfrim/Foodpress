@@ -28,6 +28,8 @@ abstract class AbstractForm
 				$this->generateCaptcha($name, $configInput);
 			} else if ($configInput["type"] == "editor") {
 				$this->generateEditor($name, $configInput);
+			} else if ($configInput["type"] == "hidden") {
+				$this->generateHiddenField($name, $configInput);
 			} else {
 				$this->generateInput($name, $configInput);
 			}
@@ -110,6 +112,9 @@ abstract class AbstractForm
 		";
 	}
 
+	public function generateHiddenField($name, $configInput) {
+		$this->html .= "<input type='hidden' name='" . $name . "' value='" . $configInput['value'] . "'>";
+	}
 
 	public function closeForm()
 	{

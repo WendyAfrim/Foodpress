@@ -4,10 +4,7 @@
 
 namespace App\Controllers;
 
-use App\Core\DateGenerator;
 use App\Core\View;
-use App\Models\Product;
-use App\Form\ProductForm;
 use App\Core\FormVerification;
 use App\Form\PageForm;
 use App\Helpers\Generator;
@@ -25,7 +22,7 @@ class PostController
         $page = new Post;
 
         $form = new PageForm();
-        $config = $form->createForm();
+        $config = PageForm::getConfig();
 
         if (!empty($_POST)) {
 
@@ -57,25 +54,15 @@ class PostController
     }
 
     public function edit_page(string $slug) {
-        var_dump($slug);
         $page = new Post;
         $page = $page->findByOne(['slug' => $slug]);
         if (!$page) {
             header('Location: /admin/pages');
         }
-        $form = new PageForm([
-            "title" => $page->getTitle(),
-            "slug" => $page->getSlug(),
-            "content" => $page->getContent()
-        ]);
-        $config = $form->createForm();
-
+        $config = PageForm::getConfig();
         if (!empty($_POST)) {
-
             $errors = FormVerification::check($_POST, $config);
-
             if (!$errors) {
-
                 $page->setTitle($_POST['title']);
                 $page->setSlug($_POST['slug']);
                 $page->setContent($_POST['content']);
@@ -86,8 +73,16 @@ class PostController
                 $page->save();
             }
         }
+        $form = new PageForm([
+            "id" => $page->getId(),
+            "title" => $page->getTitle(),
+            "slug" => $page->getSlug(),
+            "content" => $page->getContent()
+        ]);
+        
 
         $view = new View('Admin/pages/edit', 'back-template');
+        $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
     }
 }
