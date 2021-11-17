@@ -25,8 +25,8 @@
                         <td><?= $page->getUpdatedAt() ?></td>
                         <td>
                             <div>
-                                <a href="/admin/page/edit/<?= $page->getSlug() ?>"><i class="far fa-edit"></i></a>
-                                <i class="far fa-trash-alt"></i>
+                                <a href="/admin/page/edit/<?= $page->getId() ?>"><i class="far fa-edit"></i></a>
+                                <a href="/admin/page/delete/<?= $page->getId() ?>"><i class="far fa-trash-alt"></i></a>
                             </div>
                         </td>
                     </tr>

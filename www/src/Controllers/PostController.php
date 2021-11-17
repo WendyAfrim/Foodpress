@@ -53,9 +53,9 @@ class PostController
         $view->pages = $pages;
     }
 
-    public function edit_page(string $slug) {
+    public function edit_page($id) {
         $page = new Post;
-        $page = $page->findByOne(['slug' => $slug]);
+        $page = $page->findByOne(['id' => $id]);
         if (!$page) {
             header('Location: /admin/pages');
         }
@@ -84,5 +84,15 @@ class PostController
         $view = new View('Admin/pages/edit', 'back-template');
         $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
+    }
+
+    public function delete_page($id) {
+        $page = new Post;
+        $page = $page->findByOne(['id' => $id]);
+        if (!$page) {
+            header('Location: /admin/pages');
+        }
+        $page->delete($id);
+        header('Location: /admin/pages');
     }
 }
