@@ -36,4 +36,8 @@
 
 /admin/account/create:
     controller: 'AdminController'
-    action: 'add_admin_account'    
+    action: 'add_admin_account'
+
+/404:
+  controller: 'SecurityController'
+  action: 'not_found'

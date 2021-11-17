@@ -86,4 +86,9 @@ class SecurityController
         $view->form = $form->renderHtml();
         $view->title = "Nouvel inscription";
     }
+
+    public function not_found() {
+
+        $view = new View('Security/404', 'front-template');
+    }
 }
