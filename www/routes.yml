@@ -45,3 +45,11 @@
 /admin/products:
     controller: 'ProductController'
     action: 'get_all_products'
+
+/admin/page/add:
+  controller: 'PostController'
+  action: 'add_page'
+
+/admin/pages:
+  controller: 'PostController'
+  action: 'all_pages'

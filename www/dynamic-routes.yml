@@ -1,3 +1,11 @@
 /admin/page/edit/{slug}:
   controller: 'PostController'
   action: 'edit_page'
+
+/admin/page/edit/{id}:
+  controller: 'PostController'
+  action: 'edit_page'
+
+/admin/page/delete/{id}:
+  controller: 'PostController'
+  action: 'delete_page'
