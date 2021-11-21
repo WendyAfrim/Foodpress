@@ -280,6 +280,23 @@ i:hover {
   background-color: #011936;
 }
 
+.btn_modal {
+  padding: 0.2em 2em;
+  border-radius: 5px;
+  border: 1px solid white;
+  text-transform: uppercase;
+  margin: 0.4em;
+  cursor: pointer;
+}
+.btn_modal:hover {
+  background-color: #eaeaea;
+  border: 1px solid #FFF;
+}
+.btn_modal--danger {
+  background-color: #ce0a0a;
+  color: #FFF;
+}
+
 .front-form {
   width: 1064px;
   margin: auto;

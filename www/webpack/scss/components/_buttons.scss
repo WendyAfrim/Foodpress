@@ -52,3 +52,22 @@
         background-color: $night-blue;
     }
 }
+
+.btn_modal {
+    padding: 0.2em 2em;
+    border-radius: 5px;
+    border: 1px solid white;
+    text-transform: uppercase;
+    margin: 0.4em;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lighten($dark-grey, 65%);
+        border: 1px solid $white;
+    }
+
+    &--danger {
+        background-color: $red;
+        color: $white;
+    }
+}

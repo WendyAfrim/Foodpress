@@ -1,3 +1,8 @@
 /admin/page/edit/{slug}:
   controller: 'PostController'
   action: 'edit_page'
+
+# Clients
+/admin/client/delete/{id}:
+  controller: 'ClientController'
+  action: 'delete'

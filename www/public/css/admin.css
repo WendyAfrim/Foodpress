@@ -350,6 +350,23 @@ main {
   background-color: #011936;
 }
 
+.btn_modal {
+  padding: 0.2em 2em;
+  border-radius: 5px;
+  border: 1px solid white;
+  text-transform: uppercase;
+  margin: 0.4em;
+  cursor: pointer;
+}
+.btn_modal:hover {
+  background-color: #eaeaea;
+  border: 1px solid #FFF;
+}
+.btn_modal--danger {
+  background-color: #ce0a0a;
+  color: #FFF;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -732,4 +749,71 @@ header {
 
 #myDatatable {
   text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%) scale(0);
+  border: 1px solid #FFF;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 10;
+  background-color: #FFF;
+  width: 500px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #AAA;
+}
+
+.modal-header title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 30px 25px;
+  text-align: center;
+}
+
+.modal-footer {
+  border-top: 1px solid #AAA;
+  display: flex;
+  justify-content: right;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }
