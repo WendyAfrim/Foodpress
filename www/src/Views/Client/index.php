@@ -39,7 +39,7 @@
     <div id="modal" class="modal ">
         <div class="modal-header">
             <div class="title">Attention !</div>
-            <div class="close-button" data-close-button>&times;</div>
+            <div class="close-button" data-close-button="#modal">&times;</div>
         </div>
         <div class="modal-body">
             Souhaitez-vous supprimer ce client ?
@@ -67,8 +67,8 @@
 
     $(document).on('click', $("[data-close-button]"), function() {
         var modal = $('#modal');
-        console.log(modal)
-        closeModal(modal)
+        console.log($("[data-close-button]"));
+        closeModal(modal);
     })
 
 

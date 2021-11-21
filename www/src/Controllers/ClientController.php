@@ -11,7 +11,7 @@ class ClientController
     {
         $user = new User();
 
-        $users = $user->findBy(['roles' => "['ROLE_CLIENT']"]);
+        $users = $user->findBy(['roles' => "client"]);
 
         $view = new View('Client/index', 'back-template');
         $view->title = 'Foodpress | Tous les clients';
@@ -21,7 +21,7 @@ class ClientController
     public function delete(int $id): void
     {
         $user = new User();
-        $users = $user->findAll();
+        $users = $user->findBy(['roles' => "client"]);
 
         $user = $user->find($id);
 
