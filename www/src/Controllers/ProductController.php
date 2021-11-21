@@ -95,4 +95,39 @@ class ProductController
         $view->title = 'Foodpress | Tous les produits';
         $view->products = $products;
     }
+
+    public function update_product(int $id): void
+    {
+        $product = new Product();
+
+        $form = new ProductForm;
+        $config = $form->createForm();
+
+        $date = Generator::generateDate();
+
+        $product = $product->findBy($id);
+
+
+
+        if (!empty($_POST)) {
+            // dd($_POST);
+            $errors =  FormVerification::check($_POST, $config);
+
+            if (empty($errors)) {
+                $product->setName(htmlentities($_POST['name']));
+                $product->setType(htmlentities($_POST['type']));
+                $product->setDescription(htmlentities($_POST['description']));
+                $product->setPrice(htmlentities($_POST['price']));
+                $product->setIngredients(htmlentities($_POST['ingredients']));
+                $product->setImage(htmlentities($_POST['image']));
+                $product->setCreatedAt($date);
+
+                $product->save();
+            }
+        }
+
+        $view = new View('Product/update-product', 'back-template');
+        $view->form = $form->renderHtml();
+        $view->title = "Foodpress | Modifier un produit";
+    }
 }

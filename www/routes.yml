@@ -14,6 +14,10 @@
   controller: "ProductController"
   action: "add_product"
 
+/admin/product/update:
+  controller: "ProductController"
+  action: "update_product"
+
 /admin/type/create: 
   controller: "ProductController"
   action: "add_type"
