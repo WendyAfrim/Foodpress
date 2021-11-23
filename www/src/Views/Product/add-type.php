@@ -41,3 +41,10 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        var container = $('#container');
+        container.removeClass('container');
+        console.log($('.container'))
+    })
+</script>

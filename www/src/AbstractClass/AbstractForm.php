@@ -19,7 +19,7 @@ abstract class AbstractForm
 			if (isset($configInput['row'])) {
 				if ($configInput['row'] == 'start' || $configInput['row'] == 'start_end') {
 					$this->html .= "<div class='row'>";
-				}	
+				}
 			}
 
 			if ($configInput["type"] == "select") {
@@ -39,7 +39,7 @@ abstract class AbstractForm
 			if (isset($configInput['row'])) {
 				if ($configInput['row'] == 'end' || $configInput['row'] == 'start_end') {
 					$this->html .= "</div>";
-				}	
+				}
 			}
 		}
 		$this->closeForm();
@@ -48,9 +48,9 @@ abstract class AbstractForm
 	public function initForm()
 	{
 		$this->html = "
-		<div class='container'>
+		<div class='container' id='container'>
 			<form id=" . ($this->config['form-id'] ?? "") . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' accept-charset='utf-8'>"
-		 . (isset($this->config['form-title']) ? "<h1>{$this->config['form-title']}</h1>" : "");
+			. (isset($this->config['form-title']) ? "<h1>{$this->config['form-title']}</h1>" : "");
 	}
 
 	public function generateSelect($name, $configInput)
@@ -115,7 +115,8 @@ abstract class AbstractForm
 		></div>";
 	}
 
-	public function generateEditor($name, $configInput) {
+	public function generateEditor($name, $configInput)
+	{
 		$this->html .= "
 		<div class='" . implode(' ', $configInput['class']) . "'>
 		<textarea id='editor' name='" . $name . "' placeholder='" . $configInput['placeholder'] . "'>" . htmlspecialchars($configInput["value"] ?? "", ENT_QUOTES) . "</textarea>
@@ -136,7 +137,8 @@ abstract class AbstractForm
 		";
 	}
 
-	public function generateHiddenField($name, $configInput) {
+	public function generateHiddenField($name, $configInput)
+	{
 		$this->html .= "<input type='hidden' name='" . $name . "' value='" . $configInput['value'] . "'>";
 	}
 
@@ -145,7 +147,6 @@ abstract class AbstractForm
 
 		$this->html .= "<div class='submit_row my-6'><input class='submit_button my-6' type='submit' value='" . htmlspecialchars($this->config["submit"] ?? "Valider", ENT_QUOTES) . "'></div>";
 		$this->html .= "</form></div>";
-
 	}
 
 
