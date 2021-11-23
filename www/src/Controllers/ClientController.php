@@ -11,7 +11,7 @@ class ClientController
     {
         $user = new User();
 
-        $users = $user->findBy(['roles' => "['ROLE_CLIENT']"]);
+        $users = $user->findBy(['roles' => "client"]);
 
         $view = new View('Client/index', 'back-template');
         $view->title = 'Foodpress | Tous les clients';
