@@ -13,7 +13,7 @@ class ClientController
 
         $users = $user->findBy(['roles' => "client"]);
 
-        $view = new View('Client/index', 'back-template');
+        $view = new View('Admin/Client/index', 'back-template');
         $view->title = 'Foodpress | Tous les clients';
         $view->users = $users;
     }
@@ -25,10 +25,12 @@ class ClientController
 
         $user = $user->find($id);
 
+        if (!$user) {
+            // header('Location : /admin/clients');
+        }
+
         $user->delete($id);
 
-        $view = new View('Client/index', 'back-template');
-        $view->title = 'Foodpress | Tous les clients';
-        $view->users = $users;
+        // header('Location : /admin/clients');
     }
 }

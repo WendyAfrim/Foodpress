@@ -27,7 +27,7 @@
                             <div>
                                 <i class="far fa-envelope"></i>
                                 <i class="far fa-edit"></i>
-                                <i class='far fa-trash-alt btn-modal' data-modal-target="#modal"></i>
+                                <i class='far fa-trash-alt btn-trash' data-user-id=<?= $user->id ?>></i>
                             </div>
                         </td>
                     </tr>
@@ -36,51 +36,44 @@
             <?php } ?>
         </tbody>
     </table>
-    <div id="modal" class="modal ">
+    <div id="modal" class="modal">
         <div class="modal-header">
             <div class="title">Attention !</div>
-            <div class="close-button" data-close-button="#modal">&times;</div>
+            <div class="btn-close" data-close-button="#modal">&times;</div>
         </div>
         <div class="modal-body">
-            Souhaitez-vous supprimer ce client ?
+            Etes-vous sur de vouloir supprimer ce client ?
         </div>
         <div class="modal-footer">
-            <?php echo  "<a href='/admin/client/delete/{$user->id}' class='btn_modal btn_modal--danger' data-modal-target='#modal'>Oui</a>"; ?>
-            <button class="btn_modal">Non</button>
+            <?php echo  "<a href='/admin/client/delete/{$user->id}' id='btn-consent' class='btn_modal btn_modal--danger'>Oui</a>"; ?>
+            <button class="btn_modal btn-close">Non</button>
         </div>
     </div>
     <div id="overlay"></div>
 </div>
 <script>
-    var btn_close = $("[data-close-button]");
     var overlay = $('#overlay');
 
 
-    $(document).on('click', $("[data-modal-target]"), function(e) {
+    $(document).ready(function() {
+        $('.btn-trash').click(function() {
+            var that = $(this);
+            var user_id = that.attr('data-user-id');
 
-        var that = $(this);
-        var modal = $('#modal');
+            var btn_consent = $('#btn-consent');
+            var href = '/admin/client/delete/' + user_id
 
-        openModal(modal);
-    })
+            btn_consent.attr('href', href);
 
+            console.log(btn_consent);
 
-    $(document).on('click', $("[data-close-button]"), function() {
-        var modal = $('#modal');
-        console.log($("[data-close-button]"));
-        closeModal(modal);
-    })
+            $('#modal').addClass("active");
+            overlay.addClass("active");
+        });
 
-
-    function closeModal(modal) {
-        if (modal == null) return
-        modal.remove('active')
-        overlay.remove('active')
-    }
-
-    function openModal(modal) {
-        if (modal == null) return
-        modal.addClass('active');
-        overlay.addClass('active');
-    }
+        $('.btn-close').click(function() {
+            $('#modal').removeClass("active");
+            overlay.removeClass("active");
+        });
+    });
 </script>

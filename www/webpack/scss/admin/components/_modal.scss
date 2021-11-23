@@ -14,7 +14,7 @@
 }
 
 .modal.active {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -100%) scale(1);
 }
 
 .modal-header {
@@ -48,6 +48,7 @@
     border-top: 1px solid $grey;
     display: flex;
     justify-content: right;
+    padding: 0.5em;
 }
 
 #overlay {
@@ -64,4 +65,8 @@
 #overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+.btn-close {
+    cursor: pointer;
 }
