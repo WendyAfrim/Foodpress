@@ -14,6 +14,10 @@
   controller: "ProductController"
   action: "add_product"
 
+/admin/product/delete/{id}:
+  controller: "ProductController"
+  action: "delete_product"
+
 /admin/type/create: 
   controller: "ProductController"
   action: "add_type"
@@ -44,7 +48,7 @@
 
 /admin/products:
     controller: 'ProductController'
-    action: 'get_all_products'
+    action: 'all_products'
 
 /admin/page/add:
   controller: 'PostController'

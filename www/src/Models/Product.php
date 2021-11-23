@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\AbstractClass\AbstractModel;
+use DateTime;
 
 class Product extends AbstractModel
 {
@@ -177,10 +178,10 @@ class Product extends AbstractModel
      *
      * @return string
      */
-    public function getCreatedAt(): date
+    public function getCreatedAt(): DateTime
     {
 
-        return $this->$created_at;
+        return $this->created_at;
     }
 
     /**

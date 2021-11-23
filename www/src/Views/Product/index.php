@@ -30,9 +30,9 @@
                         <td><?= $product->created_at; ?></td>
                         <td>
                             <div>
-                                <i class="far fa-envelope"></i>
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
+                                <i class="far fa-envelope"></i></a>
+                                <a href="/admin/page/edit/<?= $page->getId() ?>"><i class="far fa-edit"></i></a>
+                                <a href="/admin/page/delete/<?= $page->getId() ?>"><i class="far fa-trash-alt"></i>
                             </div>
                         </td>
                     </tr>

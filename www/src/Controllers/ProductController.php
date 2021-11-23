@@ -85,7 +85,7 @@ class ProductController
         $view->title = "Foodpress | Ajouter un type";
     }
 
-    public function get_all_products()
+    public function all_products()
     {
         $product = new Product();
 
@@ -94,5 +94,15 @@ class ProductController
         $view = new View('Product/index', 'back-template');
         $view->title = 'Foodpress | Tous les produits';
         $view->products = $products;
+    }
+
+    public function delete_product($id) {
+        $product = new Product;
+        $product = $product->findByOne(['id' => $id]);
+        if (!$product) {
+            header('Location: /admin/products');
+        }
+        $product->delete($id);
+        header('Location: /admin/products');
     }
 }
