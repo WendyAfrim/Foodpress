@@ -177,11 +177,11 @@
                 <a href="/dashboard"><i class="fas fa-home"></i></a>
             </div>
         </header>
-        <div class="container">
-            <main>
-                <?= require $this->view; ?>
-            </main>
-        </div>
+        <!-- <div class="container"> -->
+        <main>
+            <?= require $this->view; ?>
+        </main>
+        <!-- </div> -->
     </div>
 </body>
 
