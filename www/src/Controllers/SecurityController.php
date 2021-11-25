@@ -63,7 +63,7 @@ class SecurityController
                 $user->setLastname(htmlentities($_POST['lastname']));
                 $user->setEmail(htmlentities($_POST['email']));
                 $user->setPassword(htmlentities($_POST['password']));
-                $user->setRoles("['ROLE_CLIENT']");
+                $user->setRoles("client");
                 $user->setAdress(htmlentities($_POST['address']));
                 $user->setZipcode(htmlentities($_POST['zipcode']));
                 $user->setCity(htmlentities($_POST['city']));
@@ -87,7 +87,8 @@ class SecurityController
         $view->title = "Nouvel inscription";
     }
 
-    public function not_found() {
+    public function not_found()
+    {
 
         $view = new View('Security/404', 'front-template');
     }

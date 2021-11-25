@@ -7,16 +7,16 @@ use App\AbstractClass\AbstractModel;
 class Product extends AbstractModel
 {
 
-    protected $table = 'product';
+    public $table = 'product';
 
-    protected $id = null;
-    protected $name;
-    protected $type;
-    protected $description;
-    protected $price;
-    protected $ingredients;
-    protected $image;
-    protected $created_at;
+    public $id = null;
+    public $name;
+    public $type;
+    public $description;
+    public $price;
+    public $ingredients;
+    public $image;
+    public $created_at;
 
 
     /**
@@ -44,7 +44,7 @@ class Product extends AbstractModel
      *
      * @return void
      */
-    public function setId($id): int
+    public function setId($id): void
     {
         $this->id = $id;
     }

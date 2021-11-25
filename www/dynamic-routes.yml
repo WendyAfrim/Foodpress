@@ -11,3 +11,10 @@
 /admin/ajax/delete/client/{id}:
   controller: 'AjaxController' 
   action: 'delete_client'
+/admin/page/edit/{id}:
+  controller: 'PostController'
+  action: 'edit_page'
+
+/admin/page/delete/{id}:
+  controller: 'PostController'
+  action: 'delete_page'

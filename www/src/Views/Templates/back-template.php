@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../public/css/admin.css">
+    <link rel="stylesheet" href="../../../public/css/main.css">
     <!-- Icons CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!--  JQuery CDN -->
@@ -12,6 +13,7 @@
     <!-- Datatables CDN -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
     <title><?= $this->data['title'] ?></title>
 </head>
 
@@ -69,13 +71,13 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/admin/page/add">
                             <i class="far fa-file"></i>
                             Créer
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/admin/pages">
                             <i class="fas fa-grip-vertical"></i>
                             Toutes les pages
                         </a>
@@ -175,11 +177,11 @@
                 <a href="/dashboard"><i class="fas fa-home"></i></a>
             </div>
         </header>
-        <div class="container">
-            <main>
-                <?= require $this->view; ?>
-            </main>
-        </div>
+        <!-- <div class="container"> -->
+        <main>
+            <?= require $this->view; ?>
+        </main>
+        <!-- </div> -->
     </div>
 </body>
 

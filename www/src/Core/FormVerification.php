@@ -17,62 +17,57 @@ class FormVerification
             $password = $data['password'];
         }
 
-
         foreach ($data as $inputKey => $inputValue) {
 
             $inputRules = $config['inputs'][$inputKey];
 
-            $error = $inputRules['error'];
+            $error = $inputRules['error'] ?? "";
 
             $table = $config['table'] ?? "";
 
+            if ($inputRules['type'] == 'hidden') continue;
+
             if ($inputRules['required'] == true) {
-
                 FormVerification::checkIfRequired($inputValue, 'Le champ ' . $inputKey . ' est requis.');
+            }
 
-                if (isset($inputRules['type'])) {
+            if (isset($inputRules['type'])) {
+                if ($inputRules['type'] == 'email') {
 
-                    if ($inputRules['type'] == 'email') {
+                    FormVerification::checkEmail($inputValue, $error);
+                } else if ($inputRules['type'] == 'select') {
 
-                        FormVerification::checkEmail($inputValue, $error);
-                    } else if ($inputRules['type'] == 'select') {
-                        $select_type = $inputRules['select'];
-                        $options = $inputRules['options'];
-                        FormVerification::checkOptions($inputValue, $options, $select_type, $error);
-                    }
-                }
-
-
-                if (isset($inputRules['minLength'])) {
-                    $lengthValue = $inputRules['minLength'];
-                    FormVerification::checkMinLength($inputValue, $error, $lengthValue);
-                }
-
-                if (isset($inputRules['maxLength'])) {
-                    $lengthValue = $inputRules['maxLength'];
-                    FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
-                }
-                if (isset($inputRules['confirm'])) {
-                    $password = $data['password'];
-                    FormVerification::checkConfirmPassword($inputValue, $password, $error);
-                }
-
-                if (isset($inputRules['unicity']) && $inputRules['unicity']) {
-
-                    try {
-                        if (!empty($table)) {
-                            FormVerification::checkUnicity($inputKey, $inputValue, $table);
-                            // throw new Exception("Le paramètre table n'existe pas dans la configuration du formulaire");
-                        } else {
-                            self::$array_errors[] = "Le paramètre table n'existe pas dans la configuration du formulaire";
-                        }
-                    } catch (\Exception $e) {
-                        echo $e->getMessage();
-                    }
+                    FormVerification::checkOptions($inputValue, $inputRules, $error);
                 }
             }
-            return self::$array_errors;
+
+            if (isset($inputRules['minLength'])) {
+                $lengthValue = $inputRules['minLength'];
+                FormVerification::checkMinLength($inputValue, $error, $lengthValue);
+            }
+
+            if (isset($inputRules['maxLength'])) {
+                $lengthValue = $inputRules['maxLength'];
+                FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
+            }
+            if (isset($inputRules['confirm'])) {
+                $password = $data['password'];
+                FormVerification::checkConfirmPassword($inputValue, $password, $error);
+            }
+
+            if (isset($inputRules['unicity']) && $inputRules['unicity']) {
+                if (!empty($table)) {
+                    if (isset($data['id'])) {
+                        FormVerification::checkUnicity($inputKey, $inputValue, $table, $data['id']);
+                    } else {
+                        FormVerification::checkUnicity($inputKey, $inputValue, $table);
+                    }
+                } else {
+                    self::$array_errors[] = "Le paramètre table n'existe pas dans la configuration du formulaire";
+                }
+            }
         }
+        return self::$array_errors;
     }
 
     public static function checkIfRequired($field, $error)
@@ -110,26 +105,32 @@ class FormVerification
         }
     }
 
-    public static function checkOptions($data, $array_options, $select_type, $error)
+    public static function checkOptions($data, $config, $error)
     {
 
-        if ($select_type == 'object') {
+        if (isset($config['select']) && $config['select'] == 'object') {
 
+            $array_options = $config['options'];
             $data_array = [];
 
-            foreach ($array_options as $key => $options) {
+            foreach ($array_options as $options) {
 
                 array_push($data_array, $options->name);
             }
 
             $array_options = $data_array;
+
+            if (!in_array($data, $array_options)) {
+                self::$array_errors[] = $error;
+            }
+        } else {
+
+            $array_options = $config['options'];
+
+            if (!in_array($data, $array_options)) {
+                self::$array_errors[] = $error;
+            }
         }
-
-        if (!in_array($data, $array_options)) {
-
-            self::$array_errors[] = $error;
-        }
-
         return true;
     }
 
@@ -142,14 +143,17 @@ class FormVerification
 
         return true;
     }
-    public static function checkUnicity($inputKey, $inputValue, $table)
+    public static function checkUnicity($inputKey, $inputValue, $table, $idToExclude = null)
     {
         $conn = Database::getPdo();
-
-        $query = $conn->prepare("SELECT $inputKey FROM $table WHERE $inputKey = ?");
-        $query->bindValue(1, $inputValue);
-        $query->execute();
-        $result = $query->fetchColumn();
+        $query = "SELECT COUNT(1) FROM $table WHERE $inputKey = ?";
+        if ($idToExclude) {
+            $query .= "AND id NOT IN ($idToExclude)";
+        }
+        $statement = $conn->prepare($query);
+        $statement->bindValue(1, $inputValue);
+        $statement->execute();
+        $result = $statement->fetchColumn();
         if ($result) self::$array_errors[] = "La valeur du champ " . $inputKey . " est déja existante";
     }
 }
