@@ -1,3 +1,4 @@
+# Security
 /login:
   controller: "SecurityController"
   action: "login"
@@ -6,29 +7,11 @@
   controller: "SecurityController"
   action: "register"
 
-/cart:
-    controller: "CartController"
-    action: "confirm_order"
+/404:
+  controller: 'SecurityController'
+  action: 'not_found'
 
-/admin/product/create:
-  controller: "ProductController"
-  action: "add_product"
-
-/admin/type/create: 
-  controller: "ProductController"
-  action: "add_type"
-
-/dashboard:
-    controller: "DashboardController"
-    action: "dashboard"
-
-/form-create-email-template:
-    controller: 'EmailController'
-    action: 'setTemplate'
-  
-/admin/clients:
-    controller: 'ClientController'
-    action: 'all_clients'
+# Admin 
 
 /admin/accounts:
     controller: 'AdminController'
@@ -38,14 +21,42 @@
     controller: 'AdminController'
     action: 'add_admin_account'
 
-/404:
-  controller: 'SecurityController'
-  action: 'not_found'
+# Cart     
+/cart:
+    controller: "CartController"
+    action: "confirm_order"
+  
+# Dashboard
+/dashboard:
+    controller: "DashboardController"
+    action: "dashboard"
 
+# Email    
+/add_email_template:
+    controller: 'EmailController'
+    action: 'setTemplate'
+
+# Client    
+/admin/clients:
+    controller: 'ClientController'
+    action: 'all_clients'
+
+
+# Product
 /admin/products:
     controller: 'ProductController'
-    action: 'get_all_products'
+    action: 'all_products'
 
+/admin/product/create:
+  controller: "ProductController"
+  action: "add_product"
+
+/admin/type/create: 
+  controller: "ProductController"
+  action: "add_product_type"
+
+
+# Page
 /admin/page/add:
   controller: 'PostController'
   action: 'add_page'

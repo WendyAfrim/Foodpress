@@ -38,19 +38,19 @@ class TypeForm extends AbstractForm
                     'row' => 'start_end',
                     "error" => "Le nom du produit doit faire entre 2 et 32 caractères"
                 ],
-                'description' => [
-                    "label" => "Description",
-                    "type" => "textarea",
-                    "required" => false,
-                    "placeholder" => "",
-                    "minLength" => 2,
-                    "maxLength" => 150,
-                    'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
-                    'row' => 'start_end',
-                    'rows' => 5,
-                    "cols" => 33,
-                    "error" => "La description du produit doit faire entre 2 et 150 caractères"
-                ],
+                // 'description' => [
+                //     "label" => "Description",
+                //     "type" => "textarea",
+                //     "required" => false,
+                //     "placeholder" => "",
+                //     "minLength" => 2,
+                //     "maxLength" => 150,
+                //     'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
+                //     'row' => 'start_end',
+                //     'rows' => 5,
+                //     "cols" => 33,
+                //     "error" => "La description du produit doit faire entre 2 et 150 caractères"
+                // ],
             ]
         ];
     }

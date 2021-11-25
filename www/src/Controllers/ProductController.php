@@ -17,6 +17,22 @@ class ProductController
 {
 
     /**
+     * All products in datable
+     *
+     * @return void
+     */
+    public function all_products()
+    {
+        $product = new Product();
+
+        $products = $product->findAll();
+
+        $view = new View('Product/index', 'back-template');
+        $view->title = 'Foodpress | Tous les produits';
+        $view->products = $products;
+    }
+
+    /**
      * Page du formulaire pour la création des produits par le restaurateur
      * 
      */
@@ -31,7 +47,6 @@ class ProductController
 
 
         if (!empty($_POST)) {
-            // dd($_POST);
             $errors =  FormVerification::check($_POST, $config);
 
             if (empty($errors)) {
@@ -53,7 +68,7 @@ class ProductController
     }
 
 
-    public function add_type(): void
+    public function add_product_type(): void
     {
 
         $type = new Type();
@@ -83,16 +98,5 @@ class ProductController
         $view->types = $types;
         $view->errors = $errors ?? [];
         $view->title = "Foodpress | Ajouter un type";
-    }
-
-    public function get_all_products()
-    {
-        $product = new Product();
-
-        $products = $product->findAll();
-
-        $view = new View('Product/index', 'back-template');
-        $view->title = 'Foodpress | Tous les produits';
-        $view->products = $products;
     }
 }
