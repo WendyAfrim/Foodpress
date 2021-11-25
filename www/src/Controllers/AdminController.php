@@ -23,7 +23,7 @@ class AdminController
 
         $users = $user->findBy(['roles' => "['ROLE_ADMIN']"]);
 
-        $view = new View('Admin/index', 'back-template');
+        $view = new View('Admin/User/index', 'back-template');
         $view->title = 'Foodpress | Tous les comptes';
         $view->users = $users;
     }
@@ -43,6 +43,8 @@ class AdminController
         $date = Generator::generateDate();
         $randomPassword = Generator::generatePassword(8);
 
+        $errors = [];
+
         if (!empty($_POST)) {
 
             $errors = FormVerification::check($_POST, $config);
@@ -61,7 +63,7 @@ class AdminController
         }
 
 
-        $view = new View('Admin/add_user', 'back-template');
+        $view = new View('Admin/User/add_admin_account', 'back-template');
         $view->errors = $errors;
         $view->form = $form->renderHtml();
         $view->title = 'Formulaire | Ajout d\'un compte';
