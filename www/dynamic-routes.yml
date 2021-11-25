@@ -6,3 +6,8 @@
 /admin/client/delete/{id}:
   controller: 'ClientController'
   action: 'delete'
+
+# Ajax 
+/admin/ajax/delete/client/{id}:
+  controller: 'AjaxController' 
+  action: 'delete_client'

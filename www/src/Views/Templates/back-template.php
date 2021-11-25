@@ -184,8 +184,7 @@
 </body>
 
 </html>
-<script>
-    $(document).ready(function() {
-        $('#myDatatable').DataTable();
-    });
-</script>
+<!-- Modal -->
+<script src="../../../public/js/modal.js"></script>
+<!-- Datatable -->
+<script src="../../../public/js/datatable.js"></script>

@@ -27,8 +27,9 @@
                             <div>
                                 <i class="far fa-envelope"></i>
                                 <i class="far fa-edit"></i>
-                                <i class='far fa-trash-alt btn-trash' data-user-id=<?= $user->id ?>></i>
+                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= $user->id  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_client'></i>"; ?>
                             </div>
+                            <p id="#message" style="display: none;">Etes-vous sur de vouloir supprimer ce client? </p>
                         </td>
                     </tr>
                     </tr>
@@ -36,44 +37,6 @@
             <?php } ?>
         </tbody>
     </table>
-    <div id="modal" class="modal">
-        <div class="modal-header">
-            <div class="title">Attention !</div>
-            <div class="btn-close" data-close-button="#modal">&times;</div>
-        </div>
-        <div class="modal-body">
-            Etes-vous sur de vouloir supprimer ce client ?
-        </div>
-        <div class="modal-footer">
-            <?php echo  "<a href='/admin/client/delete/{$user->id}' id='btn-consent' class='btn_modal btn_modal--danger'>Oui</a>"; ?>
-            <button class="btn_modal btn-close">Non</button>
-        </div>
-    </div>
+    <div id="modal" class="modal"></div>
     <div id="overlay"></div>
 </div>
-<script>
-    var overlay = $('#overlay');
-
-
-    $(document).ready(function() {
-        $('.btn-trash').click(function() {
-            var that = $(this);
-            var user_id = that.attr('data-user-id');
-
-            var btn_consent = $('#btn-consent');
-            var href = '/admin/client/delete/' + user_id
-
-            btn_consent.attr('href', href);
-
-            console.log(btn_consent);
-
-            $('#modal').addClass("active");
-            overlay.addClass("active");
-        });
-
-        $('.btn-close').click(function() {
-            $('#modal').removeClass("active");
-            overlay.removeClass("active");
-        });
-    });
-</script>

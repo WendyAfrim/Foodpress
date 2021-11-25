@@ -41,3 +41,8 @@
 /404:
   controller: 'SecurityController'
   action: 'not_found'
+
+# Ajax
+/admin/ajax/open_modal:
+  controller: 'AjaxController'
+  action: 'open_modal'
