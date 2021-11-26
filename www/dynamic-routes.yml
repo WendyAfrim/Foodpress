@@ -20,6 +20,11 @@
   controller: 'PostController'
   action: 'delete_page'
 
+# Product 
 /admin/product/update/{id}:
   controller: "ProductController"
   action: "update_product"
+
+/admin/product/delete/{id}:
+  controller: "ProductController"
+  action: "delete_product"
