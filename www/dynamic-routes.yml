@@ -9,3 +9,7 @@
 /admin/page/delete/{id}:
   controller: 'PostController'
   action: 'delete_page'
+
+/admin/product/update/{id}:
+  controller: "ProductController"
+  action: "update_product"

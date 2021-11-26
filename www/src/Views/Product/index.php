@@ -16,23 +16,22 @@
         </thead>
         <tbody>
             <?php if (!empty($products)) { ?>
-                <?php foreach ($products as $key => $product) {
+                <?php foreach ($products as $product) {
                 ?>
 
                     <tr>
-                        <td><?= $key; ?></td>
-                        <td><?= $product->name; ?></td>
-                        <td><?= $product->type; ?></td>
-                        <td><?= $product->description; ?></td>
-                        <td><?= $product->price; ?></td>
-                        <td><?= $product->ingredients; ?></td>
-                        <td><?= $product->image; ?></td>
-                        <td><?= $product->created_at; ?></td>
+                        <td><?= $product->getId(); ?></td>
+                        <td><?= $product->getName(); ?></td>
+                        <td><?= $product->getType(); ?></td>
+                        <td><?= $product->getDescription(); ?></td>
+                        <td><?= $product->getPrice(); ?></td>
+                        <td><?= $product->getIngredients(); ?></td>
+                        <td><?= $product->getImage(); ?></td>
+                        <td><?= $product->getCreatedAt(); ?></td>
                         <td>
                             <div>
-                                <i class="far fa-envelope"></i>
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
+                                <a href="/admin/product/update/<?= $product->getId() ?>"><i class="far fa-edit"></i></a>
+                                <a href="/admin/product/delete/<?= $product->getId() ?>"><i class="far fa-trash-alt"></i>
                             </div>
                         </td>
                     </tr>

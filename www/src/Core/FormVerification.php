@@ -140,6 +140,7 @@ class FormVerification
 
         return true;
     }
+
     public static function checkUnicity($inputKey, $inputValue, $table, $idToExclude = null)
     {
         $conn = Database::getPdo();
