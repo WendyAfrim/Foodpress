@@ -26,7 +26,7 @@
                         <td>
                             <div>
                                 <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
+                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= $user->id  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_admin'></i>"; ?>
                             </div>
                         </td>
                     </tr>
@@ -34,4 +34,6 @@
             <?php } ?>
         </tbody>
     </table>
+    <div id="modal" class="modal"></div>
+    <div id="overlay"></div>
 </div>

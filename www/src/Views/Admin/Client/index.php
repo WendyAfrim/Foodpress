@@ -26,10 +26,9 @@
                         <td>
                             <div>
                                 <i class="far fa-envelope"></i>
-                                <i class="far fa-edit"></i>
+                                <!-- <i class="far fa-edit"></i> -->
                                 <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= $user->id  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_client'></i>"; ?>
                             </div>
-                            <p id="#message" style="display: none;">Etes-vous sur de vouloir supprimer ce client? </p>
                         </td>
                     </tr>
                     </tr>

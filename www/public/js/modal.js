@@ -3,16 +3,17 @@ $(document).ready(function(){
     $('.btn-trash').click(function(){
 
         var that = $(this);
-        var url = that.attr('data-ajax-url');
+        var ajax_url = that.attr('data-ajax-url');
 
         var item_id = that.attr('data-item-id');
+
         // Requête pour ouvrir la modal
         // Target du path indiqué 
         // Récupération du contenu de la route
         $.ajax({
             type: 'POST',
-            url: url,
-            data: { filename : that.attr('data-ajax-filename')  },
+            url: ajax_url,
+            data: { filename : that.attr('data-ajax-filename') },
             success: function(result, status, xhr){
           
             openModal(result, item_id);
@@ -41,7 +42,7 @@ $(document).ready(function(){
         $('#overlay').addClass('active');
         $('#modal').html(result);
         
-        $('.btn-delete').attr('data-ajax-url', '/admin/ajax/delete/client/' + item_id);
+        $('.btn-delete').attr('data-ajax-url', '/admin/ajax/delete/' + item_id);
     }
 
     function closeModal() {
@@ -51,14 +52,18 @@ $(document).ready(function(){
 
     function deleteItem(that) {
 
-        url = that.attr('data-ajax-url');
+        ajax_url = that.attr('data-ajax-url');
+        redirection_url = that.attr('data-url');
+        console.log(redirection_url);
+
         $.ajax({
-            // Requête ajax renvoyant vers l'url indiqué
+            // Requête ajax appelant la fonction delete() de l'AjaxController
             type: 'POST',
-            url: url,
+            url: ajax_url,
+            data: { entity : that.attr('data-ajax-class') },
             success: function(result, status, xhr){
-                // alert('Well done');
-                location.href = '/admin/clients';
+                
+                location.href =  redirection_url;
             }, 
             error: function(xhr, status, error)
             {

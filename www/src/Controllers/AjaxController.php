@@ -14,15 +14,19 @@ class AjaxController
         echo file_get_contents($path);
     }
 
-    public function delete_client($id)
+    public function delete($id)
     {
-        $client = new User();
-        $client = $client->findByOne(['id' => $id]);
+        $class = ucfirst($_POST['entity']);
 
-        if (!$client) {
+        $class = 'App\Models\\' . $class;
+        $object = new $class();
+
+        $object = $object->findByOne(['id' => $id]);
+
+        if (!$object) {
             echo 'Le client n\'existe pas';
         }
 
-        $client->delete($id);
+        $object->delete($id);
     }
 }

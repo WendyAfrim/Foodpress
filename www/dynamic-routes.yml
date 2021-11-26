@@ -8,9 +8,10 @@
   action: 'delete'
 
 # Ajax 
-/admin/ajax/delete/client/{id}:
+/admin/ajax/delete/{id}:
   controller: 'AjaxController' 
-  action: 'delete_client'
+  action: 'delete'
+
 /admin/page/edit/{id}:
   controller: 'PostController'
   action: 'edit_page'
