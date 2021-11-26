@@ -14,10 +14,10 @@
         </thead>
         <tbody>
             <?php if (!empty($users)) { ?>
-                <?php foreach ($users as $key => $user) {
+                <?php foreach ($users as $user) {
                 ?>
                     <tr>
-                        <td><?= $key; ?></td>
+                    <td><?= $user->id; ?></td>
                         <td><?= $user->firstname; ?></td>
                         <td><?= $user->lastname; ?></td>
                         <td><?= $user->email; ?></td>
