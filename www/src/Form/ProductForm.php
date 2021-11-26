@@ -11,14 +11,19 @@ class ProductForm extends AbstractForm
     protected $config;
     protected $html = "";
 
-    public function __construct()
+    public function __construct(array $values = null)
     {
-        $config = $this->createForm();
+        $config = self::getConfig();
+        if ($values) {
+            foreach($values as $field => $value) {
+                $config["inputs"][$field]["value"] = $value;
+            }
+        }
         parent::__construct($config);
         $this->renderHtml();
     }
 
-    public function getProductType()
+    public static function getProductType()
     {
         $type = new Type();
         $types = $type->findBy(['is_enable' => true]);
@@ -26,7 +31,7 @@ class ProductForm extends AbstractForm
         return $types;
     }
 
-    public function createForm()
+    public static function getConfig()
     {
         return [
             "table" => "product",
@@ -57,7 +62,7 @@ class ProductForm extends AbstractForm
                     // "minLength"=>2,
                     'class' => ['large' => 'col-lg-6', 'medium' => 'col-md-6', 'small' => 'col-xs-12'],
                     'row' => 'end',
-                    "options" => $this->getProductType(),
+                    "options" => self::getProductType(),
                     "error" => "Le type ne correspond pas"
                 ],
                 "description" => [
@@ -97,6 +102,9 @@ class ProductForm extends AbstractForm
                     'row' => 'start_end',
                     "error" => "L'image est invalide"
                 ],
+                "id" => [
+                    "type" => "hidden"
+                ]
             ]
         ];
     }

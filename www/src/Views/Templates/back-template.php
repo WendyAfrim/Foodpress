@@ -88,7 +88,7 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/admin/products">
                             <i class="fas fa-pizza-slice"></i>
                             Tous les produits
                         </a>

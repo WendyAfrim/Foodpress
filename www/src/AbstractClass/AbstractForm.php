@@ -111,6 +111,7 @@ abstract class AbstractForm
 			" . (($configInput["required"] == true) ? "required='required'" : "") . "
 
 			value='" . htmlspecialchars($configInput["value"] ?? "", ENT_QUOTES) . "'
+			id='".htmlspecialchars($configInput["id"] ?? "", ENT_QUOTES) .  "'
 
 		></div>";
 	}

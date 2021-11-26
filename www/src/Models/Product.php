@@ -7,16 +7,17 @@ use App\AbstractClass\AbstractModel;
 class Product extends AbstractModel
 {
 
-    public $table = 'product';
+    protected $table = 'product';
 
-    public $id = null;
-    public $name;
-    public $type;
-    public $description;
-    public $price;
-    public $ingredients;
-    public $image;
-    public $created_at;
+    protected $id = null;
+    protected $name;
+    protected $type;
+    protected $description;
+    protected $price;
+    protected $ingredients;
+    protected $image;
+    protected $created_at;
+    protected $updated_at;
 
 
     /**
@@ -131,7 +132,7 @@ class Product extends AbstractModel
     }
 
     /**
-     * Récupération des ingrédients
+     * Récupération de la liste d'ingrédients
      *
      * @return string
      */
@@ -141,7 +142,7 @@ class Product extends AbstractModel
     }
 
     /**
-     * Setting des ingrédients
+     * Setting de la liste d'ingrédients
      *
      * @param mixed 
      */
@@ -177,14 +178,14 @@ class Product extends AbstractModel
      *
      * @return string
      */
-    public function getCreatedAt(): date
+    public function getCreatedAt(): string
     {
 
-        return $this->$created_at;
+        return $this->created_at;
     }
 
     /**
-     * Setting de la date
+     * Setting de la date d'enregistrement
      *
      * @param mixed 
      */
@@ -192,5 +193,25 @@ class Product extends AbstractModel
     {
 
         $this->created_at = $created_at;
+    }
+
+    /**
+     * Récupération de la date de la dernière mise à jour
+     *
+     * @return string
+     */
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Setting de la date de la dernière mise à jour
+     *
+     * @param DateTime
+     */
+    public function setUpdatedAt($updated_at): void
+    {
+        $this->updated_at = $updated_at;
     }
 }

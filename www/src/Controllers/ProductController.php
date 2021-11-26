@@ -41,7 +41,7 @@ class ProductController
         $product = new Product();
 
         $form = new ProductForm;
-        $config = $form->createForm();
+        $config = ProductForm::getConfig();
 
         $date = Generator::generateDate();
 
@@ -57,6 +57,7 @@ class ProductController
                 $product->setIngredients(htmlentities($_POST['ingredients']));
                 $product->setImage(htmlentities($_POST['image']));
                 $product->setCreatedAt($date);
+                $product->setUpdatedAt($date);
 
                 $product->save();
             }
@@ -64,6 +65,7 @@ class ProductController
 
         $view = new View('Product/add-product', 'back-template');
         $view->form = $form->renderHtml();
+        $view->errors = $errors ?? null;
         $view->title = "Foodpress | Ajouter un produit";
     }
 
@@ -98,5 +100,45 @@ class ProductController
         $view->types = $types;
         $view->errors = $errors ?? [];
         $view->title = "Foodpress | Ajouter un type";
+    }
+
+    public function update_product($id) {
+
+        $product = new Product;
+        $product = $product->findByOne(['id' => $id]);
+
+        $date = Generator::generateDate();
+
+        if (!$product) {
+            header('Location: /admin/products');
+        }
+        $config = ProductForm::getConfig();
+        if (!empty($_POST)) {
+            $errors = FormVerification::check($_POST, $config);
+            if (!$errors) {
+                $product->setName($_POST['name']);
+                $product->setType($_POST['type']);
+                $product->setDescription($_POST['description']);
+                $product->setPrice($_POST['price']);
+                $product->setIngredients($_POST['ingredients']);
+                $product->setImage($_POST['image']);
+                $product->setUpdatedAt($date);
+                $product->save();
+            }
+        }
+        $form = new ProductForm([
+            "id" => $product->getId(),
+            "name" => $product->getName(),
+            "type" => $product->getType(),
+            "description" => $product->getDescription(),
+            "price" => $product->getPrice(),
+            "ingredients" => $product->getIngredients(),
+            "image" => $product->getImage()
+        ]);
+
+        $view = new View('Product/update-product', 'back-template');
+        $view->errors = $errors ?? null;
+        $view->form = $form->renderHtml();
+        $view->title = "Foodpress | Mettre à jour une fiche produit";
     }
 }
