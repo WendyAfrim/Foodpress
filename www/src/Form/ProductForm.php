@@ -23,12 +23,13 @@ class ProductForm extends AbstractForm
         $this->renderHtml();
     }
 
-    public static function getProductType()
-    {
-        $type = new Type();
+    public static function getTypesForSelect() {
+        $type = new Type;
         $types = $type->findBy(['is_enable' => true]);
-
-        return $types;
+        $filteredTypes = array_map(function($post) {
+            return ['value' => $post->getId(), 'label' => $post->getName()];
+        }, $types);
+        return $filteredTypes;
     }
 
     public static function getConfig()
@@ -62,7 +63,7 @@ class ProductForm extends AbstractForm
                     // "minLength"=>2,
                     'class' => ['large' => 'col-lg-6', 'medium' => 'col-md-6', 'small' => 'col-xs-12'],
                     'row' => 'end',
-                    "options" => self::getProductType(),
+                    "options" => self::getTypesForSelect(),
                     "error" => "Le type ne correspond pas"
                 ],
                 "description" => [
@@ -77,7 +78,7 @@ class ProductForm extends AbstractForm
                 ],
                 "price" => [
                     "label" => 'Prix',
-                    "type" => "float",
+                    "type" => "number",
                     "required" => true,
                     "placeholder" => "",
                     'class' => ['large' => 'col-lg-6', 'medium' => 'col-md-6', 'small' => 'col-xs-12'],
@@ -102,9 +103,6 @@ class ProductForm extends AbstractForm
                     'row' => 'start_end',
                     "error" => "L'image est invalide"
                 ],
-                "id" => [
-                    "type" => "hidden"
-                ]
             ]
         ];
     }

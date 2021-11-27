@@ -31,7 +31,7 @@ abstract class AbstractForm
 			} else if ($configInput["type"] == "editor") {
 				$this->generateEditor($name, $configInput);
 			} else if ($configInput["type"] == "hidden") {
-				$this->generateHiddenField($name, $configInput);
+				if (isset($configInput['value'])) $this->generateHiddenField($name, $configInput);
 			} else {
 				$this->generateInput($name, $configInput);
 			}
@@ -55,28 +55,15 @@ abstract class AbstractForm
 
 	public function generateSelect($name, $configInput)
 	{
-
-		if (isset($configInput['select']) && $configInput['select'] == 'object') {
-			$this->html .=
-				"
-			<div class='" . implode(' ', $configInput['class']) . "'>
-			<label>" . $configInput['label'] . "</label>
-			<select class='inputs-design' name='" . $name . "'>";
-			foreach ($configInput["options"] as $option) {
-				$this->html .= "<option>" . $option->name . "</option>";
-			}
-		} else {
-			$this->html .=
-				"
-			<div class='" . implode(' ', $configInput['class']) . "'>
-			<label>" . $configInput['label'] . "</label>
-			<select class='inputs-design' name='" . $name . "'>";
-			foreach ($configInput["options"] as $option) {
-				$this->html .= "<option>" . $option . "</option>";
-			}
+		$this->html .=
+			"
+		<div class='" . implode(' ', $configInput['class']) . "'>
+		<label>" . $configInput['label'] . "</label>
+		<select class='inputs-design' name='" . $name . "'>";
+		foreach ($configInput["options"] as $option) {
+			$selected = (isset($configInput["value"]) && $configInput["value"] == $option['value']) ? "selected" : "";
+			$this->html .= "<option ". $selected . " value='".$option['value']."'>" . $option['label'] . "</option>";
 		}
-
-
 		$this->html .= "</select></div>";
 	}
 
@@ -97,7 +84,7 @@ abstract class AbstractForm
 
 	public function generateInput($name, $configInput)
 	{
-
+		$step = (isset($configInput['type']) && $configInput["type"] == "number") ? "step='0.01'" : "";
 		$this->html .=
 			"
 		<div class='" . implode(' ', $configInput['class']) . "'>
@@ -105,13 +92,12 @@ abstract class AbstractForm
 		<input class='inputs-design' name='" . $name . "' 
 
 			type='" . ($configInput["type"] ?? "text") . "'
-
+			$step
 			placeholder='" . htmlspecialchars($configInput["placeholder"] ?? "", ENT_QUOTES) . "'
 
 			" . (($configInput["required"] == true) ? "required='required'" : "") . "
 
 			value='" . htmlspecialchars($configInput["value"] ?? "", ENT_QUOTES) . "'
-			id='".htmlspecialchars($configInput["id"] ?? "", ENT_QUOTES) .  "'
 
 		></div>";
 	}

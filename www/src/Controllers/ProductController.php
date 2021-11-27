@@ -85,9 +85,9 @@ class ProductController
 
             if (empty($errors)) {
                 $type->setName(htmlentities($_POST['name']));
-                $type->setDescription(htmlentities($_POST['description']));
                 $type->setIs_enable(true);
                 $type->setCreated_at($date);
+                $type->setUpdated_at($date);
 
                 $type->save();
             }
@@ -101,7 +101,7 @@ class ProductController
         $view->errors = $errors ?? [];
         $view->title = "Foodpress | Ajouter un type";
     }
-
+    
     public function update_product($id) {
 
         $product = new Product;

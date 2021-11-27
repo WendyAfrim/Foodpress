@@ -28,27 +28,27 @@ class FormVerification
             if ($inputRules['type'] == 'hidden') continue;
 
             if ($inputRules['required'] == true) {
-                FormVerification::checkIfRequired($inputValue, 'Le champ ' . $inputKey . ' est requis.');
+                FormVerification::checkIfRequired($inputValue, $inputKey);
             }
 
             if (isset($inputRules['type'])) {
                 if ($inputRules['type'] == 'email') {
 
-                    FormVerification::checkEmail($inputValue, $error);
+                    FormVerification::checkEmail($inputValue, $inputKey);
                 } else if ($inputRules['type'] == 'select') {
 
-                    FormVerification::checkOptions($inputValue, $inputRules, $error);
+                    FormVerification::checkOptions($inputValue, $inputRules, $inputKey);
                 }
             }
 
             if (isset($inputRules['minLength'])) {
                 $lengthValue = $inputRules['minLength'];
-                FormVerification::checkMinLength($inputValue, $error, $lengthValue);
+                FormVerification::checkMinLength($inputValue, $inputKey, $lengthValue);
             }
 
             if (isset($inputRules['maxLength'])) {
                 $lengthValue = $inputRules['maxLength'];
-                FormVerification::checkmaxLength($inputValue, $error, $lengthValue);
+                FormVerification::checkmaxLength($inputValue, $inputKey, $lengthValue);
             }
             if (isset($inputRules['confirm'])) {
                 $password = $data['password'];
@@ -70,68 +70,53 @@ class FormVerification
         return self::$array_errors;
     }
 
-    public static function checkIfRequired($field, $error)
+    public static function checkIfRequired($field, $inputKey)
     {
         if (empty($field)) {
-            self::$array_errors[] = $error;
+            self::$array_errors[] = 'Le champ ' . $inputKey . ' est requis.';
         }
     }
 
-    public static function checkEmail($email, $error)
+    public static function checkEmail($email, $inputKey)
     {
         $check_email = filter_var('wendy.afrim@gmail.com', FILTER_VALIDATE_EMAIL);
 
         if ($check_email) {
             return true;
         } else {
-            self::$array_errors[] = $error;
+            self::$array_errors[] = 'Le champ ' . $inputKey . ' est requis.';
         }
     }
-    public static function checkMinLength($string, $error, $lengthValue)
+    public static function checkMinLength($string, $inputKey, $lengthValue)
     {
 
         if (strlen($string) >= $lengthValue) {
             return true;
         } else {
-            self::$array_errors[] = $error;
+            self::$array_errors[] = "Le champ $inputKey doit faire au moins $lengthValue caractères";
         }
     }
-    public static function checkMaxLength($string, $error, $lengthValue)
+    public static function checkMaxLength($string, $inputKey, $lengthValue)
     {
         if (strlen($string) >= $lengthValue) {
-            self::$array_errors[] = $error;
+            self::$array_errors[] = "Le champ $inputKey doit faire au maximum $lengthValue caractères";
         } else {
             return true;
         }
     }
 
-    public static function checkOptions($data, $config, $error)
+    public static function checkOptions($optionValue, $config, $inputKey)
     {
-
-        if (isset($config['select']) && $config['select'] == 'object') {
-
             $array_options = $config['options'];
-            $data_array = [];
+            $optionsValues = array_map(function($option) {
+                return $option['value'];
+            }, $config['options']);
 
-            foreach ($array_options as $options) {
-
-                array_push($data_array, $options->name);
+            if (!in_array($optionValue, $optionsValues)) {
+                self::$array_errors[] = "Le champ $inputKey ne peut pas contenir de valeur '$optionValue'";
+            } else {
+                return true;
             }
-
-            $array_options = $data_array;
-
-            if (!in_array($data, $array_options)) {
-                self::$array_errors[] = $error;
-            }
-        } else {
-
-            $array_options = $config['options'];
-
-            if (!in_array($data, $array_options)) {
-                self::$array_errors[] = $error;
-            }
-        }
-        return true;
     }
 
     public static function checkConfirmPassword($confirm_password, $password, $error)
@@ -143,7 +128,6 @@ class FormVerification
 
         return true;
     }
-
     public static function checkUnicity($inputKey, $inputValue, $table, $idToExclude = null)
     {
         $conn = Database::getPdo();
