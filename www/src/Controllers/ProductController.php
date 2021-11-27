@@ -57,7 +57,6 @@ class ProductController
                 $product->setIngredients(htmlentities($_POST['ingredients']));
                 $product->setImage(htmlentities($_POST['image']));
                 $product->setCreatedAt($date);
-                $product->setUpdatedAt($date);
 
                 $product->save();
             }
