@@ -11,7 +11,6 @@ class Menu extends AbstractModel
 
     protected $id = null;
     protected $label;
-    protected $position;
     protected $post_id;
 
     /**
@@ -64,27 +63,6 @@ class Menu extends AbstractModel
         $this->label = $label;
     }
 
-
-    /**
-     * Récupération de la position
-     *
-     * @return string
-     */
-    public function getPosition(): string
-    {
-        return $this->position;
-    }
-
-    /**
-     * Setting du position
-     *
-     * @param mixed 
-     */
-    public function setPosition($position): void
-    {
-        $this->position = $position;
-    }
-
     /**
      * Récupération du post_id
      *
@@ -92,7 +70,7 @@ class Menu extends AbstractModel
      */
     public function getPostId(): string
     {
-        return $this->postId;
+        return $this->post_id;
     }
 
     /**
@@ -100,8 +78,8 @@ class Menu extends AbstractModel
      *
      * @param mixed 
      */
-    public function setPostId($content): void
+    public function setPostId($post_id): void
     {
-        $this->content = $content;
+        $this->post_id = $post_id;
     }
 }

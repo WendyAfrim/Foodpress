@@ -77,7 +77,6 @@ class ProductController
 
         $form = new TypeForm;
         $config = $form->createForm();
-
         $date = Generator::generateDate();
 
         if (!empty($_POST)) {

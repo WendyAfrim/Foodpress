@@ -73,3 +73,7 @@
 /admin/menu:
   controller: 'MenuController'
   action: 'show_menu'
+
+/admin/menu/add:
+  controller: 'MenuController'
+  action: 'add_link'
