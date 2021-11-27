@@ -124,6 +124,7 @@ class ProductController
                 $product->setImage($_POST['image']);
                 $product->setUpdatedAt($date);
                 $product->save();
+                header('Location: /admin/products');
             }
         }
         $form = new ProductForm([
@@ -140,5 +141,15 @@ class ProductController
         $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
         $view->title = "Foodpress | Mettre à jour une fiche produit";
+    }
+
+    public function delete_product($id) {
+        $product = new Product;
+        $product = $product->findByOne(['id' => $id]);
+        if (!$product) {
+            header('Location: /admin/products');
+        }
+        $product->delete($id);
+        header('Location: /admin/products');
     }
 }
