@@ -15,8 +15,8 @@ $(document).ready(function(){
             url: ajax_url,
             data: { filename : that.attr('data-ajax-filename') },
             success: function(result, status, xhr){
-          
-            openModal(result, item_id);
+                
+                openModal(result, item_id);
 
             $('.btn-close').click(function(){
                 closeModal();
@@ -36,6 +36,27 @@ $(document).ready(function(){
 
     });
 
+    function deleteItem(that) {
+
+        ajax_url = that.attr('data-ajax-url');
+        redirection_url = that.attr('data-url');
+
+        $.ajax({
+            // Requête ajax appelant la fonction delete() de l'AjaxController
+            type: 'POST',
+            url: ajax_url,
+            data: { entity : that.attr('data-ajax-class') },
+            success: function(result, status, xhr){
+            
+                location.href =  redirection_url;
+            }, 
+            error: function(xhr, status, error)
+            {
+                $('#message').html(error);
+            }
+        })
+    }
+
     function openModal(result, item_id) {
 
         $('#modal').addClass('active');
@@ -50,25 +71,4 @@ $(document).ready(function(){
         $('#overlay').removeClass('active');
     }
 
-    function deleteItem(that) {
-
-        ajax_url = that.attr('data-ajax-url');
-        redirection_url = that.attr('data-url');
-        console.log(redirection_url);
-
-        $.ajax({
-            // Requête ajax appelant la fonction delete() de l'AjaxController
-            type: 'POST',
-            url: ajax_url,
-            data: { entity : that.attr('data-ajax-class') },
-            success: function(result, status, xhr){
-                
-                location.href =  redirection_url;
-            }, 
-            error: function(xhr, status, error)
-            {
-                $('#message').html(error);
-            }
-        })
-    }
 })

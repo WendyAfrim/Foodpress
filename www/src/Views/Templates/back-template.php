@@ -1,3 +1,11 @@
+<?php
+
+use App\Helpers\FlashMessage;
+
+$flashMessage = new FlashMessage();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,9 +185,10 @@
                 <a href="/dashboard"><i class="fas fa-home"></i></a>
             </div>
         </header>
-        <!-- <div class="container"> -->
         <main>
-            <?= require $this->view; ?>
+            <?=
+            $flashMessage->display();
+            require $this->view; ?>
         </main>
         <!-- </div> -->
     </div>
@@ -188,5 +197,7 @@
 </html>
 <!-- Modal -->
 <script src="../../../public/js/modal.js"></script>
+<!-- Flash Message -->
+<script src="../../../public/js/flashMessage.js"></script>
 <!-- Datatable -->
 <script src="../../../public/js/datatable.js"></script>
