@@ -38,8 +38,8 @@ class ProductForm extends AbstractForm
             "action" => "",
             "method" => "POST",
             "form-id" => "product-form",
-            "form-title" => 'Formulaire d\'ajout de produit',
-            "submit" => "Ajouter le produit",
+            "form-title" => '',
+            "submit" => "Enregister le produit",
             "inputs" => [
                 "name" => [
                     "label" => 'Nom du produit',
