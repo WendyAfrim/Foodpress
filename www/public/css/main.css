@@ -297,6 +297,13 @@ i:hover {
   color: #FFF;
 }
 
+.close {
+  cursor: pointer;
+  position: relative;
+  left: 26em;
+  bottom: 0.4em;
+}
+
 .front-form {
   width: 1064px;
   margin: auto;

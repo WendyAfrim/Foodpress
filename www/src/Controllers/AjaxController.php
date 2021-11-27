@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\View;
+use App\Helpers\FlashMessage;
 use App\Helpers\PathGenerator;
 use App\Models\User;
 
@@ -28,5 +29,8 @@ class AjaxController
         }
 
         $object->delete($id);
+
+        $flashMessage = new FlashMessage();
+        $flashMessage->set("Votre utilisateur a bien été supprimé", FLASH_INFO);
     }
 }

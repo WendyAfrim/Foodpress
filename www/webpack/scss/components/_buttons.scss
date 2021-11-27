@@ -71,3 +71,10 @@
         color: $white;
     }
 }
+
+.close {
+    cursor: pointer;
+    position: relative;
+    left: 26em;
+    bottom: 0.4em;
+}
