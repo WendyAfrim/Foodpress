@@ -58,7 +58,6 @@ class ProductController
                 $product->setImage(htmlentities($_POST['image']));
                 $product->setCreatedAt($date);
                 $product->setUpdatedAt($date);
-
                 $product->save();
             }
         }

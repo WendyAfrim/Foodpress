@@ -28,7 +28,7 @@
 /admin/product/delete/{id}:
   controller: "ProductController"
   action: "delete_product"
-  
+
 /admin/menu/edit/{id}:
   controller: 'MenuController'
   action: 'edit_link'

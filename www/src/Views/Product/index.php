@@ -10,6 +10,7 @@
                 <th>Prix</th>
                 <th>ingrédients</th>
                 <th>Image</th>
+                <th>Crée le</th>
                 <th>Mis à jour le</th>
                 <th>Actions</th>
             </tr>
@@ -28,10 +29,11 @@
                         <td><?= $product->getIngredients(); ?></td>
                         <td><?= $product->getImage(); ?></td>
                         <td><?= $product->getCreatedAt(); ?></td>
+                        <td><?= $product->getUpdatedAt(); ?></td>
                         <td>
                             <div>
                                 <a href="/admin/product/update/<?= $product->getId() ?>"><i class="far fa-edit"></i></a>
-                                <a href="/admin/product/delete/<?= $product->getId() ?>"><i class="far fa-trash-alt"></i>
+                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id={$product->getId()} data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_product'></i>"; ?>
                             </div>
                         </td>
                     </tr>
@@ -40,4 +42,6 @@
             <?php } ?>
         </tbody>
     </table>
+    <div id="modal" class="modal"></div>
+    <div id="overlay"></div>
 </div>
