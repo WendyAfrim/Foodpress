@@ -2,16 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Core\DateGenerator;
 use App\Core\FormVerification;
-use App\Core\PasswordGenerator;
 use App\Core\View;
-use App\Form\AccountForm;
 use App\Form\MenuForm;
-use App\Helpers\Generator;
 use App\Models\Menu;
 use App\Models\Post;
-use App\Models\User;
 
 class MenuController
 {
@@ -40,11 +35,6 @@ class MenuController
     public function add_link()
     {
         $menu = new Menu;
-        /* $form = new MenuForm([
-            "posts" => array_map(function($post) {
-                return $post->getId();
-            },$pages)
-        ]); */
         $form = new MenuForm();
         $config = MenuForm::getConfig();
 
@@ -53,8 +43,7 @@ class MenuController
             if (!$errors) {
                 if (!empty($_POST['label'])) {
                     $menu->setLabel($_POST['label']);
-                }
-                else {
+                } else {
                     $post = (new Post)->findByOne(['id' => $_POST['post_id']]);
                     $menu->setLabel($post->getTitle());
                 }
@@ -68,7 +57,8 @@ class MenuController
         $view->title = "Foodpress | Ajouter un lien";
     }
 
-    public function edit_link($id) {
+    public function edit_link($id)
+    {
         $menu = new Menu;
         $menu_link = $menu->findByOne(['id' => $id]);
         if (!$menu_link) {
@@ -93,7 +83,8 @@ class MenuController
         $view->form = $form->renderHtml();
     }
 
-    public function delete_link($id) {
+    public function delete_link($id)
+    {
         $menu = new Menu;
         $menu = $menu->findByOne(['id' => $id]);
         if (!$menu) {
@@ -102,5 +93,4 @@ class MenuController
         $menu->delete($id);
         header('Location: /admin/menu');
     }
-
 }

@@ -223,6 +223,36 @@ i:hover {
   color: #5850ec;
 }
 
+.front-header {
+  padding: 1rem;
+  background-color: #F2F2F2;
+}
+.front-header__top {
+  display: flex;
+  justify-content: space-between;
+}
+.front-header__sitename {
+  margin: 0;
+}
+.front-header__auth {
+  display: flex;
+  align-items: center;
+}
+.front-header__auth button {
+  margin: 0 0.2rem;
+  width: auto;
+}
+.front-header__nav {
+  text-decoration: none;
+}
+.front-header__nav ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.front-header__nav ul li {
+  margin: 1rem 1rem 0 0;
+}
+
 .inputs-design {
   padding: 1em 2em;
   margin: 1em 0px 3em 0em;
