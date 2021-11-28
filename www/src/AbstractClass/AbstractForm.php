@@ -95,7 +95,7 @@ abstract class AbstractForm
 			$step
 			placeholder='" . htmlspecialchars($configInput["placeholder"] ?? "", ENT_QUOTES) . "'
 
-			" . (($configInput["required"] == true) ? "required='required'" : "") . "
+			" . ((isset($configInput['required']) && $configInput["required"] == true) ? "required='required'" : "") . "
 
 			value='" . htmlspecialchars($configInput["value"] ?? "", ENT_QUOTES) . "'
 

@@ -17,16 +17,16 @@
                 <?php foreach ($users as $user) {
                 ?>
                     <tr>
-                    <td><?= $user->id; ?></td>
-                        <td><?= $user->firstname; ?></td>
-                        <td><?= $user->lastname; ?></td>
-                        <td><?= $user->email; ?></td>
-                        <td><?= $user->roles; ?></td>
-                        <td><?= $user->created_at; ?></td>
+                    <td><?= $user->getId(); ?></td>
+                        <td><?= $user->getFirstname(); ?></td>
+                        <td><?= $user->getLastname(); ?></td>
+                        <td><?= $user->getEmail(); ?></td>
+                        <td><?= $user->getRoles(); ?></td>
+                        <td><?= $user->getCreatedAt(); ?></td>
                         <td>
                             <div>
                                 <i class="far fa-edit"></i>
-                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= $user->id  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_admin'></i>"; ?>
+                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= {$user->getId()}  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_admin'></i>"; ?>
                             </div>
                         </td>
                     </tr>

@@ -137,7 +137,7 @@ class User extends AbstractModel
     public function getRoles(): string
     {
 
-        return $this->role;
+        return $this->roles;
     }
 
     /**
@@ -264,10 +264,10 @@ class User extends AbstractModel
      *
      * @return string
      */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
 
-        return $this->$created_at;
+        return $this->created_at;
     }
 
     /**

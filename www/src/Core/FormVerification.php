@@ -27,7 +27,7 @@ class FormVerification
 
             if ($inputRules['type'] == 'hidden') continue;
 
-            if ($inputRules['required'] == true) {
+            if (isset($inputRules['required']) && $inputRules['required'] == true) {
                 FormVerification::checkIfRequired($inputValue, $inputKey);
             }
 

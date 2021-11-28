@@ -10,14 +10,14 @@
         </thead>
         <tbody>
             <?php if (!empty($menu)) : ?>
-                <?php foreach ($menu as $key => $post) : ?>
+                <?php foreach ($menu as $key => $menuLink) : ?>
                     <tr>
-                        <td><?= $post->getLabel(); ?></td>
-                        <td><?= $post->getPostId(); ?></td>
+                        <td><?= $menuLink->getLabel(); ?></td>
+                        <td><?= $menuLink->getPostId(); ?></td>
                         <td>
                             <div>
-                                <a href="/admin/menu/edit/<?= $post->getId() ?>"><i class="far fa-edit"></i></a>
-                                <i class="far fa-trash-alt"></i>
+                                <a href="/admin/menu/edit/<?= $menuLink->getId() ?>"><i class="far fa-edit"></i></a>
+                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= {$menuLink->getId()}  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_menu_link'></i>"; ?>
                             </div>
                         </td>
                     </tr>
@@ -25,4 +25,6 @@
             <?php endif ?>
         </tbody>
     </table>
+    <div id="modal" class="modal"></div>
+    <div id="overlay"></div>
 </div>

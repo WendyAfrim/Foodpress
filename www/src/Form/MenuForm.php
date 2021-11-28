@@ -39,14 +39,12 @@ class MenuForm extends AbstractForm
             "action" => "",
             "method" => "POST",
             "form-id" => "page-form",
-            "submit" => "Créer la page",
+            "submit" => "Ajouter",
             "inputs" => [
                 "label" => [
                     "label" => 'Label du lien',
                     "type" => "text",
-                    "required" => true,
-                    "placeholder" => "Label du lien de la page",
-                    "minLength" => 2,
+                    "placeholder" => "Laisser vide pour le titre de la page",
                     "maxLength" => 50,
                     "error" => "erreur",
                     'class' => ['large' => 'col-lg-6', 'medium' => 'col-md-6', 'small' => 'col-xs-12'],

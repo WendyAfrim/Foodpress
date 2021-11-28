@@ -51,7 +51,13 @@ class MenuController
         if (!empty($_POST)) {
             $errors = FormVerification::check($_POST, $config);
             if (!$errors) {
-                $menu->setLabel($_POST['label']);
+                if (!empty($_POST['label'])) {
+                    $menu->setLabel($_POST['label']);
+                }
+                else {
+                    $post = (new Post)->findByOne(['id' => $_POST['post_id']]);
+                    $menu->setLabel($post->getTitle());
+                }
                 $menu->setPostId((int)$_POST['post_id']);
                 $menu->save();
             }
@@ -59,7 +65,7 @@ class MenuController
         $view = new View('Admin/menu/add', 'back-template');
         $view->form = $form->renderHtml();
         $view->errors = $errors ?? null;
-        $view->title = "Foodpress | Ajouter une page";
+        $view->title = "Foodpress | Ajouter un lien";
     }
 
     public function edit_link($id) {
@@ -85,6 +91,16 @@ class MenuController
         $view = new View('Admin/menu/edit', 'back-template');
         $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
+    }
+
+    public function delete_link($id) {
+        $menu = new Menu;
+        $menu = $menu->findByOne(['id' => $id]);
+        if (!$menu) {
+            header('Location: /admin/menu');
+        }
+        $menu->delete($id);
+        header('Location: /admin/menu');
     }
 
 }
