@@ -24,6 +24,8 @@ $faker = \Faker\Factory::create('fr_FR');
 $error = null;
 
 try {
+
+    // Création des utilisateurs
     for ($i = 0; $i < 50; $i++) {
         $lastname = $faker->lastName;
         $firstname = $faker->firstName;
@@ -52,6 +54,8 @@ try {
         echo "L'utilisateur $firstname $lastname a bien été ajouté<br>";
     }
     echo "<br>";
+
+    // Création des posts
     for ($i = 0; $i < 50; $i++) {
         $title = $faker->words(random_int(3,8),true);
         $slug = $faker->slug;
@@ -72,6 +76,8 @@ try {
             "type" => $type
         ]);
     }
+    echo "<br>";
+
     echo "<span style='font-weight: bold'>Base de données bien remplie !</span> &#x1F354";
 
 } catch (PDOException $e) {
