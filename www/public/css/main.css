@@ -246,7 +246,7 @@ i:hover {
 }
 @media (max-width: 768px) {
   header .icons #menu-bar {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   header .navbar {
@@ -586,7 +586,7 @@ section:nth-child(even) {
 
 .dishes .box-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 1.5rem;
 }
 
