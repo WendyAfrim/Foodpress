@@ -52,9 +52,13 @@
   action: "add_product"
 
 /admin/products:
-    controller: 'ProductController'
-    action: 'all_products'
+  controller: 'ProductController'
+  action: 'all_products'
 
+/shop:
+  controller: 'ProductController'
+  action: 'shop'
+  
 # Ajax
 /admin/ajax/open_modal:
   controller: 'AjaxController'

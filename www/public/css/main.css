@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap);@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap);.row {
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap);@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap);@charset "UTF-8";
+.row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -194,12 +195,23 @@
   padding: 0;
   list-style-type: none;
   text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
 }
 
 body {
   min-height: 100vh;
   width: 100%;
   font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -312,5 +324,109 @@ i:hover {
 @media only screen and (max-width: 1310px) {
   .container {
     width: 100%;
+  }
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  padding: 1rem 7%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+  color: #000;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+header .logo i {
+  color: #31aa66;
+}
+
+header .navbar a {
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  letter-spacing: 0.1em;
+  color: #AAA;
+}
+
+header .navbar a.active,
+header .navbar a:hover  {
+  color: #FFF;
+  background: #AAA;
+}
+
+header .icons i,
+header .icons a {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  width: 4.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #000;
+  border-radius: 50%;
+  background: #F2F2F2;
+}
+
+header .icons i:hover,
+header .icons a:hover {
+  color: #FFF;
+  background: #31aa66;
+  transform: rotate(360deg);
+}
+
+header .icons #menu-bar {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  header {
+    padding: 1rem 2rem;
+  }
+}
+@media (max-width: 768px) {
+  header .icons #menu-bar {
+    display: inline-block;
+  }
+
+  header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #FFF;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  header .navbar a {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 1.8rem;
+    background: #F2F2F2;
+  }
+}
+@media (max-width: 991px) {
+  html {
+    font-size: 50%;
   }
 }

@@ -1,0 +1,136 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $white;
+    padding: 1rem 7%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0,0, .1);
+}
+
+header .logo {
+    color: $black;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+header .logo i {
+    color: $green;
+}
+
+header .navbar a {
+    font-size: 1.5rem; 
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    letter-spacing: 0.1em;
+    color: $grey;
+}
+
+header .navbar a.active,
+header .navbar a:hover {
+    color: $white;
+    background: $grey;
+}
+
+header .icons i,
+header .icons a
+{
+    cursor: pointer;
+    margin-left: .5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    color: $black;
+    border-radius: 50%;
+    background: $light-grey;
+}
+
+header .icons i:hover,
+header .icons a:hover {
+    color: $white;
+    background: $green;
+    transform: rotate(360deg);
+}
+
+header .icons #menu-bar {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Media Queries 
+@media(max-width:991px)
+{
+    html {
+        font-size: 55%;
+    }
+
+    header {
+        padding: 1rem 2rem;
+    }
+}
+
+@media(max-width:768px)
+{
+    header .icons #menu-bar {
+        display: inline-block;
+    }
+    
+    header .navbar {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: $white;
+        border-top: .1rem solid rgba(0, 0,0, .2);
+        border-bottom: .1rem solid rgba(0, 0,0, .2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0) ;
+    }
+
+    header .navbar a {
+        display: block;
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 1.8rem;
+        background: $light-grey;
+    }
+}
+
+@media(max-width:991px)
+{
+    html {
+        font-size: 50%;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+

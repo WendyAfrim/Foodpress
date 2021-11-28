@@ -17,7 +17,7 @@ class ProductController
 {
 
     /**
-     * All products in datable
+     * Tous les produits sous forme de datatable
      *
      * @return void
      */
@@ -27,7 +27,7 @@ class ProductController
 
         $products = $product->findAll();
 
-        $view = new View('Product/index', 'back-template');
+        $view = new View('Admin/Product/index', 'back-template');
         $view->title = 'Foodpress | Tous les produits';
         $view->products = $products;
     }
@@ -62,7 +62,7 @@ class ProductController
             }
         }
 
-        $view = new View('Product/add-product', 'back-template');
+        $view = new View('Admin/Product/add-product', 'back-template');
         $view->form = $form->renderHtml();
         $view->errors = $errors ?? null;
         $view->title = "Foodpress | Ajouter un produit";
@@ -94,14 +94,15 @@ class ProductController
         $types = $type->findBy(['is_enable' => true]);
 
 
-        $view = new View('Product/add-type', 'back-template');
+        $view = new View('Admin/Product/add-type', 'back-template');
         $view->form = $form->renderHtml();
         $view->types = $types;
         $view->errors = $errors ?? [];
         $view->title = "Foodpress | Ajouter un type";
     }
 
-    public function update_product($id) {
+    public function update_product($id)
+    {
 
         $product = new Product;
         $product = $product->findByOne(['id' => $id]);
@@ -136,13 +137,14 @@ class ProductController
             "image" => $product->getImage()
         ]);
 
-        $view = new View('Product/update-product', 'back-template');
+        $view = new View('Admin/Product/update-product', 'back-template');
         $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
         $view->title = "Foodpress | Mettre à jour une fiche produit";
     }
 
-    public function delete_product($id) {
+    public function delete_product($id)
+    {
         $product = new Product;
         $product = $product->findByOne(['id' => $id]);
         if (!$product) {
@@ -150,5 +152,19 @@ class ProductController
         }
         $product->delete($id);
         header('Location: /admin/products');
+    }
+
+    /**
+     * Accès à la boutique de tous les produits
+     *
+     * @return void
+     */
+    public function shop()
+    {
+        $product = new Product();
+        $products = $product->findAll();
+
+        $view = new View('Product/shop', 'front-template');
+        $view->title = 'Foodpress | Nos produits';
     }
 }
