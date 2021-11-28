@@ -35,7 +35,7 @@ h1, h2
 {
     font-family: $font2;
     text-align: center;
-    margin: 1.5em 0;
+    margin: 1.0em 0;
 }
 
 i {
@@ -46,4 +46,64 @@ i {
 
 i:hover {
     color: $excentric-violet;
+}
+
+
+
+// Media Queries 
+@media(max-width:991px)
+{
+    html {
+        font-size: 55%;
+    }
+
+    header {
+        padding: 1rem 2rem;
+    }
+}
+
+@media(max-width:768px)
+{
+    header .icons #menu-bar {
+        display: inline-block;
+    }
+    
+    header .navbar {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: $white;
+        border-top: .1rem solid rgba(0, 0,0, .2);
+        border-bottom: .1rem solid rgba(0, 0,0, .2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0) ;
+    }
+
+    header .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100% ) ;
+    }
+
+    header .navbar a {
+        display: block;
+        padding: 1.5rem;
+        margin: 1rem;
+        font-size: 1.8rem;
+        background: $light-grey;
+    }
+
+    #search-form #search-box{
+        width: 90%;
+    }
+}
+
+@media(max-width:991px)
+{
+    html {
+        font-size: 50%;
+    }
+
+    .dishes .box-container .box img {
+        height: auto;
+        width: 100%;
+    }
+
 }
