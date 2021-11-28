@@ -32,3 +32,8 @@
 /admin/menu/edit/{id}:
   controller: 'MenuController'
   action: 'edit_link'
+
+# Affichage des pages
+/{slug}:
+  controller: "PostController"
+  action: "show_page"
