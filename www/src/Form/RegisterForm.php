@@ -120,7 +120,16 @@ class RegisterForm extends AbstractForm
                     "placeholder" => "Votre Pays",
                     'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
                     "row" => 'start_end',
-                    "options" => ["France", "Angleterre"],
+                    "options" => [
+                        [
+                            "value" => "fr",
+                            "label" => "France"
+                        ],
+                        [
+                            "value" => "en",
+                            "label" => "Angleterre"
+                        ]
+                    ],
                     "error" => "Le champ est invalide"
                 ],
                 "phone" => [

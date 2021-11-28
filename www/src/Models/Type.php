@@ -11,7 +11,6 @@ class Type extends AbstractModel
 
     public $id = null;
     public $name;
-    public $description;
     public $is_enable;
     public $created_at;
     public $updated_at;
@@ -62,26 +61,6 @@ class Type extends AbstractModel
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set the value of description
-     *
-     * @return  self
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
 
         return $this;
     }

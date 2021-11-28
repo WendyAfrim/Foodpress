@@ -125,9 +125,15 @@ $flashMessage = new FlashMessage();
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/admin/menu">
                             <i class="fas fa-bars"></i>
-                            Menus
+                            Menu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/menu/add">
+                            <i class="far fa-plus-square"></i>
+                            Ajouter un lien
                         </a>
                     </li>
                 </ul>

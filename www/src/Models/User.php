@@ -9,17 +9,18 @@ class User extends AbstractModel
 {
     public $table = 'user';
 
-    public $id = null;
-    public $firstname;
-    public $lastname;
-    public $email;
-    public $password = null;
-    public $roles;
-    public $address;
-    public $zipcode;
-    public $city;
-    public $phone;
-    public $created_at;
+    protected $id = null;
+    protected $firstname;
+    protected $lastname;
+    protected $email;
+    protected $password = null;
+    protected $roles;
+    protected $address;
+    protected $zipcode;
+    protected $city;
+    protected $country;
+    protected $phone;
+    protected $created_at;
 
     /**
      * Récupération de l'id
@@ -136,7 +137,7 @@ class User extends AbstractModel
     public function getRoles(): string
     {
 
-        return $this->role;
+        return $this->roles;
     }
 
     /**
@@ -215,6 +216,27 @@ class User extends AbstractModel
         $this->city = $city;
     }
 
+        /**
+     * Récupération de la ville
+     *
+     * @return string
+     */
+    public function getCountry(): string
+    {
+
+        return $this->country;
+    }
+
+    /**
+     * Setting de la ville
+     *
+     * @param mixed 
+     */
+    public function setCountry($country): void
+    {
+        $this->country = $country;
+    }
+
     /**
      * Récupération du téléphone
      *
@@ -242,10 +264,10 @@ class User extends AbstractModel
      *
      * @return string
      */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
 
-        return $this->$created_at;
+        return $this->created_at;
     }
 
     /**

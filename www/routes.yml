@@ -68,3 +68,12 @@
 /admin/pages:
   controller: 'PostController'
   action: 'all_pages'
+
+# Menu
+/admin/menu:
+  controller: 'MenuController'
+  action: 'show_menu'
+
+/admin/menu/add:
+  controller: 'MenuController'
+  action: 'add_link'

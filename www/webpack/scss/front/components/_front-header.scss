@@ -1,0 +1,29 @@
+.front-header {
+    padding: 1rem;
+    background-color: $light-grey;
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__sitename {
+        margin:0;
+    }
+    &__auth {
+        display: flex;
+        align-items: center;
+        & button {
+            margin: 0 0.2rem;
+            width: auto;
+        }
+    }
+    &__nav {
+        text-decoration: none;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            & li {
+                margin: 1rem 1rem 0 0;
+            }
+        }
+    }
+}

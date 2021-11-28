@@ -67,6 +67,7 @@ class SecurityController
                 $user->setAdress(htmlentities($_POST['address']));
                 $user->setZipcode(htmlentities($_POST['zipcode']));
                 $user->setCity(htmlentities($_POST['city']));
+                $user->setCountry(htmlentities($_POST['country']));
                 $user->setPhone(htmlentities($_POST['phone']));
                 $user->setCreatedAt($date);
 

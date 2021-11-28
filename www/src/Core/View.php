@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Models\Menu;
+use App\Models\Post;
 use Exception;
 
 class View
@@ -37,7 +39,14 @@ class View
         if (file_exists("src/Views/Templates/" . $template . ".php")) {
 
             $this->template = "src/Views/Templates/" . $template . ".php";
-            // $this->template = "../Views/Templates/" . $template . ".php";
+            if ($template == 'front-template') {
+                $menu = new Menu;
+                $nav_items = $menu->findAll();
+                foreach ($nav_items as $item) {
+                    $item->link = (new Post)->findByOne(['id' => $item->getPostId()])->getSlug();
+                }
+                $this->nav_items = $nav_items;
+            }
         } else {
             die();
         }
