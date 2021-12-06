@@ -48,6 +48,7 @@ CREATE TABLE `posts` (
   `updated_at` datetime NOT NULL,
   `enabled` tinyint(1) DEFAULT '1',
   `type` varchar(50) NOT NULL,
+  `template` varchar(50),
   `author_id` int(11) DEFAULT NULL,
   `media_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -63,6 +63,7 @@ if (isset($listOfRoutes[$uri])) {
             unset($matches[0]);
             $param = $matches[1];
             $superRoute = $dynamicRoutes[$name];
+            break;
         }
     }
 }
