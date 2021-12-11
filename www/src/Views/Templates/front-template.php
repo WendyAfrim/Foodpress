@@ -15,19 +15,6 @@
 </head>
 
 <body>
-    <!-- <header class="front-header">
-        <div class="front-header__top">
-            <h1 class="front-header__sitename">Nom du site</h1>
-            <div class="front-header__auth">
-                <a href="/login"><button class="button--large button--violet">Login</button></a>
-                <a href="/register"><button class="button--large button--violet">Register</button></a>
-            </div>
-        </div>
-        <nav class="front-header__nav">
-            <ul>
-            </ul>
-        </nav>
-    </header> -->
     <!-- Header section begin -->
     <header>
         <a href="#" class="logo"><i class="fas fa-utensils"></i>Resto</a>

@@ -12,6 +12,9 @@
   action: 'not_found'
 
 # Admin 
+/admin/login:
+  controller: 'SecurityController'
+  action: loginAdmin
 
 /admin/accounts:
     controller: 'AdminController'
