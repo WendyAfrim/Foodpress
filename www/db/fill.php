@@ -33,12 +33,13 @@ try {
         $address = $faker->streetAddress;
         $zipcode = $faker->postcode;
         $city = $faker->city;
+        $country = $faker->randomElement(["fr","en"]);
         $phone = $faker->phoneNumber;
         $roles = $faker->randomElement(["admin", "editor", "client"]);
         $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
         $password = password_hash('123456', PASSWORD_DEFAULT);
 
-        $request = $pdo->prepare("INSERT INTO user (lastname,firstname,email,address,zipcode,city,phone,roles,created_at,password) VALUES (:lastname,:firstname,:email,:address,:zipcode,:city,:phone,:roles,:created_at,:password)");
+        $request = $pdo->prepare("INSERT INTO user (lastname,firstname,email,address,zipcode,city,country,phone,roles,created_at,password) VALUES (:lastname,:firstname,:email,:address,:zipcode,:city,:country,:phone,:roles,:created_at,:password)");
         $request->execute([
             "lastname" => $lastname,
             "firstname" => $firstname,
@@ -46,6 +47,7 @@ try {
             "address" => $address,
             "zipcode" => $zipcode,
             "city" => $city,
+            "country" => $country,
             "phone" => $phone,
             "roles" => $roles,
             "created_at" => $created_at,
@@ -75,6 +77,7 @@ try {
             "enabled" => $enabled,
             "type" => $type
         ]);
+        echo "Le post $title a bien été ajouté<br>";
     }
     echo "<br>";
 

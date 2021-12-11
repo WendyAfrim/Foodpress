@@ -95,4 +95,25 @@ class PostController
         $page->delete($id);
         header('Location: /admin/pages');
     }
+
+    public function show_page($slug) {
+
+        $page = new Post;
+        $page = $page->findByOne(['slug' => $slug]);
+        if (!$page) {
+            header('Location: /404');
+        }
+        switch($page->template) {
+            case "home":
+                $pageTemplate = "front/home";
+                break;
+            default:
+                $pageTemplate = "front/base";
+        }
+
+        $view = new View($pageTemplate, 'front-template');
+        $view->errors = $errors ?? null;
+        $view->page = $page;
+        $view->title = $page->getTitle();
+    }
 }

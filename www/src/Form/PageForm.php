@@ -46,7 +46,7 @@ class PageForm extends AbstractForm
                 ],
                 "slug" => [
                     "label" => 'Slug',
-                    "type" => "text",
+                    "type" => "slug",
                     "unicity" => true,
                     "required" => true,
                     "placeholder" => "Slug de la page",

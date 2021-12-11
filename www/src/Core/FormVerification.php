@@ -38,6 +38,8 @@ class FormVerification
                 } else if ($inputRules['type'] == 'select') {
 
                     FormVerification::checkOptions($inputValue, $inputRules, $inputKey);
+                } elseif ($inputRules['type'] == "slug") {
+                    FormVerification::checkSlug($inputValue, $inputKey);
                 }
             }
 
@@ -140,5 +142,11 @@ class FormVerification
         $statement->execute();
         $result = $statement->fetchColumn();
         if ($result) self::$array_errors[] = "La valeur du champ " . $inputKey . " est déja existante";
+    }
+
+    public static function checkSlug($string, $inputKey) {
+        if (!preg_match("/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/",$string)) {
+            self::$array_errors[] = "Le champ $inputKey ne peut contenir que des caractères alphanumériques et des tirets";
+        }
     }
 }
