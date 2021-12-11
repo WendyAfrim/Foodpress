@@ -14,9 +14,13 @@ class SecurityController
 
     public function loginAdmin()
     {
+        $form = new LoginForm;
 
-        // $view = new View('Security/loginAdmin', 'front-template');
-        // $view->title = 'Foodpress | Login Admin';
+
+        $view = new View('Security/loginAdmin', 'raw-template');
+        $view->errors = $errors ?? [];
+        $view->form = $form->renderHtml();
+        $view->title = 'Foodpress | Login Admin';
     }
 
     public function login()
