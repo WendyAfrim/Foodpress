@@ -17,20 +17,21 @@ class AjaxController
 
     public function delete($id)
     {
-        $class = ucfirst($_POST['entity']);
+        $entity = ucfirst($_POST['entity']);
 
-        $class = 'App\Models\\' . $class;
+        $class = 'App\Models\\' . $entity;
         $object = new $class();
 
         $object = $object->findByOne(['id' => $id]);
 
+
         if (!$object) {
-            echo 'Le client n\'existe pas';
+            echo 'Le' . $entity .'n\'existe pas';
         }
 
         $object->delete($id);
 
         $flashMessage = new FlashMessage();
-        $flashMessage->set("Votre utilisateur a bien été supprimé", FLASH_INFO);
+        $flashMessage->set("Votre {$entity} a bien été supprimé", FLASH_INFO);
     }
 }

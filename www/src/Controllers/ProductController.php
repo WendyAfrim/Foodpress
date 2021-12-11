@@ -4,7 +4,6 @@
 
 namespace App\Controllers;
 
-use App\Core\DateGenerator;
 use App\Core\View;
 use App\Models\Product;
 use App\Form\ProductForm;
@@ -59,6 +58,7 @@ class ProductController
                 $product->setCreatedAt($date);
                 $product->setUpdatedAt($date);
                 $product->save();
+                header('Location: /admin/products');
             }
         }
 
@@ -115,12 +115,12 @@ class ProductController
         if (!empty($_POST)) {
             $errors = FormVerification::check($_POST, $config);
             if (!$errors) {
-                $product->setName($_POST['name']);
-                $product->setType($_POST['type']);
-                $product->setDescription($_POST['description']);
-                $product->setPrice($_POST['price']);
-                $product->setIngredients($_POST['ingredients']);
-                $product->setImage($_POST['image']);
+                $product->setName(htmlentities($_POST['name']));
+                $product->setType(htmlentities($_POST['type']));
+                $product->setDescription(htmlentities($_POST['description']));
+                $product->setPrice(htmlentities($_POST['price']));
+                $product->setIngredients(htmlentities($_POST['ingredients']));
+                $product->setImage(htmlentities($_POST['image']));
                 $product->setUpdatedAt($date);
                 $product->save();
                 header('Location: /admin/products');

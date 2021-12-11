@@ -103,6 +103,9 @@ class ProductForm extends AbstractForm
                     'row' => 'start_end',
                     "error" => "L'image est invalide"
                 ],
+                "id" => [
+                    "type" => "hidden"
+                ]
             ]
         ];
     }
