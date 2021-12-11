@@ -25,15 +25,21 @@
                 </div>
                 <div class="training_item">
                     <span class="steps">2</span>
-                    <li>Créer votre première page</li>
+                    <li>
+                        <a href="/admin/page/add">Créer votre première page</a>
+                    </li>
                 </div>
                 <div class="training_item">
                     <span class="steps">3</span>
-                    <li>Créer votre menu de navigation</li>
+                    <li>
+                        <a href="/admin/menu/add">Créer votre menu de navigation</a>
+                    </li>
                 </div>
                 <div class="training_item">
                     <span class="steps">4</span>
-                    <li>Ajouter votre premier produit</li>
+                    <li>
+                        <a href="/admin/product/create">Ajouter votre premier produit</a>
+                    </li>
                 </div>
             </ul>
         </div>
@@ -123,131 +129,113 @@
             </div>
         </div>
     </div>
-    <div class="stats_grid">
-        <div class="card">
-            <div class="analytics_head">
-                <h2>Taux de satisfaction</h2>
-                <span class="las la-ellipsis-h"></span>
-            </div>
-            <div class="analytics_chart">
-                <div class="chart_circle">
-                    <h1>74%</h1>
-                </div>
-                <div class="analytics_note">
-                    <small>Note : Résulats mensuels de votre site</small>
-                </div>
-            </div>
-            <div class="analytics_btn">
-                <button class="button button--large button--violet">Générer</button>
-            </div>
-        </div>
-        <div class="orders">
-            <h3>Détails des commandes</h3>
-            <a href=""><small>Visualisez le détail de vos dernières commandes <span class="las la-arrow-right"></span></small></a>
-            <div class="table_responsive">
-                <table>
-                    <thead>
-                        <th>
-                            <div></div>
-                        </th>
-                        <th>
-                            <div>N°</div>
-                        </th>
-                        <th>
-                            <div>Nom</div>
-                        </th>
-                        <th>
-                            <div>Statut</div>
-                        </th>
-                        <th>
-                            <div>Heure</div>
-                        </th>
-                        <th>
-                            <div>Actions</div>
-                        </th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator indicator--yellow"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>Jane</div>
-                            </td>
-                            <td>
-                                <div>Doe</div>
-                            </td>
-                            <td>
-                                <div>New</div>
-                            </td>
-                            <td>
-                                <div>14:00</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <i class="las la-eye"></i>
-                                    <i class="las la-envelope"></i>
-                                    <i class="las la-pen"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator indicator--blue"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>Jane</div>
-                            </td>
-                            <td>
-                                <div>Doe</div>
-                            </td>
-                            <td>
-                                <div>Doe</div>
-                            </td>
-                            <td>
-                                <div>14:00</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <i class="las la-eye"></i>
-                                    <i class="las la-envelope"></i>
-                                    <i class="las la-pen"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <span class="indicator indicator--yellow"></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div>Jane</div>
-                            </td>
-                            <td>
-                                <div>Doe</div>
-                            </td>
-                            <td>
-                                <div>Doe</div>
-                            </td>
-                            <td>
-                                <div>14:00</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <i class="las la-eye"></i>
-                                    <i class="las la-envelope"></i>
-                                    <i class="las la-pen"></i>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+    <div class="orders">
+        <h3>Détails des commandes</h3>
+        <a href=""><small>Visualisez le détail de vos dernières commandes <span class="las la-arrow-right"></span></small></a>
+        <div class="table_responsive">
+            <table>
+                <thead>
+                    <th>
+                        <div></div>
+                    </th>
+                    <th>
+                        <div>N°</div>
+                    </th>
+                    <th>
+                        <div>Nom</div>
+                    </th>
+                    <th>
+                        <div>Statut</div>
+                    </th>
+                    <th>
+                        <div>Heure</div>
+                    </th>
+                    <th>
+                        <div>Actions</div>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="indicator indicator--yellow"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>Jane</div>
+                        </td>
+                        <td>
+                            <div>Doe</div>
+                        </td>
+                        <td>
+                            <div>New</div>
+                        </td>
+                        <td>
+                            <div>14:00</div>
+                        </td>
+                        <td>
+                            <div>
+                                <i class="las la-eye"></i>
+                                <i class="las la-envelope"></i>
+                                <i class="las la-pen"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="indicator indicator--blue"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>Jane</div>
+                        </td>
+                        <td>
+                            <div>Doe</div>
+                        </td>
+                        <td>
+                            <div>Doe</div>
+                        </td>
+                        <td>
+                            <div>14:00</div>
+                        </td>
+                        <td>
+                            <div>
+                                <i class="las la-eye"></i>
+                                <i class="las la-envelope"></i>
+                                <i class="las la-pen"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="indicator indicator--yellow"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>Jane</div>
+                        </td>
+                        <td>
+                            <div>Doe</div>
+                        </td>
+                        <td>
+                            <div>Doe</div>
+                        </td>
+                        <td>
+                            <div>14:00</div>
+                        </td>
+                        <td>
+                            <div>
+                                <i class="las la-eye"></i>
+                                <i class="las la-envelope"></i>
+                                <i class="las la-pen"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <label for="sidebar_toggle" class="body_label"></label>
