@@ -12,6 +12,13 @@ use App\Core\Mailer;
 class SecurityController
 {
 
+    public function loginAdmin()
+    {
+
+        // $view = new View('Security/loginAdmin', 'front-template');
+        // $view->title = 'Foodpress | Login Admin';
+    }
+
     public function login()
     {
         $form = new LoginForm();
@@ -35,7 +42,7 @@ class SecurityController
         $view = new View('Security/login', 'front-template');
         $view->errors = $errors ?? [];
         $view->form = $form->renderHtml();
-        $view->title = "Connexion";
+        $view->title = "Foodpress | Connexion";
     }
 
 
