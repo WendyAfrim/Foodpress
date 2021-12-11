@@ -1,0 +1,44 @@
+body 
+{
+    background: url('https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1767&q=80') no-repeat;
+    background-size: cover;
+}
+#admin-form-login {
+    width: 35%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: $white;
+    box-shadow: 0 50px 50px -50px $black;
+}
+
+#admin-form-login h1 {
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 40px 0;
+}
+
+#admin-form-login input.inputs-design 
+{
+    font-size: 16px;
+    width: 100%;
+    padding: 15px 10px;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 2px solid $black;
+    margin: 0 0 25px 0;
+    outline: none;
+}
+
+#admin-form-login input.submit_button  
+{
+    margin: 2rem 0;
+}
+
+#admin-form-login input.submit_button:hover 
+{
+    background-color: $black;
+    color: $white;
+}  

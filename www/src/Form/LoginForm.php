@@ -21,7 +21,7 @@ class LoginForm extends AbstractForm
             "action" => "",
             "method" => "POST",
             "form-id" => "login-form",
-            'class' => 'front-form',
+            'class' => 'formLogin',
             "form-title" => 'Formulaire de connexion',
             "submit" => "Se connecter",
             "inputs" => [
@@ -38,7 +38,7 @@ class LoginForm extends AbstractForm
                     "label" => 'Mot de passe',
                     "type" => "password",
                     "required" => true,
-                    "placeholder" => "Votre mot de passe",
+                    "placeholder" => "",
                     'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
                     'row' => 'start_end',
                     "error" => "Votre mot de passe doit faire entre 4 et 32 caractères"

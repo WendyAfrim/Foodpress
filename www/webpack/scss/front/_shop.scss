@@ -1,5 +1,5 @@
 section {
-    padding: 12rem 9%;
+    padding: 5rem 9%;
 }
 
 section:nth-child(even) {
@@ -59,7 +59,7 @@ section:nth-child(even) {
 
 .dishes .box-container  {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
     gap: 1.5rem;
 }
 

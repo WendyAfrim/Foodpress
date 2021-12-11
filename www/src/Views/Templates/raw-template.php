@@ -11,29 +11,10 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!--  JQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../../public/css/main.css">
+    <link rel="stylesheet" href="../../../public/css/admin.css">
 </head>
 
 <body>
-    <!-- Header section begin -->
-    <header>
-        <a href="#" class="logo"><i class="fas fa-utensils"></i>Resto</a>
-        <nav class="navbar">
-            <ul>
-                <?php foreach ($nav_items as $item) : ?>
-                    <li>
-                        <a href="<?= $item->link ?>"><?= $item->getLabel() ?></a>
-                    </li>
-                <?php endforeach ?>
-            </ul>
-        </nav>
-        <div class="icons">
-            <i class="fas fa-bars" id="menu-bar"></i>
-            <i class="fas fa-search" id="search-icon"></i>
-            <i class="fas fa-shopping-cart"></i>
-        </div>
-    </header>
-    <!-- Header section ends -->
 
     <?php require $this->view; ?>
 </body>
