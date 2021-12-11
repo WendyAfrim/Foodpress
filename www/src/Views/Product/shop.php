@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foodpress | Nos produits</title>
     <!-- Icons CDN -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!--  JQuery CDN -->
@@ -15,22 +14,6 @@
 </head>
 
 <body>
-    <!-- Header section begin -->
-    <header>
-        <a href="#" class="logo"><i class="fas fa-utensils"></i>Resto</a>
-        <nav class="navbar">
-            <a class="active" href="">Accueil</a>
-            <a href="">Nos produits</a>
-            <a href="">Qui sommes-nous ?</a>
-            <a href="">Commander</a>
-        </nav>
-        <div class="icons">
-            <i class="fas fa-bars" id="menu-bar"></i>
-            <i class="fas fa-search" id="search-icon"></i>
-            <i class="fas fa-shopping-cart"></i>
-        </div>
-    </header>
-    <!-- Header section ends -->
     <!-- Search form -->
     <form action="" id="search-form">
         <input type="search" placeholder="search here..." name="" id="search-box">
