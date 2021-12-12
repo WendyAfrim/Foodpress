@@ -26,7 +26,9 @@
                         <td>
                             <div>
                                 <a href="/admin/page/edit/<?= $page->getId() ?>"><i class="far fa-edit"></i></a>
-                                <a href="/admin/page/delete/<?= $page->getId() ?>"><i class="far fa-trash-alt"></i></a>
+                                <!-- <a href="/admin/page/delete/<?= $page->getId() ?>"><i class="far fa-trash-alt"></i></a> -->
+                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id={$page->getId()} data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_page'></i>"; ?>
+
                             </div>
                         </td>
                     </tr>
