@@ -347,6 +347,7 @@ body {
   display: block;
   height: 45px;
   border-radius: 3px;
+  cursor: pointer;
 }
 .button--large {
   padding: 0.6rem 1rem;
@@ -355,7 +356,7 @@ body {
   margin: 1rem auto;
 }
 .button--small {
-  padding: 0.5rem;
+  padding: 0.5rem 3rem;
   border-radius: 3px;
 }
 .button--violet {
@@ -367,6 +368,11 @@ body {
   background: #8da2fb;
   color: #011936;
   border: 1px solid #8da2fb;
+}
+.button--blue {
+  background: #011936;
+  color: #FFF;
+  border: 1px solid #011936;
 }
 
 .submit_row {

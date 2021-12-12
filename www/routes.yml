@@ -84,3 +84,8 @@
 /admin/menu/add:
   controller: 'MenuController'
   action: 'add_link'
+
+# Homepage
+/home:
+  controller: 'HomeController'
+  action: 'home'
