@@ -15,7 +15,7 @@ class ProductForm extends AbstractForm
     {
         $config = self::getConfig();
         if ($values) {
-            foreach($values as $field => $value) {
+            foreach ($values as $field => $value) {
                 $config["inputs"][$field]["value"] = $value;
             }
         }
@@ -23,12 +23,14 @@ class ProductForm extends AbstractForm
         $this->renderHtml();
     }
 
-    public static function getTypesForSelect() {
+    public static function getTypesForSelect()
+    {
         $type = new Type;
         $types = $type->findBy(['is_enable' => true]);
-        $filteredTypes = array_map(function($post) {
+        $filteredTypes = array_map(function ($post) {
             return ['value' => $post->getName(), 'label' => $post->getName()];
         }, $types);
+        dd($filteredTypes);
         return $filteredTypes;
     }
 

@@ -16,6 +16,16 @@ class AccountForm extends AbstractForm
         $this->renderHtml();
     }
 
+    public static function getRolesForSelect()
+    {
+        $arrayRoles = [
+            '0' => ['value' => 'admin', 'label' => 'Admin'],
+            '1' => ['value' => 'editor', 'label' => 'Editor'],
+            '2' => ['value' => 'client', 'label' => 'Client']
+        ];
+        return $arrayRoles;
+    }
+
     public function createForm()
     {
         return [
@@ -58,7 +68,7 @@ class AccountForm extends AbstractForm
                 'role' => [
                     'label' => 'Role',
                     'type' => 'select',
-                    'options' => ["Administrateur", "Editeur"],
+                    'options' => self::getRolesForSelect(),
                     'required' => true,
                     'placeholder' => '',
                     "minLength" => 2,
