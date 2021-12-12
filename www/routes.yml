@@ -64,11 +64,11 @@
 #Media
 /admin/media:
   controller: 'MediaController'
-  action: 'add_media'
+  action: 'all_media'
 
 /admin/media/add-media:
   controller: 'MediaController'
-  action: 'all_media'
+  action: 'add_media'
 
 
 # Product
