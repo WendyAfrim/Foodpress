@@ -1,0 +1,46 @@
+#form-register 
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#form-register div.container  
+{
+width: 940px;
+}
+
+#form-register div.wrapper 
+{
+    // position: absolute;
+    // top: 15%;
+    // left: 30%;
+    // transform: translate(-50px, -50px);
+    // width: 40%;
+    background-color: $white;
+    padding: 40px;
+    // margin-bottom: 3rem;
+    box-shadow: 0 50px 50px -50px $black;
+}
+
+#form-register div.wrapper div.container 
+{
+    // width: 100%;
+}
+
+#form-register div.wrapper div.container form h1 
+{
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+}
+
+#form-register div.wrapper div.container form label 
+{
+    font-size: 1.6rem;
+}
+
+#form-register div.wrapper div.container form input.inputs-design 
+{
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+} 

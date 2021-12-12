@@ -16,7 +16,7 @@ body {
     box-shadow: 0 50px 50px -50px $black;
 }
 
-div.wrapper div.container 
+#form-login div.container form
 {
     margin-left: 10rem;
 }
@@ -26,15 +26,20 @@ div.wrapper div.formLogin
     width: 100%;
     margin-left: 80px;
 }
-
-div.wrapper div.formLogin h2 
+#form-login div.wrapper div.container h1 
 {
+    text-transform: uppercase;
+}
+
+#form-login div.wrapper div.container label 
+{
+    font-size: 15px;
     text-transform: uppercase;
     color: #1c1c1e;
     margin-bottom: 20px;
 }
 
-div.wrapper .formLogin input.inputs-design 
+#form-login div.wrapper input.inputs-design 
 {
     border-radius: 0;
     width: 100%;
@@ -46,7 +51,7 @@ div.wrapper .formLogin input.inputs-design
     margin: 0 0 38px 0;
 } 
 
-div.wrapper .formLogin input.submit_button 
+#form-login div.wrapper input.submit_button 
 {
     color: $white;
     background-color: $black;
@@ -58,12 +63,12 @@ div.wrapper .formLogin input.submit_button
     cursor: pointer;
 } 
 
-div.wrapper .formLogin input.submit_button:hover {
+#form-login div.wrapper input.submit_button:hover {
     background-color: $light-grey;
     color: $black;
 }
 
-div.wrapper img
+#form-login div.wrapper img
 {
     width: 56%;
 }
