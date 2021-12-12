@@ -9,6 +9,7 @@ use App\Core\FormVerification;
 use App\Form\PageForm;
 use App\Helpers\Generator;
 use App\Models\Post;
+use App\Models\Template;
 
 class PostController
 {
@@ -47,14 +48,16 @@ class PostController
         $view->title = "Foodpress | Ajouter une page";
     }
 
-    public function all_pages() {
+    public function all_pages()
+    {
         $page = new Post;
         $pages = $page->findAll();
         $view = new View('Admin/pages/index', 'back-template');
         $view->pages = $pages;
     }
 
-    public function edit_page($id) {
+    public function edit_page($id)
+    {
         $page = new Post;
         $page = $page->findByOne(['id' => $id]);
         if (!$page) {
@@ -81,14 +84,15 @@ class PostController
             "slug" => $page->getSlug(),
             "content" => $page->getContent()
         ]);
-        
+
 
         $view = new View('Admin/pages/edit', 'back-template');
         $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
     }
 
-    public function delete_page($id) {
+    public function delete_page($id)
+    {
         $page = new Post;
         $page = $page->findByOne(['id' => $id]);
         if (!$page) {
@@ -98,16 +102,20 @@ class PostController
         header('Location: /admin/pages');
     }
 
-    public function show_page($slug) {
+    public function show_page($slug)
+    {
 
         $page = new Post;
         $page = $page->findByOne(['slug' => $slug]);
         if (!$page) {
             header('Location: /404');
         }
-        switch($page->template) {
-            case "home":
-                $pageTemplate = "front/home";
+        switch ($page->template) {
+            case "product":
+                $pageTemplate = "front/products";
+                break;
+            case "product":
+                $pageTemplate = "front/product";
                 break;
             default:
                 $pageTemplate = "front/base";
@@ -117,5 +125,26 @@ class PostController
         $view->errors = $errors ?? null;
         $view->page = $page;
         $view->title = $page->getTitle();
+    }
+
+    public function show_home()
+    {
+
+        $pageTemplate = "front/home";
+
+        $template = new Template;
+        $homeTemplate = $template->findByOne(['name' => 'home']);
+        if ($homeTemplate) {
+            $post = new Post;
+            $page = $post->findByOne(['id' => $homeTemplate->getPostId()]);
+            if ($page) {
+                $pageTemplate = "front/base";
+            }
+        }
+
+        $view = new View($pageTemplate, 'front-template');
+        $view->errors = $errors ?? null;
+        $view->page = $page ?? null;
+        $view->title = isset($page) ? $page->getTitle() : null;
     }
 }
