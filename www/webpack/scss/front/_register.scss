@@ -1,0 +1,38 @@
+#form-register 
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#form-register div.container  
+{
+width: 100%;
+}
+
+#form-register div.wrapper 
+{
+    background-color: $white;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 50px 50px -50px $black;
+}
+
+
+
+#form-register div.wrapper div.container form h1 
+{
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+}
+
+#form-register div.wrapper div.container form label 
+{
+    font-size: 1.6rem;
+}
+
+#form-register div.wrapper div.container form input.inputs-design 
+{
+    border: none;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+} 

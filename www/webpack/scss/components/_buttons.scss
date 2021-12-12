@@ -2,6 +2,7 @@
     display: block;
     height: 45px;
     border-radius: 3px;
+    cursor: pointer;
 
     &--large {
         padding: .6rem 1rem;
@@ -11,7 +12,7 @@
     }
 
     &--small {
-        padding: 0.5rem;
+        padding: 0.5rem 3rem;
         border-radius: 3px;
     }
 
@@ -25,6 +26,12 @@
         background: $violet;
         color: $night-blue;
         border: 1px solid $violet ;
+    }
+
+    &--blue {
+        background: $night-blue;
+        color: $white;
+        border: 1px solid $night-blue;
     }
 }
 

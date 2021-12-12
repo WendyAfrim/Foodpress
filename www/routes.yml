@@ -105,3 +105,8 @@
   controller: 'MenuController'
   action: 'add_link'
   role: 'admin'
+
+# Homepage
+/home:
+  controller: 'HomeController'
+  action: 'home'

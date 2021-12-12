@@ -20,8 +20,7 @@ class LoginForm extends AbstractForm
             "table" => "user",
             "action" => "",
             "method" => "POST",
-            "form-id" => "login-form",
-            'class' => 'formLogin',
+            // 'class' => 'formLogin',
             "form-title" => 'Formulaire de connexion',
             "submit" => "Se connecter",
             "inputs" => [

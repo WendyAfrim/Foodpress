@@ -41,3 +41,4 @@
 </html>
 <!-- Script JS -->
 <script src="../../../public/js/script.js"></script>
+<script src="../../../public/js/slider.js"></script>
