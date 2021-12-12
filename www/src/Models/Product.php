@@ -11,13 +11,12 @@ class Product extends AbstractModel
 
     protected $id = null;
     protected $name;
-    protected $type;
+    protected $type_id;
     protected $description;
     protected $price;
     protected $ingredients;
     protected $image;
     protected $created_at;
-    protected $updated_at;
 
 
     /**
@@ -76,9 +75,9 @@ class Product extends AbstractModel
      *
      * @return string
      */
-    public function getType(): string
+    public function getType(): int
     {
-        return $this->type;
+        return $this->type_id;
     }
 
     /**
@@ -86,9 +85,9 @@ class Product extends AbstractModel
      *
      * @param mixed 
      */
-    public function setType($type): void
+    public function setType($type_id): void
     {
-        $this->type = $type;
+        $this->type_id = $type_id;
     }
 
     /**
@@ -193,25 +192,5 @@ class Product extends AbstractModel
     {
 
         $this->created_at = $created_at;
-    }
-
-    /**
-     * Récupération de la date de la dernière mise à jour
-     *
-     * @return string
-     */
-    public function getUpdatedAt(): string
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * Setting de la date de la dernière mise à jour
-     *
-     * @param DateTime
-     */
-    public function setUpdatedAt($updated_at): void
-    {
-        $this->updated_at = $updated_at;
     }
 }

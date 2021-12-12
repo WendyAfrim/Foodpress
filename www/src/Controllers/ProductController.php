@@ -23,12 +23,23 @@ class ProductController
     public function all_products()
     {
         $product = new Product();
-
+        $type = new Type();
         $products = $product->findAll();
-
+        $productsWithType = array_map(function($product) use($type) {
+            return [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'description' => $product->getDescription(),
+                'price' => $product->getPrice(),
+                'ingredients' => $product->getIngredients(),
+                'image' => $product->getImage(),
+                'created_at' => $product->getCreatedAt(),
+                'type' => $type->findByOne(['id' => $product->getType()])->getName()
+            ];
+        }, $products);
         $view = new View('Admin/Product/index', 'back-template');
         $view->title = 'Foodpress | Tous les produits';
-        $view->products = $products;
+        $view->products = $productsWithType;
     }
 
     /**
@@ -56,7 +67,6 @@ class ProductController
                 $product->setIngredients(htmlentities($_POST['ingredients']));
                 $product->setImage(htmlentities($_POST['image']));
                 $product->setCreatedAt($date);
-                $product->setUpdatedAt($date);
                 $product->save();
                 header('Location: /admin/products');
             }
@@ -91,8 +101,6 @@ class ProductController
             }
         }
         $types = $type->findBy(['is_enable' => true]);
-
-
         $view = new View('Admin/Product/add-type', 'back-template');
         $view->form = $form->renderHtml();
         $view->types = $types;
@@ -121,7 +129,6 @@ class ProductController
                 $product->setPrice(htmlentities($_POST['price']));
                 $product->setIngredients(htmlentities($_POST['ingredients']));
                 $product->setImage(htmlentities($_POST['image']));
-                $product->setUpdatedAt($date);
                 $product->save();
                 header('Location: /admin/products');
             }
@@ -162,9 +169,10 @@ class ProductController
     {
         $product = new Product();
         $products = $product->findAll();
-
+        
         $view = new View('Product/shop', 'front-template');
         $view->title = 'Foodpress | Nos produits';
+        $view->products = $products ?? null;
     }
 
     /**
@@ -176,8 +184,12 @@ class ProductController
     {
         $product = new Product();
         $product = $product->findByOne(['id' => $id]);
-
+        if (!$product) {
+            header('Location: /shop');
+        }
         $view = new View('Product/product', 'front-template');
         $view->title = 'Foodpress | ' . $product->getName();
+        $view->product = $product ?? null;
+
     }
 }

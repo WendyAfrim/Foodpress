@@ -18,23 +18,21 @@
             <?php if (!empty($products)) { ?>
                 <?php foreach ($products as $product) {
                 ?>
-
                     <tr>
-                        <td><?= $product->getId(); ?></td>
-                        <td><?= $product->getName(); ?></td>
-                        <td><?= $product->getType(); ?></td>
-                        <td><?= $product->getDescription(); ?></td>
-                        <td><?= $product->getPrice(); ?></td>
-                        <td><?= $product->getIngredients(); ?></td>
-                        <td><?= $product->getImage(); ?></td>
-                        <td><?= $product->getCreatedAt(); ?></td>
+                        <td><?= $product['id'] ?></td>
+                        <td><?= $product['name'] ?></td>
+                        <td><?= $product['type'] ?></td>
+                        <td><?= $product['description'] ?></td>
+                        <td><?= $product['price'] ?></td>
+                        <td><?= $product['ingredients'] ?></td>
+                        <td><?= $product['image'] ?></td>
+                        <td><?= $product['created_at'] ?></td>
                         <td>
                             <div>
-                                <a href="/admin/product/update/<?= $product->getId() ?>"><i class="far fa-edit"></i></a>
-                                <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id={$product->getId()} data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_product'></i>"; ?>
+                                <a href="/admin/product/update/<?= $product['id'] ?>"><i class="far fa-edit"></i></a>
+                                <i class='far fa-trash-alt btn-trash' data-item-id="<?= $product['id'] ?>" data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_product'></i>
                             </div>
                         </td>
-                    </tr>
                     </tr>
                 <?php } ?>
             <?php } ?>

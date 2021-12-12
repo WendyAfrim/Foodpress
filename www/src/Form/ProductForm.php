@@ -27,8 +27,8 @@ class ProductForm extends AbstractForm
     {
         $type = new Type;
         $types = $type->findBy(['is_enable' => true]);
-        $filteredTypes = array_map(function ($post) {
-            return ['value' => $post->getName(), 'label' => $post->getName()];
+        $filteredTypes = array_map(function ($type) {
+            return ['value' => $type->getId(), 'label' => $type->getName()];
         }, $types);
 
         return $filteredTypes;
@@ -59,7 +59,6 @@ class ProductForm extends AbstractForm
                 "type" => [
                     "label" => 'Type',
                     "type" => "select",
-                    "select" => 'object',
                     "required" => true,
                     "placeholder" => "Sélectionner le type du produit",
                     // "minLength"=>2,

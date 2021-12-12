@@ -9,11 +9,11 @@
             </div>
             <div class="box-description">
                 <div class="header">
-                    <h1> Profiteroles au chocolat</h1>
+                    <h1><?= $product->getName() ?></h1>
                 </div>
                 <div class="content">
                     <div class="description">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias ipsam deserunt eaque debitis necessitatibus impedit, assumenda, eveniet placeat non corporis dolorum corrupti voluptatum qui beatae tempora quo tenetur ut saepe?</p>
+                        <p><?= $product->getDescription() ?></p>
                     </div>
                 </div>
                 <div class="cart">
