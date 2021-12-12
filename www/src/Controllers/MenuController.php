@@ -49,6 +49,7 @@ class MenuController
                 }
                 $menu->setPostId((int)$_POST['post_id']);
                 $menu->save();
+                header('Location: /admin/menu');
             }
         }
         $view = new View('Admin/menu/add', 'back-template');
@@ -71,6 +72,7 @@ class MenuController
                 $menu_link->setLabel($_POST['label']);
                 $menu_link->setPostId((int)$_POST['post_id']);
                 $menu_link->save();
+                header('Location: /admin/menu');
             }
         }
         $form = new MenuForm([
