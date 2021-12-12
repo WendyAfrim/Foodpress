@@ -38,6 +38,4 @@
             <?php } ?>
         </tbody>
     </table>
-    <div id="modal" class="modal"></div>
-    <div id="overlay"></div>
 </div>

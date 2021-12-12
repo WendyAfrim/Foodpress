@@ -17,7 +17,7 @@
                 <?php foreach ($users as $user) {
                 ?>
                     <tr>
-                    <td><?= $user->getId(); ?></td>
+                        <td><?= $user->getId(); ?></td>
                         <td><?= $user->getFirstname(); ?></td>
                         <td><?= $user->getLastname(); ?></td>
                         <td><?= $user->getEmail(); ?></td>
@@ -36,6 +36,4 @@
             <?php } ?>
         </tbody>
     </table>
-    <div id="modal" class="modal"></div>
-    <div id="overlay"></div>
 </div>

@@ -194,6 +194,8 @@ $flashMessage = new FlashMessage();
             <?=
             $flashMessage->display();
             require $this->view; ?>
+            <div id="modal" class="modal"></div>
+            <div id="overlay"></div>
         </main>
         <!-- </div> -->
     </div>
