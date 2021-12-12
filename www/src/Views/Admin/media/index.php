@@ -5,8 +5,7 @@
             <tr>
                 <th>N°</th>
                 <th>Alt</th>
-                <th>Type</th>
-                <th>Crée le</th>
+                <th>Ajouté le </th>
                 <th>Titre</th>
                 <th>Nom du fichier</th>
             </tr>
@@ -20,7 +19,7 @@
                         <td><?= $media->getId(); ?></td>
                         <td><?= $media->getFileName(); ?></td>
                         <td><?= $media->getAlt(); ?></td>
-                        <td><?= $media->getFileName(); ?></td>
+                        <td><?= $media->getAdd_at(); ?></td>
                     </tr>
                     </tr>
                 <?php } ?>
