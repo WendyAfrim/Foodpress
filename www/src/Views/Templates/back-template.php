@@ -44,13 +44,13 @@ $flashMessage = new FlashMessage();
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/admin/media/add-media">
                             <i class="far fa-plus-square"></i>
                             Ajouter
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="/admin/media">
                             <i class="fas fa-compact-disc"></i>
                             Tous les médias
                         </a>

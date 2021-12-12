@@ -61,6 +61,15 @@
     action: 'all_clients'
     role: 'admin'
 
+#Media
+/admin/media:
+  controller: 'MediaController'
+  action: 'add_media'
+
+/admin/media/add-media:
+  controller: 'MediaController'
+  action: 'all_media'
+
 
 # Product
 /admin/type/create: 
