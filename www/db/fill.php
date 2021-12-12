@@ -18,9 +18,14 @@ $pdo = new PDO("mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] 
 $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
 $pdo->exec('TRUNCATE TABLE user');
 $pdo->exec('TRUNCATE TABLE posts');
+$pdo->exec('TRUNCATE TABLE product');
+
+
 $pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
 
 $faker = \Faker\Factory::create('fr_FR');
+$faker->addProvider(new \FakerRestaurant\Provider\fr_FR\Restaurant($faker));
+
 $error = null;
 
 try {
@@ -81,8 +86,59 @@ try {
     }
     echo "<br>";
 
-    echo "<span style='font-weight: bold'>Base de données bien remplie !</span> &#x1F354";
+    
+    //Création des products 
+    for ($i = 0; $i < 30; $i++) {
+        $name = $faker->foodName();
+        $type = rand(0, 1) ? 'Entree' : 'Plat';
+        $description = $faker->sentence($nbWords = 6, $variableNbWords = true);
+        $price = $faker->biasedNumberBetween($min = 8, $max = 20, $function = 'sqrt');
+        $ingredients = $faker->foodName();
+        $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
+        $image = $faker->foodname() .".jpg"; 
 
+        $request = $pdo->prepare("INSERT INTO product (name,type,description,price,ingredients,image,created_at) VALUES (:name,:type,:description,:price,:ingredients,:image,:created_at)");
+        $request->execute([
+            "name" => $name,
+            "type" => $type,
+            "description" => $description,
+            "price" => $price,
+            "image" => $image,
+            "ingredients" => $ingredients,
+            "created_at" => $created_at
+            
+        ]);
+
+    echo "Le product $name a bien été ajouté<br>";
+
+
+
+//Création des types 
+
+}
+
+
+    $name =  "Plat";
+    $is_enable = rand(0,1);
+    $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
+    $updated_at = $faker->dateTimeThisCentury->format('Y-m-d');
+   
+    $request = $pdo->prepare("INSERT INTO type (name,is_enable,created_at,updated_at) VALUES (:name,:is_enable,:created_at,:updated_at)");
+    $request->execute([
+        "name" => $name,
+        "is_enable" => $is_enable,
+        "created_at" => $created_at,
+        "updated_at" => $updated_at
+    ]);
+
+    echo "le type $name a bien été ajouté<br> "; 
+
+
+
+
+echo "<span style='font-weight: bold'>Base de données bien remplie !</span> &#x1F354";
+
+    
 } catch (PDOException $e) {
     echo "Problème lors du remplissage de la base de données<br>";
     echo "Erreur: <span style='font-weight: bold'>" . $e . "</span>";
