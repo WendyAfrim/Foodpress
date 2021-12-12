@@ -14,14 +14,16 @@
             </button>
         </div>
     </div>
-    <small>Voici quelques étapes qui vous aidera à prendre en main notre outil :</small>
+    <small>Voici quelques étapes afin de vous aider à prendre en main notre outil</small>
     <div class="card card--large">
         <h3>Vos premiers pas</h3>
         <div class="trainings_items">
             <ul>
                 <div class="training_item">
                     <span class="steps">1</span>
-                    <li>Comment configurer l'outil ?</li>
+                    <li>
+                        <a href="/admin/tuto">Comment configurer l'outil ?</a>
+                    </li>
                 </div>
                 <div class="training_item">
                     <span class="steps">2</span>

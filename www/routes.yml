@@ -119,3 +119,9 @@
 /admin/settings:
   controller: 'DashboardController'
   action: 'settings'
+  
+# Tuto
+/admin/tuto:
+  controller: 'TutoController'
+  action: 'show_tuto'
+  role: 'admin'
