@@ -9,7 +9,6 @@ use App\Core\FormVerification;
 use App\Form\PageForm;
 use App\Helpers\Generator;
 use App\Models\Post;
-use App\Models\Template;
 
 class PostController
 {
@@ -131,7 +130,7 @@ class PostController
     {
 
         $pageTemplate = "front/home";
-
+        /*
         $template = new Template;
         $homeTemplate = $template->findByOne(['name' => 'home']);
         if ($homeTemplate) {
@@ -140,7 +139,7 @@ class PostController
             if ($page) {
                 $pageTemplate = "front/base";
             }
-        }
+        } */
 
         $view = new View($pageTemplate, 'front-template');
         $view->errors = $errors ?? null;
