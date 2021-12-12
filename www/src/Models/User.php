@@ -7,7 +7,7 @@ use DateTime;
 
 class User extends AbstractModel
 {
-    public $table = 'user';
+    public $table = 'users';
 
     protected $id = null;
     protected $firstname;
@@ -216,7 +216,7 @@ class User extends AbstractModel
         $this->city = $city;
     }
 
-        /**
+    /**
      * Récupération de la ville
      *
      * @return string

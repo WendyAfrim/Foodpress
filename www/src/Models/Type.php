@@ -7,7 +7,7 @@ use App\AbstractClass\AbstractModel;
 class Type extends AbstractModel
 {
 
-    public $table = 'type';
+    public $table = 'types';
 
     public $id = null;
     public $name;

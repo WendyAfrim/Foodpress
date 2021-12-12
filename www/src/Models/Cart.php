@@ -7,7 +7,7 @@ use DateTime;
 
 class Cart extends AbstractModel
 {
-    protected $table = 'cart';
+    protected $table = 'carts';
 
     protected $id = null;
     protected $reference;

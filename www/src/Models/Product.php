@@ -7,7 +7,7 @@ use App\AbstractClass\AbstractModel;
 class Product extends AbstractModel
 {
 
-    protected $table = 'product';
+    protected $table = 'products';
 
     protected $id = null;
     protected $name;
