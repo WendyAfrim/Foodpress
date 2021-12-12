@@ -21,7 +21,6 @@ class AccountForm extends AbstractForm
         $arrayRoles = [
             '0' => ['value' => 'admin', 'label' => 'Admin'],
             '1' => ['value' => 'editor', 'label' => 'Editor'],
-            '2' => ['value' => 'client', 'label' => 'Client']
         ];
         return $arrayRoles;
     }
