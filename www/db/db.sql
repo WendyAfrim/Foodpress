@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : database
--- Généré le : Dim 28 nov. 2021 à 17:00
--- Version du serveur :  5.7.34
+-- Généré le : Dim 12 déc. 2021 à 19:34
+-- Version du serveur :  5.7.33
 -- Version de PHP : 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -48,7 +48,7 @@ CREATE TABLE `posts` (
   `updated_at` datetime NOT NULL,
   `enabled` tinyint(1) DEFAULT '1',
   `type` varchar(50) NOT NULL,
-  `template` varchar(50),
+  `template` varchar(50) DEFAULT NULL,
   `author_id` int(11) DEFAULT NULL,
   `media_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,27 +56,27 @@ CREATE TABLE `posts` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product`
+-- Structure de la table `products`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `price` float NOT NULL,
   `ingredients` text NOT NULL,
   `image` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type`
+-- Structure de la table `types`
 --
 
-CREATE TABLE `type` (
+CREATE TABLE `types` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `is_enable` int(11) NOT NULL,
@@ -87,10 +87,10 @@ CREATE TABLE `type` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Structure de la table `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
@@ -125,21 +125,22 @@ ALTER TABLE `posts`
   ADD KEY `author_id` (`author_id`);
 
 --
--- Index pour la table `product`
+-- Index pour la table `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`);
+
+--
+-- Index pour la table `types`
+--
+ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `type`
+-- Index pour la table `users`
 --
-ALTER TABLE `type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -159,21 +160,21 @@ ALTER TABLE `posts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `product`
+-- AUTO_INCREMENT pour la table `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `type`
+-- AUTO_INCREMENT pour la table `types`
 --
-ALTER TABLE `type`
+ALTER TABLE `types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `user`
+-- AUTO_INCREMENT pour la table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -181,16 +182,16 @@ ALTER TABLE `user`
 --
 
 --
--- Contraintes pour la table `nav_menu`
+-- Contraintes pour la table `products`
 --
-ALTER TABLE `nav_menu`
-  ADD CONSTRAINT `fk_post_id` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
+ALTER TABLE `products`
+  ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`);
 
 --
 -- Contraintes pour la table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `fk_author_id` FOREIGN KEY (`author_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `fk_author_id` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

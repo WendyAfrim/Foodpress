@@ -16,12 +16,14 @@ $pdo = new PDO("mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'] 
     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
 ]);
 $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
-$pdo->exec('TRUNCATE TABLE user');
+$pdo->exec('SET SQL_MODE = NO_AUTO_VALUE_ON_ZERO');
+
+$pdo->exec('TRUNCATE TABLE users');
 $pdo->exec('TRUNCATE TABLE posts');
-$pdo->exec('TRUNCATE TABLE product');
+$pdo->exec('TRUNCATE TABLE products ');
+$pdo->exec('TRUNCATE TABLE types ');
+$pdo->exec('TRUNCATE TABLE nav_menu ');
 
-
-$pdo->exec('SET FOREIGN_KEY_CHECKS = 1');
 
 $faker = \Faker\Factory::create('fr_FR');
 $faker->addProvider(new \FakerRestaurant\Provider\fr_FR\Restaurant($faker));
@@ -38,13 +40,13 @@ try {
         $address = $faker->streetAddress;
         $zipcode = $faker->postcode;
         $city = $faker->city;
-        $country = $faker->randomElement(["fr","en"]);
+        $country = $faker->randomElement(["fr", "en"]);
         $phone = $faker->phoneNumber;
         $role = $faker->randomElement(["admin", "editor", "client"]);
         $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
         $password = password_hash('123456', PASSWORD_DEFAULT);
 
-        $request = $pdo->prepare("INSERT INTO user (lastname,firstname,email,address,zipcode,city,country,phone,role,created_at,password) VALUES (:lastname,:firstname,:email,:address,:zipcode,:city,:country,:phone,:role,:created_at,:password)");
+        $request = $pdo->prepare("INSERT INTO users (lastname,firstname,email,address,zipcode,city,country,phone,role,created_at,password) VALUES (:lastname,:firstname,:email,:address,:zipcode,:city,:country,:phone,:role,:created_at,:password)");
         $request->execute([
             "lastname" => $lastname,
             "firstname" => $firstname,
@@ -64,7 +66,7 @@ try {
 
     // Création des posts
     for ($i = 0; $i < 50; $i++) {
-        $title = $faker->words(random_int(3,8),true);
+        $title = $faker->words(random_int(3, 8), true);
         $slug = $faker->slug;
         $content = $faker->text;
         $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
@@ -86,7 +88,7 @@ try {
     }
     echo "<br>";
 
-    
+
     //Création des products 
     for ($i = 0; $i < 30; $i++) {
         $name = $faker->foodName();
@@ -95,35 +97,32 @@ try {
         $price = $faker->biasedNumberBetween($min = 8, $max = 20, $function = 'sqrt');
         $ingredients = $faker->foodName();
         $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
-        $image = $faker->foodname() .".jpg"; 
+        $image = $faker->foodname() . ".jpg";
 
-        $request = $pdo->prepare("INSERT INTO product (name,type,description,price,ingredients,image,created_at) VALUES (:name,:type,:description,:price,:ingredients,:image,:created_at)");
+        $request = $pdo->prepare("INSERT INTO products (name,type_id,description,price,ingredients,image,created_at) VALUES (:name,:type_id,:description,:price,:ingredients,:image,:created_at)");
         $request->execute([
             "name" => $name,
-            "type" => $type,
+            "type_id" => 1,
             "description" => $description,
             "price" => $price,
             "image" => $image,
             "ingredients" => $ingredients,
             "created_at" => $created_at
-            
+
         ]);
 
-    echo "Le product $name a bien été ajouté<br>";
+        echo "Le product $name a bien été ajouté<br>";
+    }
 
 
-
-//Création des types 
-
-}
-
+    //Création des types 
 
     $name =  "Plat";
-    $is_enable = rand(0,1);
+    $is_enable = 1;
     $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
     $updated_at = $faker->dateTimeThisCentury->format('Y-m-d');
-   
-    $request = $pdo->prepare("INSERT INTO type (name,is_enable,created_at,updated_at) VALUES (:name,:is_enable,:created_at,:updated_at)");
+
+    $request = $pdo->prepare("INSERT INTO types (name,is_enable,created_at,updated_at) VALUES (:name,:is_enable,:created_at,:updated_at)");
     $request->execute([
         "name" => $name,
         "is_enable" => $is_enable,
@@ -131,14 +130,9 @@ try {
         "updated_at" => $updated_at
     ]);
 
-    echo "le type $name a bien été ajouté<br> "; 
+    echo "le type $name a bien été ajouté<br> ";
 
-
-
-
-echo "<span style='font-weight: bold'>Base de données bien remplie !</span> &#x1F354";
-
-    
+    echo "<span style='font-weight: bold'>Base de données bien remplie !</span> &#x1F354";
 } catch (PDOException $e) {
     echo "Problème lors du remplissage de la base de données<br>";
     echo "Erreur: <span style='font-weight: bold'>" . $e . "</span>";
