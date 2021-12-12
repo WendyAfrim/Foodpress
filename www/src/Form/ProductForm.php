@@ -30,14 +30,14 @@ class ProductForm extends AbstractForm
         $filteredTypes = array_map(function ($post) {
             return ['value' => $post->getName(), 'label' => $post->getName()];
         }, $types);
-        dd($filteredTypes);
+
         return $filteredTypes;
     }
 
     public static function getConfig()
     {
         return [
-            "table" => "product",
+            "table" => "products",
             "action" => "",
             "method" => "POST",
             "form-id" => "product-form",

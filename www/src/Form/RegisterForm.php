@@ -21,7 +21,7 @@ class RegisterForm extends AbstractForm
     public function createForm()
     {
         return [
-            "table" => "user",
+            "table" => "users",
             "action" => "",
             "method" => "POST",
             "form-id" => "register-form",

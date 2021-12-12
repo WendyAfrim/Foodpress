@@ -29,7 +29,7 @@ class AccountForm extends AbstractForm
     {
         return [
             "method" => "POST",
-            "table" => "user",
+            "table" => "users",
             "form-title" => 'Formulaire | Ajout d\'un compte',
             "form-id" => 'account-form',
             "submit" => "Enregistrer",

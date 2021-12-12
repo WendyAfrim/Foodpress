@@ -19,7 +19,7 @@ class TypeForm extends AbstractForm
     public function createForm()
     {
         return [
-            "table" => "type",
+            "table" => "types",
             "action" => "",
             "method" => "POST",
             "form-id" => "type-form",

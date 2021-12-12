@@ -17,7 +17,7 @@ class LoginForm extends AbstractForm
     public function getFormConfig()
     {
         return [
-            "table" => "user",
+            "table" => "users",
             "action" => "",
             "method" => "POST",
             // 'class' => 'formLogin',
