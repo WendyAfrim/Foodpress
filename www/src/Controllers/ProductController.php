@@ -166,4 +166,18 @@ class ProductController
         $view = new View('Product/shop', 'front-template');
         $view->title = 'Foodpress | Nos produits';
     }
+
+    /**
+     * Fiche detail d'un produit
+     *
+     * @return void
+     */
+    public function product(int $id)
+    {
+        $product = new Product();
+        $product = $product->findByOne(['id' => $id]);
+
+        $view = new View('Product/product', 'front-template');
+        $view->title = 'Foodpress | ' . $product->getName();
+    }
 }

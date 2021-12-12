@@ -17,6 +17,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
     gap: 1.5rem;
+    margin: auto 10rem;
 }
 
 .dishes .box-container .box {

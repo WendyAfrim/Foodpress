@@ -577,6 +577,7 @@ header .icons #menu-bar {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   gap: 1.5rem;
+  margin: auto 10rem;
 }
 
 .dishes .box-container .box {
@@ -716,11 +717,11 @@ section:nth-child(even) {
   flex-direction: row;
 }
 
-img {
+#home .home-slider div.container .sliders img {
   display: none;
 }
 
-img.active {
+#home .home-slider div.container .sliders img.active {
   display: block;
   border: 1px solid #FFF;
   width: 100%;
@@ -806,7 +807,7 @@ div.wrapper div.formLogin {
 }
 
 #form-register div.container {
-  width: 940px;
+  width: 100%;
 }
 
 #form-register div.wrapper {
@@ -828,4 +829,56 @@ div.wrapper div.formLogin {
   border: none;
   border-bottom: 2px solid black;
   border-radius: 0;
+}
+
+body.product-detail {
+  background-color: #FFF;
+}
+
+.section-produit div.container {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.section-produit div.container .box-image img {
+  width: 545px;
+}
+
+.section-produit div.container .box-description {
+  margin-left: 8rem;
+}
+
+.section-produit div.container .box-description .header h1 {
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+.section-produit div.container .box-description .content {
+  margin-bottom: 2rem;
+}
+
+.section-produit div.container .box-description .content p {
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.section-produit div.container .box-description .cart .quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-produit div.container .box-description .cart label {
+  font-size: 18px;
+}
+
+.section-produit div.container .box-description .cart .input-quantity {
+  text-align: center;
+  margin: 2rem 0;
+  border: 1px solid white;
+  padding: 2px;
 }

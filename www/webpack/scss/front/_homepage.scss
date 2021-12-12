@@ -74,12 +74,12 @@ body.homepage
     flex-direction: row;
 }
 
- img 
+ #home .home-slider div.container .sliders img 
 {
     display: none;
 }
 
- img.active
+#home .home-slider div.container .sliders img.active
 {
     display: block;
     border: 1px solid $white;

@@ -29,6 +29,10 @@
   controller: 'MenuController'
   action: 'edit_link'
 
+/product/{id}:
+  controller: 'ProductController'
+  action: 'product'
+
 # Affichage des pages
 /{slug}:
   controller: "PostController"
