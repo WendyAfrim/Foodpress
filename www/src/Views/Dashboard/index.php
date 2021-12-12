@@ -87,11 +87,11 @@
             <div class="card_flex card_flex--85">
                 <div class="card_info">
                     <div class="card_head">
-                        <span>Ventes</span>
-                        <small>Nombre de ventes</small>
+                        <span>Nos produits</span>
+                        <small>Nombre de produits</small>
                     </div>
-                    <h2>17,663</h2>
-                    <small>-2% des ventes</small>
+                    <h2><?= count($products) ?></h2>
+                    <small>+2% de produits</small>
                 </div>
                 <div class="card_chart card_chart--red">
                     <span class="las la-chart-line"></span>

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\View;
 use App\Models\User;
+use App\Models\Product;
 
 
 class DashboardController
@@ -18,5 +19,10 @@ class DashboardController
         $view->title = 'Tableau de bord - Foodpress';
 
         $view->users = $users;
+
+        $product = new Product();
+        $products = $product->findAll();
+        $view->products = $products;
+
     }
 }
