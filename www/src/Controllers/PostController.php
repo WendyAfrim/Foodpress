@@ -38,6 +38,7 @@ class PostController
                 $page->setEnabled(1);
                 $page->setType("page");
                 $page->save();
+                header('Location: /admin/pages');
             }
         }
         $view = new View('Admin/pages/add', 'back-template');
@@ -71,6 +72,7 @@ class PostController
                 $page->setEnabled(1);
                 $page->setType("page");
                 $page->save();
+                header('Location: /admin/pages');
             }
         }
         $form = new PageForm([
