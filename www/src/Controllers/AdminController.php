@@ -21,7 +21,7 @@ class AdminController
     {
         $user = new User();
 
-        $users = $user->findBy(['roles' => "admin"]);
+        $users = $user->findBy(['role' => "admin"]);
 
         $view = new View('Admin/User/index', 'back-template');
         $view->title = 'Foodpress | Tous les comptes';
@@ -54,7 +54,7 @@ class AdminController
                 $user->setFirstname($_POST['firstname']);
                 $user->setLastname($_POST['lastname']);
                 $user->setEmail($_POST['email']);
-                $user->setRoles($_POST['roles']);
+                $user->setRole($_POST['role']);
                 $user->setPassword($randomPassword);
                 $user->setCreatedAt($date);
 

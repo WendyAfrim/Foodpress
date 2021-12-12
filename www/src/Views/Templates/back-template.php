@@ -62,14 +62,14 @@ $flashMessage = new FlashMessage();
                 <ul>
                     <li>
                         <a href="">
-                            <i class="far fa-file"></i>
-                            Créer
+                            <i class="fas fa-grip-vertical"></i>
+                            Tous les articles
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <i class="fas fa-grip-vertical"></i>
-                            Tous les articles
+                            <i class="far fa-file"></i>
+                            Ajouter
                         </a>
                     </li>
                 </ul>
@@ -78,15 +78,15 @@ $flashMessage = new FlashMessage();
                 </div>
                 <ul>
                     <li>
-                        <a href="/admin/page/add">
-                            <i class="far fa-file"></i>
-                            Créer
-                        </a>
-                    </li>
-                    <li>
                         <a href="/admin/pages">
                             <i class="fas fa-grip-vertical"></i>
                             Toutes les pages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/page/add">
+                            <i class="far fa-file"></i>
+                            Ajouter
                         </a>
                     </li>
                 </ul>

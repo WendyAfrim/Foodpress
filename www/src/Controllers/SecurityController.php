@@ -104,7 +104,7 @@ class SecurityController
                 $user->setLastname(htmlentities($_POST['lastname']));
                 $user->setEmail(htmlentities($_POST['email']));
                 $user->setPassword(htmlentities($_POST['password']));
-                $user->setRoles("client");
+                $user->setRole("client");
                 $user->setAdress(htmlentities($_POST['address']));
                 $user->setZipcode(htmlentities($_POST['zipcode']));
                 $user->setCity(htmlentities($_POST['city']));

@@ -55,7 +55,7 @@ class AccountForm extends AbstractForm
                     'row' => 'start_end',
                     "error" => "Le champ email n'est pas conforme"
                 ],
-                'roles' => [
+                'role' => [
                     'label' => 'Role',
                     'type' => 'select',
                     'options' => ["Administrateur", "Editeur"],

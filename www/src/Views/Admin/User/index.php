@@ -21,7 +21,7 @@
                         <td><?= $user->getFirstname(); ?></td>
                         <td><?= $user->getLastname(); ?></td>
                         <td><?= $user->getEmail(); ?></td>
-                        <td><?= $user->getRoles(); ?></td>
+                        <td><?= $user->getRole(); ?></td>
                         <td><?= $user->getCreatedAt(); ?></td>
                         <td>
                             <div>

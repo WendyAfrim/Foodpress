@@ -96,7 +96,7 @@ CREATE TABLE `user` (
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `roles` varchar(255) DEFAULT NULL,
+  `role` varchar(255) DEFAULT NULL,
   `address` varchar(255) NOT NULL,
   `zipcode` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,

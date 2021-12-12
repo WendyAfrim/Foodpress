@@ -35,11 +35,11 @@ try {
         $city = $faker->city;
         $country = $faker->randomElement(["fr","en"]);
         $phone = $faker->phoneNumber;
-        $roles = $faker->randomElement(["admin", "editor", "client"]);
+        $role = $faker->randomElement(["admin", "editor", "client"]);
         $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
         $password = password_hash('123456', PASSWORD_DEFAULT);
 
-        $request = $pdo->prepare("INSERT INTO user (lastname,firstname,email,address,zipcode,city,country,phone,roles,created_at,password) VALUES (:lastname,:firstname,:email,:address,:zipcode,:city,:country,:phone,:roles,:created_at,:password)");
+        $request = $pdo->prepare("INSERT INTO user (lastname,firstname,email,address,zipcode,city,country,phone,role,created_at,password) VALUES (:lastname,:firstname,:email,:address,:zipcode,:city,:country,:phone,:role,:created_at,:password)");
         $request->execute([
             "lastname" => $lastname,
             "firstname" => $firstname,
