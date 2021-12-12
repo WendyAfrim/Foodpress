@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\AbstractClass\AbstractModel;
+use DateTime;
 
 class  Media extends AbstractModel
 {
@@ -61,11 +62,24 @@ class  Media extends AbstractModel
         $this->title = basename($title);
     }
 
-    public function getAdd_At(): string
+    public function getAdd_At(): DateTime
     {
 
         return $this->$add_at;
     }
+
+     /**
+     * Setting de la date
+     *
+     * @param mixed 
+     */
+    public function setAdd_At($add_at): void
+    {
+
+        $this->add_at = $add_at;
+    }
+
+    
 
     public function getFile(): string
     {
@@ -78,18 +92,7 @@ class  Media extends AbstractModel
         $this->file = $File;
     }
 
-    /**
-     * Setting de la date
-     *
-     * @param mixed 
-     */
-    public function setAdd_At($add_at): void
-    {
-
-        $this->add_at = $add_at;
-    }
-
-    
+   
 
    
 }

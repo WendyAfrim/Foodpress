@@ -18,8 +18,11 @@
                     <tr>
                         <td><?= $media->getId(); ?></td>
                         <td><?= $media->getFileName(); ?></td>
+                        <td><?= $media->getAdd_At(); ?></td>
                         <td><?= $media->getAlt(); ?></td>
-                        <td><?= $media->getAdd_at(); ?></td>
+                        <td><?= $media->getTitle(); ?></td>
+
+                        
                     </tr>
                     </tr>
                 <?php } ?>
