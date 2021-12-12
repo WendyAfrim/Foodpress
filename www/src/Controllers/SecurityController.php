@@ -53,6 +53,7 @@ class SecurityController
 
     public function admin_login()
     {
+        if (Auth::check()) header('Location: /');
         $form = new LoginForm();
         if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $form->getFormConfig());
@@ -63,7 +64,7 @@ class SecurityController
                         if ($user->getRole() == 'admin') {
                             session_start();
                             $_SESSION['auth'] = $user->getId();
-                            header('Location: /admin');    
+                            header('Location: /admin');
                         } else {
                             $errors[] = "Vous n'avez pas les droits requis pour accéder au panel d'administration. Connectez-vous <a href='/login'>depuis ce lien</a>.";
                         }
@@ -81,13 +82,13 @@ class SecurityController
         $view->title = "Foodpress | Login Admin";
     }
 
-    public function logout() {
+    public function logout()
+    {
         $user = Auth::user();
-        if ($user) {
-            session_destroy();
-            if ($user->getRole() == 'admin') header('Location: /admin/login');
-            else header('Location: /login');
-        }
+        if (!$user) header("Location: /");
+        session_destroy();
+        if ($user->getRole() == 'admin') header('Location: /admin/login');
+        else header('Location: /');
     }
 
 
@@ -146,7 +147,8 @@ class SecurityController
         $view = new View('Security/404', 'front-template');
     }
 
-    public function forbidden() {
+    public function forbidden()
+    {
         $view = new View('Security/forbidden', 'front-template');
     }
 }

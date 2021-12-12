@@ -1,3 +1,7 @@
+/:
+  controller: "PostController"
+  action: "show_home"
+
 # Security
 /login:
   controller: "SecurityController"
@@ -110,3 +114,8 @@
 /home:
   controller: 'HomeController'
   action: 'home'
+  
+# Settings
+/admin/settings:
+  controller: 'DashboardController'
+  action: 'settings'
