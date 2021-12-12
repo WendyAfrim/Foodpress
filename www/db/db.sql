@@ -96,12 +96,12 @@ CREATE TABLE `users` (
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(255) DEFAULT NULL,
-  `address` varchar(255) NOT NULL,
-  `zipcode` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL,
+  `address` varchar(255) NULL,
+  `zipcode` varchar(255) NULL,
+  `city` varchar(255) NULL,
+  `country` varchar(255) NULL,
+  `phone` varchar(255) NULL,
   `payment` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
