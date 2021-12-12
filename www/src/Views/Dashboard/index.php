@@ -120,7 +120,7 @@
                         <span>Nos clients</span>
                         <small>Nombre de clients</small>
                     </div>
-                    <h2>17,663</h2>
+                    <h2><?= count($users) ?></h2>
                     <small>+10% de clients</small>
                 </div>
                 <div class="card_chart card_chart--green">
