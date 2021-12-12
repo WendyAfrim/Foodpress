@@ -49,7 +49,7 @@ try {
             "city" => $city,
             "country" => $country,
             "phone" => $phone,
-            "roles" => $roles,
+            "role" => $role,
             "created_at" => $created_at,
             "password" => $password
         ]);

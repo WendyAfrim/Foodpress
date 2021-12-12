@@ -30,8 +30,8 @@ $flashMessage = new FlashMessage();
         <div class="sidebar_main">
             <div class="sidebar_user">
                 <img src="https://img.icons8.com/ios/50/000000/user--v1.png" />
-                <h3>Wendy Afrim</h3>
-                <span>wendy.afrim2@gmail.com</span>
+                <h3><?= $user->getFirstname() ?> <?= $user->getLastname() ?></h3>
+                <span><?= $user->getEmail() ?></span>
             </div>
         </div>
         <div class="sidebar_menu">
@@ -187,7 +187,7 @@ $flashMessage = new FlashMessage();
             </div>
             <div class="header_icons">
                 <a href=""><i class="far fa-user"></i></a>
-                <a href="/dashboard"><i class="fas fa-home"></i></a>
+                <a href="/admin"><i class="fas fa-home"></i></a>
             </div>
         </header>
         <main>

@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Core\Auth;
+use App\Core\Session;
+use App\Models\User;
 use Symfony\Component\VarDumper\VarDumper;
 
 //création de mon Autoload
@@ -37,6 +40,7 @@ $routes = [
 ]
 */
 
+
 //Je dois récupérer ici pour commencer l'url de l'internaute
 $uri = $_SERVER["REQUEST_URI"];
 
@@ -46,29 +50,34 @@ $listOfRoutes = yaml_parse_file("routes.yml");
 //Si la route dans le ficheir YAML n'existe pas
 //alors on récupère les informations pour la route 404
 //$route = $listOfRoutes[$uri] ?? $listOfRoutes["/404"];
-$superRoute = $listOfRoutes['/404'];
+$selectedRoute = $listOfRoutes['/404'];
 
 if (isset($listOfRoutes[$uri])) {
 
-    $superRoute = $listOfRoutes[$uri];
-    
+    $selectedRoute = $listOfRoutes[$uri];
 } else {
 
     $dynamicRoutes = yaml_parse_file("dynamic-routes.yml");
 
-    foreach ($dynamicRoutes as $name => $route) {
-        $parsedRoute = preg_replace("/{.*?}/", "(.+)", $name,-1,$count);
+    foreach ($dynamicRoutes as $route => $params) {
+        $parsedRoute = preg_replace("/{.*?}/", "(.+)", $route, -1, $count);
         $parsedRoute = str_replace('/', '\/', $parsedRoute);
         if (preg_match("/^{$parsedRoute}$/", $uri, $matches)) {
             unset($matches[0]);
             $param = $matches[1];
-            $superRoute = $dynamicRoutes[$name];
+            $selectedRoute = $dynamicRoutes[$route];
             break;
         }
     }
 }
-$controller = $superRoute["controller"];
-$action = $superRoute["action"];
+if (isset($selectedRoute['role']) && $selectedRoute['role'] == 'admin') {
+    $isAdmin = Auth::check('admin');
+    if (!$isAdmin) {
+        $selectedRoute = $listOfRoutes['/forbidden'];
+    }
+}
+$controller = $selectedRoute["controller"];
+$action = $selectedRoute["action"];
 
 
 //Est-ce que le fichier controller existe
@@ -82,6 +91,7 @@ if (file_exists("src/Controllers/" . $controller . ".php")) {
         $cObject = new $controllerWithNP();
         //Est-ce que la méthode existe 
         if (method_exists($cObject, $action)) {
+
             if (isset($param)) {
                 $cObject->$action($param);
             } else {

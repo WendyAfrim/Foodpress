@@ -3,6 +3,10 @@
   controller: "SecurityController"
   action: "login"
 
+/logout:
+  controller: "SecurityController"
+  action: "logout"
+
 /register:
   controller: "SecurityController"
   action: "register"
@@ -11,18 +15,25 @@
   controller: 'SecurityController'
   action: 'not_found'
 
-# Admin 
-/admin/login:
+/forbidden:
   controller: 'SecurityController'
-  action: loginAdmin
+  action: 'forbidden'
+
+/admin/login:
+  controller: "SecurityController"
+  action: "admin_login"
+
+# Admin
 
 /admin/accounts:
     controller: 'AdminController'
     action: 'all_admin_accounts'
+    role: 'admin'
 
 /admin/account/create:
     controller: 'AdminController'
     action: 'add_admin_account'
+    role: 'admin'
 
 # Cart     
 /cart:
@@ -30,9 +41,10 @@
     action: "confirm_order"
   
 # Dashboard
-/dashboard:
+/admin:
     controller: "DashboardController"
     action: "dashboard"
+    role: 'admin'
 
 # Email    
 /add_email_template:
@@ -43,20 +55,24 @@
 /admin/clients:
     controller: 'ClientController'
     action: 'all_clients'
+    role: 'admin'
 
 
 # Product
 /admin/type/create: 
   controller: "ProductController"
   action: "add_product_type"
+  role: 'admin'
 
 /admin/product/create:
   controller: "ProductController"
   action: "add_product"
+  role: 'admin'
 
 /admin/products:
   controller: 'ProductController'
   action: 'all_products'
+  role: 'admin'
 
 /shop:
   controller: 'ProductController'
@@ -66,21 +82,26 @@
 /admin/ajax/open_modal:
   controller: 'AjaxController'
   action: 'open_modal'
+  role: 'admin'
 
 # Page
 /admin/page/add:
   controller: 'PostController'
   action: 'add_page'
+  role: 'admin'
 
 /admin/pages:
   controller: 'PostController'
   action: 'all_pages'
+  role: 'admin'
 
 # Menu
 /admin/menu:
   controller: 'MenuController'
   action: 'show_menu'
+  role: 'admin'
 
 /admin/menu/add:
   controller: 'MenuController'
   action: 'add_link'
+  role: 'admin'

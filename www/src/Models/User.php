@@ -14,7 +14,7 @@ class User extends AbstractModel
     protected $lastname;
     protected $email;
     protected $password = null;
-    protected $roles;
+    protected $role;
     protected $address;
     protected $zipcode;
     protected $city;
@@ -134,10 +134,10 @@ class User extends AbstractModel
      *
      * @return string
      */
-    public function getRoles(): string
+    public function getRole(): string
     {
 
-        return $this->roles;
+        return $this->role;
     }
 
     /**
@@ -145,10 +145,10 @@ class User extends AbstractModel
      *
      * @param mixed 
      */
-    public function setRoles($roles): void
+    public function setRole($role): void
     {
 
-        $this->roles = $roles;
+        $this->role = $role;
     }
 
     /**

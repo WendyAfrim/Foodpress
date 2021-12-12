@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Models\Menu;
 use App\Models\Post;
+use App\Models\User;
 use Exception;
 
 class View
@@ -46,6 +47,8 @@ class View
                     $item->link = (new Post)->findByOne(['id' => $item->getPostId()])->getSlug();
                 }
                 $this->nav_items = $nav_items;
+            } elseif ($template == 'back-template') {
+                $this->user = Auth::user();
             }
         } else {
             die();

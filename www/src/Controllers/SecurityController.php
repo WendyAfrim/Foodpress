@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Core\View;
 use App\Models\User;
 use App\Form\RegisterForm;
@@ -12,19 +13,9 @@ use App\Core\Mailer;
 class SecurityController
 {
 
-    public function loginAdmin()
-    {
-        $form = new LoginForm;
-
-
-        $view = new View('Security/loginAdmin', 'raw-template');
-        $view->errors = $errors ?? [];
-        $view->form = $form->renderHtml();
-        $view->title = 'Foodpress | Login Admin';
-    }
-
     public function login()
     {
+        if (Auth::check()) header('Location: /');
         $form = new LoginForm();
         if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $form->getFormConfig());
@@ -34,7 +25,7 @@ class SecurityController
                     if (password_verify($_POST["password"], $user->getPassword())) {
                         session_start();
                         $_SESSION['auth'] = $user->getId();
-                        header('Location: /dashboard');
+                        header('Location: /');
                     } else {
                         $errors[] = "Combinaison email/mot de passe incorrecte";
                     }
@@ -46,7 +37,46 @@ class SecurityController
         $view = new View('Security/login', 'front-template');
         $view->errors = $errors ?? [];
         $view->form = $form->renderHtml();
-        $view->title = "Foodpress | Connexion";
+        $view->title = "Connexion";
+    }
+
+    public function admin_login()
+    {
+        $form = new LoginForm();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
+            if (empty($errors)) {
+                $user = (new User())->findByOne(["email" => $_POST["email"]]);
+                if ($user) {
+                    if (password_verify($_POST["password"], $user->getPassword())) {
+                        if ($user->getRole() == 'admin') {
+                            session_start();
+                            $_SESSION['auth'] = $user->getId();
+                            header('Location: /admin');    
+                        } else {
+                            $errors[] = "Vous n'avez pas les droits requis pour accéder au panel d'administration. Connectez-vous <a href='/login'>depuis ce lien</a>.";
+                        }
+                    } else {
+                        $errors[] = "Combinaison email/mot de passe incorrecte";
+                    }
+                } else {
+                    $errors[] = "Combinaison email/mot de passe incorrecte";
+                }
+            }
+        }
+        $view = new View('Security/loginAdmin', 'raw-template');
+        $view->errors = $errors ?? [];
+        $view->form = $form->renderHtml();
+        $view->title = "Foodpress | Login Admin";
+    }
+
+    public function logout() {
+        $user = Auth::user();
+        if ($user) {
+            session_destroy();
+            if ($user->getRole() == 'admin') header('Location: /admin/login');
+            else header('Location: /login');
+        }
     }
 
 
@@ -103,5 +133,9 @@ class SecurityController
     {
 
         $view = new View('Security/404', 'front-template');
+    }
+
+    public function forbidden() {
+        $view = new View('Security/forbidden', 'front-template');
     }
 }

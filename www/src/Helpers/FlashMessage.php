@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Core\Session;
+use App\Helpers\Session;
 
 define('FLASH', 'FLASH_MESSAGES');
 define('FLASH_ERROR', 'error');
