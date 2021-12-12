@@ -30,6 +30,8 @@ abstract class AbstractForm
 				$this->generateTextarea($name, $configInput);
 			} else if ($configInput["type"] == "editor") {
 				$this->generateEditor($name, $configInput);
+			}	else if ($configInput["type"] == "file") {
+					$this->generateFile($name, $configInput);
 			} else if ($configInput["type"] == "hidden") {
 				if (isset($configInput['value'])) $this->generateHiddenField($name, $configInput);
 			} else {
@@ -49,7 +51,7 @@ abstract class AbstractForm
 	{
 		$this->html = "
 		<div class='container' id='container'>
-			<form id=" . ($this->config['form-id'] ?? "") . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' accept-charset='utf-8'>"
+			<form id=" . ($this->config['form-id'] ?? "") . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' enctype ='" .($this->config['enctype'] ?? "") . "' accept-charset='utf-8'>" 
 			. (isset($this->config['form-title']) ? "<h1>{$this->config['form-title']}</h1>" : "");
 	}
 
@@ -74,6 +76,12 @@ abstract class AbstractForm
 		<div class='" . implode(' ', $configInput['class']) . "'>
 		<label>" . $configInput['label'] . "</label>
 		<textarea class='inputs-design 'name='" . $name . "' placeholder='" . $configInput['placeholder'] . "' rows='" . $configInput['rows'] . "' cols='" . $configInput['cols'] . "'  ></textarea></div>";
+	}
+
+		public function generateFile($name, $configInput)   
+	
+	{
+		$this->html .= "  <div class='" . implode(' ', $configInput['class']) . "'>  <input class='inputs-design' name='media'  type='" . ($configInput["type"] ?? "file") . "' " . (($configInput["required"] == true) ? "required='required'" : "") . "></div>";
 	}
 
 
