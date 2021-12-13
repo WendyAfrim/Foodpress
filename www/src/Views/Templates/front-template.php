@@ -17,7 +17,7 @@
 <body>
     <!-- Header section begin -->
     <header>
-        <a href="#" class="logo"><i class="fas fa-utensils"></i>Resto</a>
+        <a href="/" class="logo"><i class="fas fa-utensils"></i>Resto</a>
         <nav class="navbar">
             <ul>
                 <?php foreach ($nav_items as $item) : ?>
@@ -30,42 +30,42 @@
         <div class="icons">
             <i class="fas fa-bars" id="menu-bar"></i>
             <i class="fas fa-search" id="search-icon"></i>
-            <i class="fas fa-shopping-cart"></i>
+            <a href="/login"><i class="fas fa-user"></i></a>
         </div>
     </header>
     <!-- Header section ends -->
 
     <?php require $this->view; ?>
 
-    <section class="footer">
-        <div class="social">
-            <a href=""><i class="fab fa-instagram"></i></a>
-            <a href=""><i class="fab fa-facebook"></i></a>
-            <a href=""><i class="fab fa-twitter"></i></a>
-            <a href=""><i class="fab fa-snapchat"></i></a>
-        </div>
-        <ul class="list">
-            <li>
-                <a href="">Accueil</a>
-            </li>
-            <li>
-                <a href="">Nos produits</a>
-            </li>
-            <li>
-                <a href="">Qui sommes-nous ? </a>
-            </li>
-            <li>
-                <a href="">CGV</a>
-            </li>
-            <li>
-                <a href="">Politique de confidentialité</a>
-            </li>
-        </ul>
-        <p class="copyright">
-            © Copyright 2021 | Foodpress
-        </p>
-    </section>
 </body>
+<section class="footer">
+    <div class="social">
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-facebook"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-snapchat"></i></a>
+    </div>
+    <ul class="list">
+        <li>
+            <a href="/">Accueil</a>
+        </li>
+        <li>
+            <a href="/shop">Nos produits</a>
+        </li>
+        <li>
+            <a href="">Qui sommes-nous ? </a>
+        </li>
+        <li>
+            <a href="">CGV</a>
+        </li>
+        <li>
+            <a href="">Politique de confidentialité</a>
+        </li>
+    </ul>
+    <p class="copyright">
+        © Copyright 2021 | Foodpress
+    </p>
+</section>
 
 </html>
 <!-- Script JS -->

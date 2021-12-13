@@ -1,6 +1,5 @@
 <body class="product-detail">
     <section class="banner">
-
     </section>
     <section class="section-produit">
         <div class="container">
@@ -22,7 +21,7 @@
                             <label for="quantity">Quantité</label>
                             <input type="number" class="input-quantity" name="quantity" id="quantity" value="1">
                         </div>
-                        <input type="submit" value="Commander" class="button button--large button--blue">
+                        <input type="submit" value="Commander" class="button button--large button--blue input-submit">
                     </form>
                 </div>
             </div>

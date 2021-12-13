@@ -282,8 +282,12 @@ i:hover {
     font-size: 50%;
   }
 
+  .dishes .box-container {
+    grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr)) !important;
+  }
+
   .dishes .box-container .box img {
-    height: auto;
+    height: 75% !important;
     width: 100%;
   }
 }
@@ -557,50 +561,6 @@ header .icons #menu-bar {
   letter-spacing: 0.1rem;
 }
 
-/* section {
->>>>>>>> front:www/webpack/scss/front/_homepage.scss
-    padding: 5rem 9%;
-}
-
-section:nth-child(even) {
-    background: $light-grey;
-}
-
-.home .home-slider .slide {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding-top: 9rem;
-}
-
-.home .home-slider .slide  .content {
-    flex: 1 1 45rem;
-}
-
-.home .home-slider .slide  .image {
-    flex: 1 1 45rem;
-}
-
-.home .home-slider .slide  .image img {
-    width: 100%;
-}
-.home .home-slider .slide .content h3 {
-    color: $night-blue;
-    font-size: 7rem;
-}
-
-.home .home-slider .slide .content span {
-    color: $green;
-    font-size: 2.5rem;
-}
-
-.home .home-slider .slide .content p {
-    color: $light-grey;
-    font-size: 2.2rem;
-    padding: .5rem 0;
-    line-height: 1.5;
-} */
 .sub-heading {
   text-align: center;
   color: #31aa66;
@@ -619,7 +579,7 @@ section:nth-child(even) {
 .dishes .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  gap: 1.5rem;
+  gap: 5.5rem;
   margin: auto 10rem;
 }
 
@@ -904,6 +864,10 @@ body.product-detail {
   background-color: #FFF;
 }
 
+.section-produit {
+  min-height: 60vh;
+}
+
 .section-produit div.container {
   margin-top: 10rem;
   display: flex;
@@ -912,7 +876,7 @@ body.product-detail {
 }
 
 .section-produit div.container .box-image img {
-  width: 545px;
+  width: 630px;
 }
 
 .section-produit div.container .box-description {
@@ -952,6 +916,21 @@ body.product-detail {
   padding: 2px;
 }
 
+@media (max-width: 768px) {
+  .section-produit .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .section-produit .container .box-description {
+    margin-left: 0 !important;
+  }
+
+  .section-produit .container .box-image img {
+    max-width: 250px !important;
+  }
+}
 .footer {
   padding: 40px 0;
   background-color: #FFF;
