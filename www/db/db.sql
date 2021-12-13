@@ -110,6 +110,8 @@ CREATE TABLE `settings` (
   `name` varchar(255) COLLATE latin1_general_ci NOT NULL,
   `value` text COLLATE latin1_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+INSERT INTO `settings` (`id`, `name`, `value`) VALUES
+(1, 'site_name', '');
 
 -- --------------------------------------------------------
 
