@@ -112,7 +112,7 @@ CREATE TABLE `users` (
 -- Structure de la table `users`
 --
 
-CREATE TABLE `media` (
+CREATE TABLE `medias` (
 `id` int(11) NOT NULL,
 `alt` varchar(255) NOT NULL,
 `add_at` datetime NOT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE `media` (
 --
 -- Index pour la table `nav_menu`
 --
-ALTER TABLE `media`
+ALTER TABLE `medias`
 ADD PRIMARY KEY (`id`);
 
 
@@ -178,7 +178,7 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT pour la table `media`
 --
-ALTER TABLE `media`
+ALTER TABLE `medias`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
