@@ -1,8 +1,8 @@
 <body>
     <!-- Dishes section -->
     <section class="dishes" id="dishes">
-        <h3 class="sub-heading">our dishes</h3>
-        <h1 class="heading">popular dishes</h1>
+        <h3 class="sub-heading">Nos plats</h3>
+        <h1 class="heading">Coup de coeur</h1>
         <div class="box-container">
             <?php if (isset($products) && !empty($products)) : ?>
                 <?php foreach ($products as $product) : ?>
@@ -19,10 +19,10 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                         <span><?= $product->getPrice() ?>€</span>
-                        <a href="/product/<?= $product->getId() ?>" class="btn">add to cart</a>
+                        <a href="/product/<?= $product->getId() ?>" class="btn">Details</a>
                     </div>
                 <?php endforeach ?>
-            <?php else: ?>
+            <?php else : ?>
                 <h2>Aucun produit</h2>
             <?php endif ?>
         </div>

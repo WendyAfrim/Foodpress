@@ -282,8 +282,12 @@ i:hover {
     font-size: 50%;
   }
 
+  .dishes .box-container {
+    grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr)) !important;
+  }
+
   .dishes .box-container .box img {
-    height: auto;
+    height: 75% !important;
     width: 100%;
   }
 }
@@ -557,50 +561,6 @@ header .icons #menu-bar {
   letter-spacing: 0.1rem;
 }
 
-/* section {
->>>>>>>> front:www/webpack/scss/front/_homepage.scss
-    padding: 5rem 9%;
-}
-
-section:nth-child(even) {
-    background: $light-grey;
-}
-
-.home .home-slider .slide {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding-top: 9rem;
-}
-
-.home .home-slider .slide  .content {
-    flex: 1 1 45rem;
-}
-
-.home .home-slider .slide  .image {
-    flex: 1 1 45rem;
-}
-
-.home .home-slider .slide  .image img {
-    width: 100%;
-}
-.home .home-slider .slide .content h3 {
-    color: $night-blue;
-    font-size: 7rem;
-}
-
-.home .home-slider .slide .content span {
-    color: $green;
-    font-size: 2.5rem;
-}
-
-.home .home-slider .slide .content p {
-    color: $light-grey;
-    font-size: 2.2rem;
-    padding: .5rem 0;
-    line-height: 1.5;
-} */
 .sub-heading {
   text-align: center;
   color: #31aa66;
@@ -619,7 +579,7 @@ section:nth-child(even) {
 .dishes .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  gap: 1.5rem;
+  gap: 5.5rem;
   margin: auto 10rem;
 }
 
@@ -810,10 +770,6 @@ body {
 }
 
 #form-login div.wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -908,6 +864,10 @@ body.product-detail {
   background-color: #FFF;
 }
 
+.section-produit {
+  min-height: 60vh;
+}
+
 .section-produit div.container {
   margin-top: 10rem;
   display: flex;
@@ -916,7 +876,7 @@ body.product-detail {
 }
 
 .section-produit div.container .box-image img {
-  width: 545px;
+  width: 630px;
 }
 
 .section-produit div.container .box-description {
@@ -956,67 +916,79 @@ body.product-detail {
   padding: 2px;
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  padding: 50px;
-  color: #FFF;
-  background-color: #011936;
+@media (max-width: 768px) {
+  .section-produit .container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .section-produit .container .box-description {
+    margin-left: 0 !important;
+  }
+
+  .section-produit .container .box-image img {
+    max-width: 250px !important;
+  }
+}
+.footer {
+  padding: 40px 0;
+  background-color: #FFF;
 }
 
-.footer > * {
-  flex: 1 100%;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: row;
-}
-
-.footer-left {
-  margin-right: 1.25em;
-  margin-bottom: 2em;
-  width: 50%;
-}
-
-.footer-left img {
-  width: 10%;
-}
-
-.footer-left p {
-  font-size: 12px;
-  margin-top: 2rem;
-  line-height: 1.8;
-  width: 75%;
-}
-
-.footer-right {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 50%;
-}
-
-footer .footer-right h2 {
-  text-align: left;
-  font-weight: 600;
-  font-size: 17px;
-}
-
-footer .footer-right ul li a {
-  color: #FFF;
-  font-size: 14px;
-}
-
-.footer-bottom {
+.footer .social {
   text-align: center;
-  margin-top: 4rem;
+  padding: 25px;
 }
 
-.footer-bottom p {
+.footer .social i {
+  font-size: 3rem;
+}
+
+.footer .social a {
+  font-size: 24px;
+  color: inherit;
+  border: 1px solid #F2F2F2;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 8px;
+  opacity: 0.75;
+}
+
+.footer .social a:hover {
+  opacity: 0.9;
+}
+
+.footer ul {
+  margin-top: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.footer ul li a {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.footer ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.footer ul li a:hover {
+  color: #5850ec;
+}
+
+.footer .copyright {
+  margin-top: 15px;
+  text-align: center;
   font-size: 13px;
-}
-
-footer li {
-  line-height: 3em;
+  color: #444;
 }

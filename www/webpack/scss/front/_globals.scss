@@ -93,6 +93,7 @@ i:hover {
     #search-form #search-box{
         width: 90%;
     }
+
 }
 
 @media(max-width:991px)
@@ -101,9 +102,14 @@ i:hover {
         font-size: 50%;
     }
 
+    .dishes .box-container  {
+        grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr))!important;
+    }
+
     .dishes .box-container .box img {
-        height: auto;
+        height: 75%!important;
         width: 100%;
     }
+    
 
 }
