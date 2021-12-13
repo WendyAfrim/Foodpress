@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : database
--- Généré le : Dim 12 déc. 2021 à 19:34
+-- Généré le : lun. 13 déc. 2021 à 18:13
 -- Version du serveur :  5.7.33
 -- Version de PHP : 7.4.15
 
@@ -18,8 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `foodpress`
+-- Base de données : `mvcdocker2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `medias`
+--
+
+CREATE TABLE `medias` (
+  `id` int(11) NOT NULL,
+  `alt` varchar(255) NOT NULL,
+  `add_at` datetime NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `filename` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -32,6 +46,21 @@ CREATE TABLE `nav_menu` (
   `label` varchar(255) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
 
@@ -73,6 +102,18 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE latin1_general_ci NOT NULL,
+  `value` text COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `types`
 --
 
@@ -106,45 +147,15 @@ CREATE TABLE `users` (
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-CREATE TABLE `medias` (
-`id` int(11) NOT NULL,
-`alt` varchar(255) NOT NULL,
-`add_at` datetime NOT NULL,
-`title` varchar(255) NOT NULL,
-`filename` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `settings`
---
-CREATE TABLE `settings` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE latin1_general_ci,
-  `value` text COLLATE latin1_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-
-
-
-
-
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `nav_menu`
+-- Index pour la table `medias`
 --
 ALTER TABLE `medias`
-ADD PRIMARY KEY (`id`);
-
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `nav_menu`
@@ -152,6 +163,14 @@ ADD PRIMARY KEY (`id`);
 ALTER TABLE `nav_menu`
   ADD PRIMARY KEY (`id`),
   ADD KEY `nav_menu_ibfk_1` (`post_id`);
+
+--
+-- Index pour la table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_product_id` (`product_id`),
+  ADD KEY `fk_user_id` (`user_id`);
 
 --
 -- Index pour la table `posts`
@@ -168,6 +187,12 @@ ALTER TABLE `products`
   ADD KEY `type_id` (`type_id`);
 
 --
+-- Index pour la table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `types`
 --
 ALTER TABLE `types`
@@ -180,25 +205,25 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `settings`
---
-ALTER TABLE `settings`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `media`
+-- AUTO_INCREMENT pour la table `medias`
 --
 ALTER TABLE `medias`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `nav_menu`
 --
 ALTER TABLE `nav_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `orders`
+--
+ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -214,6 +239,12 @@ ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `types`
 --
 ALTER TABLE `types`
@@ -226,36 +257,29 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `settings`
---
-ALTER TABLE `settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `products`
+-- Contraintes pour la table `orders`
 --
-ALTER TABLE `products`
-  ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`);
+ALTER TABLE `orders`
+  ADD CONSTRAINT `fk_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `fk_author_id` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`);
 COMMIT;
-
---
--- Déchargement des données de la table `settings`
---
-
-INSERT INTO `settings` (`id`, `name`, `value`) VALUES
-(1, 'site_name', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
