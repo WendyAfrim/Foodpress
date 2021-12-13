@@ -4,6 +4,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Core\View;
 use App\Models\Product;
 use App\Form\ProductForm;
@@ -171,6 +172,7 @@ class ProductController
      */
     public function product(int $id)
     {
+        if (!Auth::check()) header('Location: /login');
         $product = new Product();
         $product = $product->findByOne(['id' => $id]);
         if (!$product) {

@@ -52,6 +52,12 @@ class FormVerification
                 $lengthValue = $inputRules['maxLength'];
                 FormVerification::checkmaxLength($inputValue, $inputKey, $lengthValue);
             }
+
+            if (isset($inputRules['minNumber'])) {
+                $minNumber = $inputRules['minNumber'];
+                FormVerification::checkminNumber($inputValue, $inputKey, $minNumber);
+            }
+
             if (isset($inputRules['confirm'])) {
                 $password = $data['password'];
                 FormVerification::checkConfirmPassword($inputValue, $password, $error);
@@ -127,7 +133,6 @@ class FormVerification
 
             self::$array_errors[] = $error;
         }
-
         return true;
     }
     public static function checkUnicity($inputKey, $inputValue, $table, $idToExclude = null)
@@ -147,6 +152,12 @@ class FormVerification
     public static function checkSlug($string, $inputKey) {
         if (!preg_match("/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/",$string)) {
             self::$array_errors[] = "Le champ $inputKey ne peut contenir que des caractères alphanumériques et des tirets";
+        }
+    }
+
+    public static function checkMinNumber($inputValue, $inputKey, $minNumber) {
+        if ((int)$inputValue < $minNumber) {
+            self::$array_errors[] = "La valeur du champ " . $inputKey . " doit être supérieure à $minNumber";
         }
     }
 }

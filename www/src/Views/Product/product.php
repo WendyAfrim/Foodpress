@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="cart">
-                    <form action="" method="post">
+                    <form action="/orderproduct/<?= $product->getId() ?>" method="post">
                         <div class="quantity">
                             <label for="quantity">Quantité</label>
                             <input type="number" class="input-quantity" name="quantity" id="quantity" value="1">
