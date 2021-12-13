@@ -90,16 +90,16 @@ class PostController
         $view->form = $form->renderHtml();
     }
 
-    public function delete_page($id)
-    {
-        $page = new Post;
-        $page = $page->findByOne(['id' => $id]);
-        if (!$page) {
-            header('Location: /admin/pages');
-        }
-        $page->delete($id);
-        header('Location: /admin/pages');
-    }
+    // public function delete_page($id)
+    // {
+    //     $page = new Post;
+    //     $page = $page->findByOne(['id' => $id]);
+    //     if (!$page) {
+    //         header('Location: /admin/pages');
+    //     }
+    //     $page->delete($id);
+    //     header('Location: /admin/pages');
+    // }
 
     public function show_page($slug)
     {

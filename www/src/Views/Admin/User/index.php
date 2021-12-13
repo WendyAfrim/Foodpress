@@ -25,7 +25,7 @@
                         <td><?= $user->getCreatedAt(); ?></td>
                         <td>
                             <div>
-                                <i class="far fa-edit"></i>
+                                <a href="/admin/account/update/<?= $user->getId() ?>"><i class="far fa-edit"></i></a>
                                 <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= {$user->getId()}  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_admin'></i>"; ?>
                             </div>
                         </td>

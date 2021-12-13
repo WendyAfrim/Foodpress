@@ -9,9 +9,14 @@ class AccountForm extends AbstractForm
     protected $config;
     protected $html;
 
-    public function __construct()
+    public function __construct(array $values = null)
     {
-        $config = $this->createForm();
+        $config = self::getConfig();
+        if ($values) {
+            foreach ($values as $field => $value) {
+                $config["inputs"][$field]["value"] = $value;
+            }
+        }
         parent::__construct($config);
         $this->renderHtml();
     }
@@ -25,7 +30,7 @@ class AccountForm extends AbstractForm
         return $arrayRoles;
     }
 
-    public function createForm()
+    public static function getConfig()
     {
         return [
             "method" => "POST",
@@ -75,6 +80,9 @@ class AccountForm extends AbstractForm
                     'row' => 'start_end',
                     'error' => 'Le ch'
                 ],
+                "id" => [
+                    "type" => "hidden"
+                ]
             ]
         ];
     }

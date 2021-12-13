@@ -38,7 +38,7 @@ class AdminController
         $user = new User();
 
         $form = new AccountForm();
-        $config = $form->createForm();
+        $config = AccountForm::getConfig();
 
         $date = Generator::generateDate();
         $randomPassword = Generator::generatePassword(8);
@@ -59,6 +59,7 @@ class AdminController
                 $user->setCreatedAt($date);
 
                 $user->save();
+                header('Location: /admin/accounts');
             }
         }
 
@@ -67,5 +68,42 @@ class AdminController
         $view->errors = $errors;
         $view->form = $form->renderHtml();
         $view->title = 'Formulaire | Ajout d\'un compte';
+    }
+
+    public function update_admin_account($id)
+    {
+
+        $user = new User;
+        $user = $user->findByOne(['id' => $id]);
+
+        if (!$user) {
+            header('Location: /admin/accounts');
+        }
+        $config = AccountForm::getConfig();
+
+        if (!empty($_POST)) {
+            $errors = FormVerification::check($_POST, $config);
+            if (!$errors) {
+                $user->setFirstname($_POST['firstname']);
+                $user->setLastname($_POST['lastname']);
+                $user->setEmail($_POST['email']);
+                $user->setRole($_POST['role']);
+
+                $user->save();
+                header('Location: /admin/accounts');
+            }
+        }
+        $form = new AccountForm([
+            "id" => $user->getId(),
+            "firstname" => $user->getFirstname(),
+            "lastname" => $user->getLastname(),
+            "email" => $user->getEmail(),
+            "role" => $user->getRole(),
+        ]);
+
+        $view = new View('Admin/User/update_admin_account', 'back-template');
+        $view->errors = $errors ?? null;
+        $view->form = $form->renderHtml();
+        $view->title = "Foodpress | Mettre à jour un compte admin";
     }
 }

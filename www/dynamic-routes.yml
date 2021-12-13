@@ -1,3 +1,10 @@
+# Admin
+/admin/account/update/{id}:
+    controller: 'AdminController'
+    action: 'update_admin_account'
+    role: 'admin'
+    
+
 # Clients
 /admin/client/delete/{id}:
   controller: 'ClientController'

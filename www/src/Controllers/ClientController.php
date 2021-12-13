@@ -18,19 +18,19 @@ class ClientController
         $view->users = $users;
     }
 
-    public function delete(int $id): void
-    {
-        $user = new User();
-        $users = $user->findBy(['role' => "client"]);
+    // public function delete(int $id): void
+    // {
+    //     $user = new User();
+    //     $users = $user->findBy(['role' => "client"]);
 
-        $user = $user->find($id);
+    //     $user = $user->find($id);
 
-        if (!$user) {
-            // header('Location : /admin/clients');
-        }
+    //     if (!$user) {
+    //         // header('Location : /admin/clients');
+    //     }
 
-        $user->delete($id);
+    //     $user->delete($id);
 
-        // header('Location : /admin/clients');
-    }
+    //     // header('Location : /admin/clients');
+    // }
 }
