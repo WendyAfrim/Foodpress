@@ -9,6 +9,7 @@ use App\Form\RegisterForm;
 use App\Form\LoginForm;
 use App\Core\FormVerification;
 use App\Core\Mailer;
+use App\Form\ForgottenPasswordForm;
 
 class SecurityController
 {
@@ -150,5 +151,24 @@ class SecurityController
     public function forbidden()
     {
         $view = new View('Security/forbidden', 'front-template');
+    }
+
+    public function forgotten_password()
+    {
+        // if (Auth::check()) header('Location: /');
+        $form = new ForgottenPasswordForm();
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
+            if (empty($errors)) {
+                $user = (new User())->findByOne(["email" => $_POST["email"]]);
+                if ($user) {
+                    echo "Confirmez-vous le renouvellement de votre mot de passe?";
+                }
+            }
+        }
+        $view = new View('Security/forgottenPassword', 'front-template');
+        $view->errors = $errors ?? [];
+        $view->form = $form->renderHtml();
+        $view->title = "Foodpress | Mot de passe oublié";
     }
 }

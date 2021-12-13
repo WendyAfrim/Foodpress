@@ -7,6 +7,10 @@
   controller: "SecurityController"
   action: "login"
 
+/forgotten_password:
+  controller: "SecurityController"
+  action: "forgotten_password"
+
 /logout:
   controller: "SecurityController"
   action: "logout"
