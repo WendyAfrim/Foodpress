@@ -36,50 +36,35 @@
     <!-- Header section ends -->
 
     <?php require $this->view; ?>
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <img src="https://freedesignfile.com/upload/2019/06/Fresh-food-logo-creative-design-vectors-02.jpg" alt="">
-                <p>Foodpress vous accompagne dans la conception de sites internet pour mieux vendre vos plats ! :)</p>
-                <div class="socials">
-                    <a href=""><i class="fa fa-facebook"></i></a>
-                    <a href=""><i class="fa fa-twitter "></i></a>
-                    <a href=""><i class="fa fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-right">
-                <div class="box">
-                    <h2>Product</h2>
-                    <ul>
-                        <li><a href="">Accueil</a></li>
-                        <li><a href="">Nos produits</a></li>
-                        <li><a href="">Wordpress</a></li>
-                        <li><a href="">Joomla</a></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h2>Liens utiles</h2>
-                    <ul class="box">
-                        <li><a href="">CGV</a></li>
-                        <li><a href="">Politique de confidentialité</a></li>
-                        <li><a href="">Connexion/Inscription</a></li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h2>Address</h2>
-                    <ul class="box">
-                        <li><a href="">3 Cours Sainte Marthe</a></li>
-                        <li><a href="">Thiais</a></li>
-                        <li><a href="">94320</a></li>
-                        <li><a href="">France</a></li>
-                    </ul>
-                </div>
-            </div>
+
+    <section class="footer">
+        <div class="social">
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-snapchat"></i></a>
         </div>
-        <div class="footer-bottom">
-            <p>© Copyright 2021 - All Right reserved</p>
-        </div>
-    </footer>
+        <ul class="list">
+            <li>
+                <a href="">Accueil</a>
+            </li>
+            <li>
+                <a href="">Nos produits</a>
+            </li>
+            <li>
+                <a href="">Qui sommes-nous ? </a>
+            </li>
+            <li>
+                <a href="">CGV</a>
+            </li>
+            <li>
+                <a href="">Politique de confidentialité</a>
+            </li>
+        </ul>
+        <p class="copyright">
+            © Copyright 2021 | Foodpress
+        </p>
+    </section>
 </body>
 
 </html>

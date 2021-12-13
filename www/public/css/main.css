@@ -956,67 +956,64 @@ body.product-detail {
   padding: 2px;
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  padding: 50px;
-  color: #FFF;
-  background-color: #011936;
+.footer {
+  padding: 40px 0;
+  background-color: #FFF;
 }
 
-.footer > * {
-  flex: 1 100%;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: row;
-}
-
-.footer-left {
-  margin-right: 1.25em;
-  margin-bottom: 2em;
-  width: 50%;
-}
-
-.footer-left img {
-  width: 10%;
-}
-
-.footer-left p {
-  font-size: 12px;
-  margin-top: 2rem;
-  line-height: 1.8;
-  width: 75%;
-}
-
-.footer-right {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  width: 50%;
-}
-
-footer .footer-right h2 {
-  text-align: left;
-  font-weight: 600;
-  font-size: 17px;
-}
-
-footer .footer-right ul li a {
-  color: #FFF;
-  font-size: 14px;
-}
-
-.footer-bottom {
+.footer .social {
   text-align: center;
-  margin-top: 4rem;
+  padding: 25px;
 }
 
-.footer-bottom p {
+.footer .social i {
+  font-size: 3rem;
+}
+
+.footer .social a {
+  font-size: 24px;
+  color: inherit;
+  border: 1px solid #F2F2F2;
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 8px;
+  opacity: 0.75;
+}
+
+.footer .social a:hover {
+  opacity: 0.9;
+}
+
+.footer ul {
+  margin-top: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.footer ul li a {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.footer ul li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.footer ul li a:hover {
+  color: #5850ec;
+}
+
+.footer .copyright {
+  margin-top: 15px;
+  text-align: center;
   font-size: 13px;
-}
-
-footer li {
-  line-height: 3em;
+  color: #444;
 }
