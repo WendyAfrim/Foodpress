@@ -555,10 +555,19 @@ header .icons #menu-bar {
   cursor: pointer;
   padding: 0.8rem 3rem;
 }
+.btn--white {
+  background: #FFF;
+  color: #000;
+}
 
 .btn:hover {
-  background: #31aa66;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFF;
   letter-spacing: 0.1rem;
+}
+.btn:hover--white {
+  background: #000;
+  color: #FFF;
 }
 
 .sub-heading {
@@ -931,6 +940,29 @@ body.product-detail {
     max-width: 250px !important;
   }
 }
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 3rem;
+  text-align: center;
+  color: #FFF;
+  background: url("https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.error-404 h1 {
+  margin: 0;
+}
+
+.error-404 .button .cta-home {
+  margin-top: 4em;
+}
+
 .footer {
   padding: 40px 0;
   background-color: #FFF;
