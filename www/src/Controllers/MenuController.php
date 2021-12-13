@@ -84,15 +84,4 @@ class MenuController
         $view->errors = $errors ?? null;
         $view->form = $form->renderHtml();
     }
-
-    // public function delete_link($id)
-    // {
-    //     $menu = new Menu;
-    //     $menu = $menu->findByOne(['id' => $id]);
-    //     if (!$menu) {
-    //         header('Location: /admin/menu');
-    //     }
-    //     $menu->delete($id);
-    //     header('Location: /admin/menu');
-    // }
 }

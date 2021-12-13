@@ -149,17 +149,6 @@ class ProductController
         $view->title = "Foodpress | Mettre à jour une fiche produit";
     }
 
-    // public function delete_product($id)
-    // {
-    //     $product = new Product;
-    //     $product = $product->findByOne(['id' => $id]);
-    //     if (!$product) {
-    //         header('Location: /admin/products');
-    //     }
-    //     $product->delete($id);
-    //     header('Location: /admin/products');
-    // }
-
     /**
      * Accès à la boutique de tous les produits
      *

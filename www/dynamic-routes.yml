@@ -40,6 +40,10 @@
   controller: 'ProductController'
   action: 'product'
 
+/admin/type/delete/{id}: 
+  controller: "ProductController"
+  action: "delete_product_type"
+
 # Affichage des pages
 /{slug}:
   controller: "PostController"
