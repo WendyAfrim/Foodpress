@@ -11,7 +11,7 @@ use App\Form\MediaForm;
 use App\Core\FormVerification;
 use App\Helpers\Generator;
 
-class MediaController 
+class MediaController
 {
 
     public function all_Media()
@@ -36,41 +36,33 @@ class MediaController
 
         $date = Generator::generateDate();
 
-        
-        if(isset($_FILES['media']) && $_FILES['media']['error'] == UPLOAD_ERR_OK)
-        {
-            if ($_FILES["media"]["size"] < 500000)  {
-               
-              
-          $folders = "public/uploads/";
-          $path = $folders . basename( $_FILES['media']['name']);
 
- 
-          if(move_uploaded_file($_FILES['media']['tmp_name'], $path)) {
-               echo "Le média".  basename( $_FILES['media']['name']). " a été ajouté ";
-             } else
-             
-             {
-                 echo "Il y a eu une erreur lors de l'enregistrement de votre média";
-             }
+        if (isset($_FILES['media']) && $_FILES['media']['error'] == UPLOAD_ERR_OK) {
+            if ($_FILES["media"]["size"] < 500000) {
 
-            
-            $media->setAlt(htmlentities($_POST['alt']));
-            $media->setAdd_At($date);
-            $media->setFileName($_FILES['media']['name']);
-            $media->setTitle(basename($_FILES['media']['name']));
-          
+
+                $folders = "public/uploads/";
+                $path = $folders . basename($_FILES['media']['name']);
+
+                mkdir($folders);
+                if (move_uploaded_file($_FILES['media']['tmp_name'], $path)) {
+                    echo "Le média" .  basename($_FILES['media']['name']) . " a été ajouté ";
+                } else {
+                    echo "Il y a eu une erreur lors de l'enregistrement de votre média";
+                }
+
+
+                $media->setAlt(htmlentities($_POST['alt']));
+                $media->setAdd_At($date);
+                $media->setFileName($_FILES['media']['name']);
+                $media->setTitle(basename($_FILES['media']['name']));
             }
-            
-            $media->save(); 
-             
-     
+
+            $media->save();
         }
 
         $view = new View('Admin/media/add-media', 'back-template');
         $view->form = $form->renderHtml();
         $view->title = "Media | Ajouter un media";
-
     }
-
 }

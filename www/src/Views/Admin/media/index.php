@@ -4,11 +4,10 @@
         <thead>
             <tr>
                 <th>N°</th>
-                <th>Alt</th>
-                <th>Type</th>
-                <th>Crée le</th>
-                <th>Titre</th>
                 <th>Nom du fichier</th>
+                <th>Titre</th>
+                <th>Alt</th>
+                <th>Crée le</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +18,9 @@
                     <tr>
                         <td><?= $media->getId(); ?></td>
                         <td><?= $media->getFileName(); ?></td>
+                        <td><?= $media->getTitle(); ?></td>
                         <td><?= $media->getAlt(); ?></td>
-                        <td><?= $media->getFileName(); ?></td>
+                        <td><?= $media->getAdd_At(); ?></td>
                     </tr>
                     </tr>
                 <?php } ?>

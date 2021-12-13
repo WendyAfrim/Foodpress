@@ -106,9 +106,37 @@ CREATE TABLE `users` (
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `media` (
+`id` int(11) NOT NULL,
+`alt` varchar(255) NOT NULL,
+`add_at` datetime NOT NULL,
+`title` varchar(255) NOT NULL,
+`filename` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
+
+
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `nav_menu`
+--
+ALTER TABLE `media`
+ADD PRIMARY KEY (`id`);
+
 
 --
 -- Index pour la table `nav_menu`
@@ -146,6 +174,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `media`
+--
+ALTER TABLE `media`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `nav_menu`

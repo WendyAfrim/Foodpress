@@ -61,10 +61,10 @@ class  Media extends AbstractModel
         $this->title = basename($title);
     }
 
-    public function getAdd_At(): date
+    public function getAdd_At(): string
     {
 
-        return $this->$add_at;
+        return $this->add_at;
     }
 
     public function getFile(): string
