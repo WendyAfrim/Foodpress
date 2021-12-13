@@ -7,9 +7,20 @@
     border-radius: .5rem;
     cursor: pointer;
     padding: .8rem 3rem;
+
+    &--white {
+        background: $white;
+        color: $black;
+    }
 }
 
 .btn:hover {
-    background: $green;
+    background: rgba(0,0,0,0.6);
+    color: $white;
     letter-spacing: .1rem;
+
+    &--white {
+        background: $black;
+        color: $white;
+    }
 }

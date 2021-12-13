@@ -1,4 +1,4 @@
-<div class="wrapper">
+w<div class="wrapper">
     <h1>Tous les produits</h1>
     <table id="myDatatable" class="display">
         <thead>
@@ -30,7 +30,7 @@
                         <td>
                             <div>
                                 <a href="/admin/product/update/<?= $product['id'] ?>"><i class="far fa-edit"></i></a>
-                                <i class='far fa-trash-alt btn-trash' data-item-id="<?= $product['id'] ?>" data-ajax-url='/admin/ajax/open_modal' data-ajax-filename = 'modal_delete_product'></i>
+                                <i class='far fa-trash-alt btn-trash' data-item-id="<?= $product['id'] ?>" data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_product'></i>
                             </div>
                         </td>
                     </tr>
