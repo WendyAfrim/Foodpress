@@ -17,7 +17,7 @@
 <body>
     <!-- Header section begin -->
     <header>
-        <a href="/" class="logo"><i class="fas fa-utensils"></i>Resto</a>
+        <a href="#" class="logo"><i class="fas fa-utensils"></i><?= $siteName ?></a>
         <nav class="navbar">
             <ul>
                 <?php foreach ($nav_items as $item) : ?>

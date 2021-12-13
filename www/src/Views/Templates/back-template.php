@@ -169,7 +169,7 @@ $flashMessage = new FlashMessage();
                 </div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="/admin/settings">
                             <i class="fas fa-cog"></i>
                             Général
                         </a>

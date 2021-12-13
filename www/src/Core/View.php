@@ -4,6 +4,7 @@ namespace App\Core;
 
 use App\Models\Menu;
 use App\Models\Post;
+use App\Models\Setting;
 use App\Models\User;
 use Exception;
 
@@ -42,6 +43,8 @@ class View
             $this->template = "src/Views/Templates/" . $template . ".php";
             if ($template == 'front-template') {
                 $menu = new Menu;
+                $siteName = (new Setting)->findByOne(['name' => 'site_name'])->getValue();
+                $this->siteName = (isset($siteName) && !empty($siteName)) ? $siteName : 'Restaurant';
                 $nav_items = $menu->findAll();
                 foreach ($nav_items as $item) {
                     $item->link = (new Post)->findByOne(['id' => $item->getPostId()])->getSlug();
