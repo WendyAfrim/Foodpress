@@ -980,6 +980,57 @@ body.product-detail {
   overflow: hidden;
 }
 
+section.contact {
+  background: url("https://images.pexels.com/photos/821754/pexels-photo-821754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+}
+
+section.contact h1 {
+  font-size: 6rem;
+  margin: 0.5rem 0;
+}
+
+section.contact p {
+  font-size: 1.5rem;
+}
+
+section.contact .subheading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.contact .box-icons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rem;
+}
+
+section.contact .icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15rem;
+  font-size: 14px;
+}
+
+section.contact h2 {
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+section.contact .icons i {
+  font-size: 50px;
+}
+
 .footer {
   padding: 40px 0;
   background-color: #FFF;

@@ -2,6 +2,10 @@
   controller: "PostController"
   action: "show_home"
 
+/contact:
+  controller: "PostController"
+  action: "contact"
+
 # Security
 /login:
   controller: "SecurityController"

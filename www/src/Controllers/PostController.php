@@ -134,4 +134,11 @@ class PostController
         $view->title = "Foodpress | Page d'accueil";
         $view->errors = $errors ?? null;
     }
+
+    public function contact()
+    {
+        $view = new View('Home/contact', 'front-template');
+        $view->title = 'Foodpress | Contactez-nous';
+        $view->errors = $errors ?? null;
+    }
 }

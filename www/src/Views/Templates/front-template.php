@@ -23,7 +23,7 @@
                 <li>
                     <a href="/">Accueil</a>
                     <a href="/shop">Nos produits</a>
-                    <a href="">Contactez-nous</a>
+                    <a href="/contact">Contactez-nous</a>
                 </li>
                 <?php foreach ($nav_items as $item) : ?>
                     <li>
@@ -39,8 +39,10 @@
         </div>
     </header>
     <!-- Header section ends -->
+    <main>
 
-    <?php require $this->view; ?>
+        <?php require $this->view; ?>
+    </main>
 
 </body>
 <section class="footer">
