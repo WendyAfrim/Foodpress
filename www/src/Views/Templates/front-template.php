@@ -20,6 +20,11 @@
         <a href="#" class="logo"><i class="fas fa-utensils"></i><?= $siteName ?></a>
         <nav class="navbar">
             <ul>
+                <li>
+                    <a href="/">Accueil</a>
+                    <a href="/shop">Nos produits</a>
+                    <a href="">Contactez-nous</a>
+                </li>
                 <?php foreach ($nav_items as $item) : ?>
                     <li>
                         <a href="<?= $item->link ?>"><?= $item->getLabel() ?></a>
@@ -29,8 +34,8 @@
         </nav>
         <div class="icons">
             <i class="fas fa-bars" id="menu-bar"></i>
-            <i class="fas fa-search" id="search-icon"></i>
             <a href="/login"><i class="fas fa-user"></i></a>
+            <a href="/register"><i class="fas fa-pencil-alt"></i></i></a>
         </div>
     </header>
     <!-- Header section ends -->
