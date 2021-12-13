@@ -129,21 +129,9 @@ class PostController
     public function show_home()
     {
 
-        $pageTemplate = "front/home";
-        /*
-        $template = new Template;
-        $homeTemplate = $template->findByOne(['name' => 'home']);
-        if ($homeTemplate) {
-            $post = new Post;
-            $page = $post->findByOne(['id' => $homeTemplate->getPostId()]);
-            if ($page) {
-                $pageTemplate = "front/base";
-            }
-        } */
 
-        $view = new View($pageTemplate, 'front-template');
+        $view = new View('Home/home', 'front-template');
+        $view->title = "Foodpress | Page d'accueil";
         $view->errors = $errors ?? null;
-        $view->page = $page ?? null;
-        $view->title = isset($page) ? $page->getTitle() : null;
     }
 }
