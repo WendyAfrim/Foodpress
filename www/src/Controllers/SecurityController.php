@@ -145,10 +145,12 @@ class SecurityController
     {
 
         $view = new View('Security/404', 'front-template');
+        $view->title = 'Foodpress | Erreur 404';
     }
 
     public function forbidden()
     {
         $view = new View('Security/forbidden', 'front-template');
+        $view->title = 'Foodpress | Erreur 403';
     }
 }
