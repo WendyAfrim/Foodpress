@@ -6,13 +6,13 @@ use App\AbstractClass\AbstractModel;
 
 class  Media extends AbstractModel
 {
-    protected $table = 'media';
+    protected $table = 'medias';
 
     protected $id = null;
     protected $filename;
     protected $title;
     protected $add_at;
-    protected $alt; 
+    protected $alt;
 
     public function __construct()
     {
@@ -29,7 +29,7 @@ class  Media extends AbstractModel
         $this->id = $id;
     }
 
-   
+
     public function getAlt(): string
     {
         return $this->alt;
@@ -72,7 +72,7 @@ class  Media extends AbstractModel
         return $this->File;
     }
 
-   
+
     public function setFile($File): void
     {
         $this->file = $File;
@@ -88,9 +88,4 @@ class  Media extends AbstractModel
 
         $this->add_at = $add_at;
     }
-
-    
-
-   
 }
-

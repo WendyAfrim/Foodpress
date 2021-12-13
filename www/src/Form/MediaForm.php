@@ -21,7 +21,7 @@ class MediaForm extends AbstractForm
     public function createForm()
     {
         return [
-            "table" => "media",
+            "table" => "medias",
             "action" => "",
             "method" => "POST",
             "form-id" => "media-form",
@@ -37,7 +37,7 @@ class MediaForm extends AbstractForm
                     "placeholder" => "",
                     //"minLength" => "",
                     //"maxLength" => "",
-                    'class' => ['col-lg-12', 'col-md-12', 'col-xs-12','my-10'],
+                    'class' => ['col-lg-12', 'col-md-12', 'col-xs-12', 'my-10'],
                     'row' => 'start',
                     "error" => "Un problème est survenu lors de l\'ajout du média"
                 ],
@@ -47,13 +47,12 @@ class MediaForm extends AbstractForm
                     "required" => true,
                     "placeholder" => "",
                     // "minLength"=>2,
-                    'class' => ['col-lg-12', 'col-md-12', 'col-xs-12','my-10'],
+                    'class' => ['col-lg-12', 'col-md-12', 'col-xs-12', 'my-10'],
                     'row' => 'end',
                     "options" => ["Entrée", "Plat", "Dessert", "Boisson"],
                     "error" => "Un problème est survenu lors de l\'ajout du text alternatif"
                 ],
             ]
         ];
-
     }
 }
