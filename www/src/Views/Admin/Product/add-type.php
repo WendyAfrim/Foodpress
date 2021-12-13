@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <?php if (!empty($types)) { ?>
-                    <?php foreach ($types as $key => $type) {
+                    <?php foreach ($types as $type) {
                     ?>
                         <tr>
                             <td><?= $type->name ?></td>
@@ -30,8 +30,7 @@
                             <td><?= $type->created_at  ?></td>
                             <td>
                                 <div>
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
+                                    <?php echo  "<i class='far fa-trash-alt btn-trash' data-item-id= {$type->getId()}  data-ajax-url='/admin/ajax/open_modal' data-ajax-filename='modal_delete_type'></i>"; ?>
                                 </div>
                             </td>
                         </tr>

@@ -17,20 +17,4 @@ class ClientController
         $view->title = 'Foodpress | Tous les clients';
         $view->users = $users;
     }
-
-    // public function delete(int $id): void
-    // {
-    //     $user = new User();
-    //     $users = $user->findBy(['role' => "client"]);
-
-    //     $user = $user->find($id);
-
-    //     if (!$user) {
-    //         // header('Location : /admin/clients');
-    //     }
-
-    //     $user->delete($id);
-
-    //     // header('Location : /admin/clients');
-    // }
 }
