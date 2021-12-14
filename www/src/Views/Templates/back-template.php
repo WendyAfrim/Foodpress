@@ -57,23 +57,6 @@ $flashMessage = new FlashMessage();
                     </li>
                 </ul>
                 <div class="menu_head">
-                    <span>Articles</span>
-                </div>
-                <ul>
-                    <li>
-                        <a href="">
-                            <i class="fas fa-grip-vertical"></i>
-                            Tous les articles
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="far fa-file"></i>
-                            Ajouter
-                        </a>
-                    </li>
-                </ul>
-                <div class="menu_head">
                     <span>Pages</span>
                 </div>
                 <ul>
