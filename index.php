@@ -10,6 +10,11 @@ use Symfony\Component\VarDumper\VarDumper;
 
 require __DIR__ . '/vendor/autoload.php';
 
+if (!file_exists('./.env')) {
+    file_put_contents('./.env', '');
+    header('Location /install.php');
+}
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
