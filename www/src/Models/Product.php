@@ -15,7 +15,7 @@ class Product extends AbstractModel
     protected $description;
     protected $price;
     protected $ingredients;
-    protected $image;
+    protected $image_id;
     protected $created_at;
 
 
@@ -155,10 +155,10 @@ class Product extends AbstractModel
      *
      * @return string
      */
-    public function getImage(): string
+    public function getImage(): int
     {
 
-        return $this->image;
+        return $this->image_id;
     }
 
     /**
@@ -166,10 +166,10 @@ class Product extends AbstractModel
      *
      * @param mixed 
      */
-    public function setImage($image): void
+    public function setImage($image_id): void
     {
 
-        $this->image = $image;
+        $this->image_id = $image_id;
     }
 
     /**

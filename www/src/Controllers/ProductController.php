@@ -11,6 +11,7 @@ use App\Form\ProductForm;
 use App\Core\FormVerification;
 use App\Form\TypeForm;
 use App\Helpers\Generator;
+use App\Models\Media;
 use App\Models\Type;
 
 class ProductController
@@ -25,22 +26,23 @@ class ProductController
     {
         $product = new Product();
         $type = new Type();
+        $image = new Media();
         $products = $product->findAll();
-        $productsWithType = array_map(function($product) use($type) {
+        $productsWithTypeAndImage = array_map(function($product) use($type, $image) {
             return [
                 'id' => $product->getId(),
                 'name' => $product->getName(),
                 'description' => $product->getDescription(),
                 'price' => $product->getPrice(),
                 'ingredients' => $product->getIngredients(),
-                'image' => $product->getImage(),
+                'image' => $image->findByOne(['id' => $product->getImage()])->getFileName(),
                 'created_at' => $product->getCreatedAt(),
                 'type' => $type->findByOne(['id' => $product->getType()])->getName()
             ];
         }, $products);
         $view = new View('Admin/Product/index', 'back-template');
         $view->title = 'Foodpress | Tous les produits';
-        $view->products = $productsWithType;
+        $view->products = $productsWithTypeAndImage;
     }
 
     /**
