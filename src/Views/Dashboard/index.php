@@ -107,7 +107,7 @@
                         <span>Les dernières commandes</span>
                         <small>Nombre de commandes</small>
                     </div>
-                    <h2>17,663</h2>
+                    <h2><?= count($products) ?></h2>
                     <small>+2% de commandes</small>
                 </div>
                 <div class="card_chart card_chart--green">

@@ -5,7 +5,17 @@ namespace App;
 use App\Core\Auth;
 use App\Core\Session;
 use App\Models\User;
+use Dotenv\Dotenv;
 use Symfony\Component\VarDumper\VarDumper;
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+if (empty($_ENV['DB_NAME']) || empty($_ENV['DB_HOST']) || empty($_ENV['DB_PORT']) || empty($_ENV['DB_USER']) || empty($_ENV['DB_PASSWORD'])) {
+    header("Location: ./install.php");
+}
 
 //création de mon Autoload
 //Il s'agit d'executer une fonction lorsqu'il y a tentative
@@ -39,13 +49,16 @@ $routes = [
 ....
 ]
 */
-
+//dd($_SERVER['DOCUMENT_ROOT']);
 
 //Je dois récupérer ici pour commencer l'url de l'internaute
 $uri = $_SERVER["REQUEST_URI"];
 
+
 //PARSER le ficher YAML
 $listOfRoutes = yaml_parse_file("routes.yml");
+
+
 
 //Si la route dans le ficheir YAML n'existe pas
 //alors on récupère les informations pour la route 404

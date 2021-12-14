@@ -58,6 +58,7 @@ class SecurityController
     public function admin_login()
     {
         if (Auth::check()) header('Location: /');
+        
         $form = new LoginForm();
         if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $form->getFormConfig());
@@ -103,6 +104,8 @@ class SecurityController
      */
     public function register()
     {
+        if (Auth::check()) header('Location: /');
+
         $user = new User();
 
         $form = new RegisterForm();

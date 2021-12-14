@@ -42,6 +42,7 @@ class View
 
             $this->template = "src/Views/Templates/" . $template . ".php";
             if ($template == 'front-template') {
+                $this->user = Auth::user();
                 $menu = new Menu;
                 $siteName = (new Setting)->findByOne(['name' => 'site_name'])->getValue();
                 $this->siteName = (isset($siteName) && !empty($siteName)) ? $siteName : 'Restaurant';

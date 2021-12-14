@@ -26,11 +26,17 @@ $flashMessage = new FlashMessage();
     <header>
         <a href="#" class="logo"><i class="fas fa-utensils"></i><?= $siteName ?></a>
         <nav class="navbar">
-            <ul>
+            <ul style="display: flex;">
                 <li>
                     <a href="/">Accueil</a>
+                </li>
+                <li>
                     <a href="/shop">Nos produits</a>
+
+                </li>
+                <li>
                     <a href="/contact">Contactez-nous</a>
+                </li>
                 </li>
                 <?php foreach ($nav_items as $item) : ?>
                     <li>
@@ -40,10 +46,15 @@ $flashMessage = new FlashMessage();
             </ul>
         </nav>
         <div class="icons">
-            <i class="fas fa-bars" id="menu-bar"></i>
-            <a href="/login"><i class="fas fa-user"></i></a>
-            <a href="/register"><i class="fas fa-pencil-alt"></i></i></a>
+            <?php if (!$user) : ?>
+                <i class="fas fa-bars" id="menu-bar"></i>
+                <a href="/login"><i class="fas fa-user"></i></a>
+                <a href="/register"><i class="fas fa-pencil-alt"></i></i></a>
+            <?php else : ?>
+                <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+            <?php endif ?>
         </div>
+
     </header>
     <!-- Header section ends -->
     <main>

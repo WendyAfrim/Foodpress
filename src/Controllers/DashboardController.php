@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\FormVerification;
 use App\Core\View;
 use App\Form\SettingsForm;
+use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Setting;
@@ -14,18 +15,20 @@ class DashboardController
 
     public function dashboard()
     {
-        $user = new User();
+        $user = new User;
         $users = $user->findBy(['role' => "client"]);
+
+        $product = new Product;
+        $products = $product->findAll();
+
+        $order = new Order;
+        $orders = $order->findAll();
 
         $view = new View('Dashboard/index', 'back-template');
         $view->title = 'Tableau de bord - Foodpress';
-
-        $view->users = $users;
-
-        $product = new Product();
-        $products = $product->findAll();
+        $view->orders = $orders;
         $view->products = $products;
-
+        $view->users = $users;
     }
 
     public function settings() {
