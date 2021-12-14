@@ -4,3 +4,4 @@ vendor
 docker-compose.yml
 .idea
 public/uploads/
+.vscode
