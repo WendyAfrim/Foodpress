@@ -26,9 +26,10 @@ class MediaController
     }
 
 
-    public function add_Media(): void
+    public function add_media(): void
     {
 
+        $errors = [];
         $media = new Media();
 
         $form = new MediaForm();
@@ -44,13 +45,16 @@ class MediaController
                 $folders = "public/uploads/";
                 $path = $folders . basename($_FILES['media']['name']);
 
-                mkdir($folders);
-                if (move_uploaded_file($_FILES['media']['tmp_name'], $path)) {
-                    echo "Le média" .  basename($_FILES['media']['name']) . " a été ajouté ";
-                } else {
-                    echo "Il y a eu une erreur lors de l'enregistrement de votre média";
+                if (!file_exists($folders)){
+                    mkdir($folders);
                 }
 
+                if (move_uploaded_file($_FILES['media']['tmp_name'], $path)) {
+                    $errors[] = "Le média" .  basename($_FILES['media']['name']) . " a été ajouté ";
+                } else {
+                    $errors[] = "Il y a eu une erreur lors de l'enregistrement de votre média";
+                }
+                
 
                 $media->setAlt(htmlentities($_POST['alt']));
                 $media->setAdd_At($date);
@@ -64,5 +68,6 @@ class MediaController
         $view = new View('Admin/media/add-media', 'back-template');
         $view->form = $form->renderHtml();
         $view->title = "Media | Ajouter un media";
+        $view->errors = $errors ?? null;
     }
 }

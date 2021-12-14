@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\AbstractClass\AbstractForm;
+use App\Models\Media;
 use App\Models\Type;
 
 class ProductForm extends AbstractForm
@@ -34,6 +35,17 @@ class ProductForm extends AbstractForm
         return $filteredTypes;
     }
 
+    public static function getImagesForSelect()
+    {
+        $image = new Media;
+        $images = $image->findAll();
+        $filteredImages = array_map(function ($image) {
+            return ['value' => $image->getId(), 'label' => $image->getFileName()];
+        }, $images);
+
+        return $filteredImages;
+    }
+    
     public static function getConfig()
     {
         return [
@@ -97,11 +109,12 @@ class ProductForm extends AbstractForm
                 ],
                 "image" => [
                     "label" => "Image",
-                    "type" => "text",
+                    "type" => "select",
                     // "src"=> "",
                     "required" => true,
                     'class' => ['large' => 'col-lg-12', 'medium' => 'col-md-12', 'small' => 'col-xs-12'],
                     'row' => 'start_end',
+                    "options" => self::getImagesForSelect(),
                     "error" => "L'image est invalide"
                 ],
                 "id" => [

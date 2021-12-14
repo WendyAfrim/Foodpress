@@ -49,7 +49,6 @@ class MediaForm extends AbstractForm
                     // "minLength"=>2,
                     'class' => ['col-lg-12', 'col-md-12', 'col-xs-12', 'my-10'],
                     'row' => 'end',
-                    "options" => ["Entrée", "Plat", "Dessert", "Boisson"],
                     "error" => "Un problème est survenu lors de l\'ajout du text alternatif"
                 ],
             ]

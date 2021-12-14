@@ -67,16 +67,16 @@ class  Media extends AbstractModel
         return $this->add_at;
     }
 
-    public function getFile(): string
-    {
-        return $this->File;
-    }
+    // public function getFile(): string
+    // {
+    //     return $this->File;
+    // }
 
 
-    public function setFile($File): void
-    {
-        $this->file = $File;
-    }
+    // public function setFile($File): void
+    // {
+    //     $this->file = $File;
+    // }
 
     /**
      * Setting de la date
