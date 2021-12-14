@@ -35,6 +35,10 @@
   controller: "SecurityController"
   action: "admin_login"
 
+/confirmation_reset_password:
+  controller: "SecurityController"
+  action: "confirmation_reset_password"
+
 # Admin
 
 /admin/accounts:

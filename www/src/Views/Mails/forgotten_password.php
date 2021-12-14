@@ -4,5 +4,5 @@
         <br>
         N'attendez plus. Cliquer sur ce bouton :
     </p>
-    <a href="<?= $_SERVER['SERVER_NAME'] ?>/reset/password/.<?= $token ?>.">Réinitialiser mon mot de passe</a>
+    <a href="<?= $_SERVER['SERVER_NAME'] ?>/reset/password/<?= $token ?>">Réinitialiser mon mot de passe</a>
 </body>

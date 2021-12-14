@@ -20,10 +20,10 @@ class ResetPasswordForm extends AbstractForm
             "table" => "users",
             "action" => "",
             "method" => "POST",
-            "form-id" => "register-form",
+            // "form-id" => "reset-password",
             // 'class' => 'front-form',
-            "form-title" => 'Formulaire d\'inscription',
-            "submit" => "S'inscrire",
+            "form-title" => 'Formulaire - Nouveau mot de passe',
+            "submit" => "Enregistrer",
             "inputs" => [
                 "password" => [
                     "label" => 'Mot de passe',
