@@ -24,8 +24,7 @@ class AccountForm extends AbstractForm
     public static function getRolesForSelect()
     {
         $arrayRoles = [
-            '0' => ['value' => 'admin', 'label' => 'Admin'],
-            '1' => ['value' => 'editor', 'label' => 'Editor'],
+            '0' => ['value' => 'admin', 'label' => 'Admin']
         ];
         return $arrayRoles;
     }
