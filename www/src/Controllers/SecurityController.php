@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Auth;
+use App\Core\ForgotPassword;
 use App\Core\View;
 use App\Models\User;
 use App\Form\RegisterForm;
@@ -10,6 +11,8 @@ use App\Form\LoginForm;
 use App\Core\FormVerification;
 use App\Core\Mailer;
 use App\Form\ForgottenPasswordForm;
+use App\Form\ResetPasswordForm;
+use App\Helpers\FlashMessage;
 
 class SecurityController
 {
@@ -162,15 +165,57 @@ class SecurityController
         if (!empty($_POST)) {
             $errors =  FormVerification::check($_POST, $form->getFormConfig());
             if (empty($errors)) {
-                $user = (new User())->findByOne(["email" => $_POST["email"]]);
-                if ($user) {
-                    echo "Confirmez-vous le renouvellement de votre mot de passe?";
+
+                $email = htmlentities(strtolower(trim($_POST["email"])));
+                $user = (new User())->findByOne(["email" =>  $email]);
+
+                if (!$user) {
+                    $flashMessage = new FlashMessage();
+                    $flashMessage->set('Votre email est inconnue', FLASH_ERROR);
+                    header('Location: /forgotten_password');
                 }
+
+                ForgotPassword::sendEmail($user);
             }
         }
         $view = new View('Security/forgottenPassword', 'front-template');
         $view->errors = $errors ?? [];
         $view->form = $form->renderHtml();
         $view->title = "Foodpress | Mot de passe oublié";
+    }
+
+
+    public function reset_password(string $token)
+    {
+        if (!$token) {
+            throw new \Exception('Une erreur est survenue durant le processus');
+        }
+
+        $user = new User();
+        $user = $user->findBy(['passwordToken' => $token]);
+        dd($user);
+
+        if (!$user) {
+            throw new \Exception('Aucun utilisateur n\'a été identifié');
+        }
+
+        $form = new ResetPasswordForm();
+
+        if (!empty($_POST)) {
+            $errors =  FormVerification::check($_POST, $form->getFormConfig());
+            if (empty($errors)) {
+
+                $password = htmlentities(trim($_POST['password']));
+                $user->setPassword($password);
+                $user->setPasswordToken(null);
+            }
+        } else {
+            header('Location: /forgotten_password');
+        }
+
+        $view = new View('Security/confirm_password', 'front-template');
+        $view->errors = $errors ?? null;
+        $view->user = $user;
+        $view->title = "Foodpress | Confirmation de mot de passe";
     }
 }

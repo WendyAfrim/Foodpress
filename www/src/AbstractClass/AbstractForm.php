@@ -30,8 +30,8 @@ abstract class AbstractForm
 				$this->generateTextarea($name, $configInput);
 			} else if ($configInput["type"] == "editor") {
 				$this->generateEditor($name, $configInput);
-			}	else if ($configInput["type"] == "file") {
-					$this->generateFile($name, $configInput);
+			} else if ($configInput["type"] == "file") {
+				$this->generateFile($name, $configInput);
 			} else if ($configInput["type"] == "hidden") {
 				if (isset($configInput['value'])) $this->generateHiddenField($name, $configInput);
 			} else {
@@ -51,7 +51,7 @@ abstract class AbstractForm
 	{
 		$this->html = "
 		<div class='container' id='container'>
-			<form id=" . ($this->config['form-id'] ?? "") . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' enctype ='" .($this->config['enctype'] ?? "") . "' accept-charset='utf-8'>" 
+			<form id=" . ($this->config['form-id'] ?? "") . " class=" . ($this->config['class'] ?? "") .  " action='" . ($this->config["action"] ?? "") . "' method='" . ($this->config["method"] ?? "GET") . "' enctype ='" . ($this->config['enctype'] ?? "") . "' accept-charset='utf-8'>"
 			. (isset($this->config['form-title']) ? "<h1>{$this->config['form-title']}</h1>" : "");
 	}
 
@@ -64,7 +64,7 @@ abstract class AbstractForm
 		<select class='inputs-design' name='" . $name . "'>";
 		foreach ($configInput["options"] as $option) {
 			$selected = (isset($configInput["value"]) && $configInput["value"] == $option['value']) ? "selected" : "";
-			$this->html .= "<option ". $selected . " value='".$option['value']."'>" . $option['label'] . "</option>";
+			$this->html .= "<option " . $selected . " value='" . $option['value'] . "'>" . $option['label'] . "</option>";
 		}
 		$this->html .= "</select></div>";
 	}
@@ -78,8 +78,8 @@ abstract class AbstractForm
 		<textarea class='inputs-design 'name='" . $name . "' placeholder='" . $configInput['placeholder'] . "' rows='" . $configInput['rows'] . "' cols='" . $configInput['cols'] . "'  ></textarea></div>";
 	}
 
-		public function generateFile($name, $configInput)   
-	
+	public function generateFile($name, $configInput)
+
 	{
 		$this->html .= "  <div class='" . implode(' ', $configInput['class']) . "'>  <input class='inputs-design' name='media'  type='" . ($configInput["type"] ?? "file") . "' " . (($configInput["required"] == true) ? "required='required'" : "") . "></div>";
 	}
@@ -141,6 +141,7 @@ abstract class AbstractForm
 	{
 
 		$this->html .= "<div class='submit_row my-6'><input class='submit_button my-6' type='submit' value='" . htmlspecialchars($this->config["submit"] ?? "Valider", ENT_QUOTES) . "'></div>";
+		$this->html .= "<div class='random-field'></div>";
 		$this->html .= "</form></div>";
 	}
 

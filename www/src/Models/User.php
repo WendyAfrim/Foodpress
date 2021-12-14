@@ -20,6 +20,7 @@ class User extends AbstractModel
     protected $city;
     protected $country;
     protected $phone;
+    protected $passwordToken;
     protected $created_at;
 
     /**
@@ -279,5 +280,25 @@ class User extends AbstractModel
     {
 
         $this->created_at = $created_at;
+    }
+
+    /**
+     * Get the value of passwordToken
+     */
+    public function getPasswordToken()
+    {
+        return $this->passwordToken;
+    }
+
+    /**
+     * Set the value of passwordToken
+     *
+     * @return  self
+     */
+    public function setPasswordToken($passwordToken)
+    {
+        $this->passwordToken = $passwordToken;
+
+        return $this;
     }
 }

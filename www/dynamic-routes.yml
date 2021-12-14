@@ -3,7 +3,12 @@
     controller: 'AdminController'
     action: 'update_admin_account'
     role: 'admin'
-    
+
+# Security
+/reset/password/{token}:
+  controller: 'SecurityController'    
+  action: 'reset_password'
+
 
 # Clients
 /admin/client/delete/{id}:

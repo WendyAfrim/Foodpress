@@ -146,6 +146,7 @@ CREATE TABLE `users` (
   `country` varchar(255) NULL,
   `phone` varchar(255) NULL,
   `payment` varchar(255) DEFAULT NULL,
+  `passwordToken` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
