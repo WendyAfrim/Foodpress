@@ -94,7 +94,7 @@ CREATE TABLE `products` (
   `description` text NOT NULL,
   `price` float NOT NULL,
   `ingredients` text NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `image_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -187,7 +187,8 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type_id` (`type_id`);
+  ADD KEY `type_id` (`type_id`),
+  ADD KEY `fk_image_id` (`image_id`);
 
 --
 -- Index pour la table `settings`
@@ -280,6 +281,7 @@ ALTER TABLE `posts`
 -- Contraintes pour la table `products`
 --
 ALTER TABLE `products`
+  ADD CONSTRAINT `fk_image_id` FOREIGN KEY (`image_id`) REFERENCES `medias` (`id`),
   ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`);
 COMMIT;
 
