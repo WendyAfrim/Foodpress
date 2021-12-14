@@ -97,15 +97,15 @@ try {
         $price = $faker->biasedNumberBetween($min = 8, $max = 20, $function = 'sqrt');
         $ingredients = $faker->foodName();
         $created_at = $faker->dateTimeThisCentury->format('Y-m-d');
-        $image = $faker->foodname() . ".jpg";
+        $image = 1;
 
-        $request = $pdo->prepare("INSERT INTO products (name,type_id,description,price,ingredients,image,created_at) VALUES (:name,:type_id,:description,:price,:ingredients,:image,:created_at)");
+        $request = $pdo->prepare("INSERT INTO products (name,type_id,description,price,ingredients,image_id,created_at) VALUES (:name,:type_id,:description,:price,:ingredients,:image_id,:created_at)");
         $request->execute([
             "name" => $name,
             "type_id" => 1,
             "description" => $description,
             "price" => $price,
-            "image" => $image,
+            "image_id" => $image,
             "ingredients" => $ingredients,
             "created_at" => $created_at
 
