@@ -1,3 +1,10 @@
+<?php
+
+use App\Helpers\FlashMessage;
+
+$flashMessage = new FlashMessage();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -40,7 +47,9 @@
     </header>
     <!-- Header section ends -->
     <main>
-
+        <?=
+        $flashMessage->display();
+        require $this->view; ?>
         <?php require $this->view; ?>
     </main>
 

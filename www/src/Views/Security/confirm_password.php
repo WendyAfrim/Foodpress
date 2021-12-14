@@ -11,9 +11,3 @@
         <?= $form ?>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('.random-field').html("<a href='/forgotten_password'>Mot de passe oublié ?</a>");
-    })
-</script>
