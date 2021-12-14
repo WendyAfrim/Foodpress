@@ -1,5 +1,5 @@
 <?php if (isset($errors)) : ?>
-    <ul>
+    <ul class='alert--info'>
         <?php foreach ($errors as $error) : ?>
             <li><?= $error ?></li>
         <?php endforeach ?>
