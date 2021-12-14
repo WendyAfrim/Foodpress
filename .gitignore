@@ -1,7 +1,6 @@
-db_data
-www/.env
-www/webpack/node_modules
+.env
+webpack/node_modules
 vendor
 docker-compose.yml
 .idea
-www/public/uploads/
+public/uploads/
