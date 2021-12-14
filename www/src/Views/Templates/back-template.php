@@ -95,12 +95,6 @@ $flashMessage = new FlashMessage();
                             Types
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            <i class="fas fa-cocktail"></i>
-                            Menus
-                        </a>
-                    </li>
                 </ul>
                 <div class="menu_head">
                     <span>Apparence</span>
