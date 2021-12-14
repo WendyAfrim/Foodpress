@@ -9,7 +9,7 @@ class ForgotPassword
     /**
      * Génération du token
      *
-     * @return void
+     * @return string
      */
     public static function generateToken()
     {
@@ -39,9 +39,8 @@ class ForgotPassword
     {
         try {
 
-
-            self::saveToken(self::generateToken(), $user);
-            $token = $user->getPasswordToken();
+            $token = self::generateToken();
+            self::saveToken($token, $user);
 
 
             $dirname = dirname(__DIR__, 1);

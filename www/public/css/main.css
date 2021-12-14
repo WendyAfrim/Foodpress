@@ -1067,6 +1067,11 @@ section.contact .icons i {
   font-size: 50px;
 }
 
+#reset-password div.wrapper {
+  height: 100vh;
+  margin-top: 10rem;
+}
+
 .footer {
   padding: 40px 0;
   background-color: #FFF;

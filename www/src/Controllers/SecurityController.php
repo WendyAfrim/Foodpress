@@ -192,8 +192,7 @@ class SecurityController
         }
 
         $user = new User();
-        $user = $user->findBy(['passwordToken' => $token]);
-        dd($user);
+        $user = $user->findByOne(['passwordToken' => $token]);
 
         if (!$user) {
             throw new \Exception('Aucun utilisateur n\'a été identifié');
@@ -208,14 +207,27 @@ class SecurityController
                 $password = htmlentities(trim($_POST['password']));
                 $user->setPassword($password);
                 $user->setPasswordToken(null);
+
+                $user->save();
+
+                header('Location: /confirmation_reset_password');
+            } else {
+                header('Location: /forgotten_password');
             }
-        } else {
-            header('Location: /forgotten_password');
         }
 
-        $view = new View('Security/confirm_password', 'front-template');
+        $view = new View('Security/new_password', 'front-template');
         $view->errors = $errors ?? null;
+        $view->form = $form->renderHtml();
         $view->user = $user;
+        $view->title = "Foodpress | Nouveau de mot de passe";
+    }
+
+    public function confirmation_reset_password()
+    {
+
+        $view = new View('Security/confirmation_reset_password', 'front-template');
+        $view->errors = $errors ?? null;
         $view->title = "Foodpress | Confirmation de mot de passe";
     }
 }
