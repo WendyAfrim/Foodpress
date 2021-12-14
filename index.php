@@ -14,7 +14,7 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 if (empty($_ENV['DB_NAME']) || empty($_ENV['DB_HOST']) || empty($_ENV['DB_PORT']) || empty($_ENV['DB_USER']) || empty($_ENV['DB_PASSWORD'])) {
-    header("Location: ./install.php");
+    header("Location: /install.php");
 }
 
 //création de mon Autoload
